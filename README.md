@@ -1,2 +1,1 @@
-# web-demos
-My Web Demos
+# My Web Demos
