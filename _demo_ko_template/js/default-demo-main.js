@@ -3,7 +3,7 @@
 {
 	try
 	{
-		console.info("BEGIN Filter UI Prototype");
+		console.info("BEGIN Prototype");
 		window.document.addEventListener( "DOMContentLoaded", function ( str )
 		{
 			//	console.log( "DOMContentLoaded. Filter UI Prototype viewmodels & data are loaded and bound" );

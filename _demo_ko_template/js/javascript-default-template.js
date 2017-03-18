@@ -1,7 +1,7 @@
 "use strict";
 (function ()
 {
-	var _demo_name = "Azure Service Map Demo";
+	var _demo_name = "Demo";
 	try
 	{
 		console.info("BEGIN", _demo_name);

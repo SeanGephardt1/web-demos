@@ -1,5 +1,5 @@
 ﻿"use strict";
-window.AzureServiceMapDemoUtils =
+window.DemoUtils =
 {
 	// Create a unique ID in this format - [string]-[number]
 	UniqueID: function(shortString, intLength)
