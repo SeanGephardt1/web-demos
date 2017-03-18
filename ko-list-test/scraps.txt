@@ -1,0 +1,17 @@
+﻿
+
+		<td data-bind="visible: $index() < $root.Columns().length">
+			<span data-bind="text: $data.IsHidden"></span>
+			<span><img class="RowIcon" data-bind="attr: {src: Icon}" /></span><span data-bind="text: Text"></span>
+		</td>
+
+
+				<td data-bind="visible: $index() < $root.Columns().length">
+			<span><img class="RowIcon" data-bind="attr: {src: Icon}" /></span><span data-bind="text: Text"></span>
+		</td>
+
+
+				<!--<tr data-bind="template: { name: 'ko-List-RowData-template', foreach: Data }"></tr>-->
+
+
+							<td><span data-bind="text: $index"></span></td>

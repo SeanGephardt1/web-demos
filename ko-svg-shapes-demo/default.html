@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Knockout.js SVG Shapes Demo - copyright 2017 Sean Gephardt</title>
+    <link href="shapes.css" rel="stylesheet" />
+    <script src="knockout-3.4.0.js" type="text/javascript"></script>
+    <!--
+        ORDER IS IMPORTANT
+        1. Any JSON data needed
+        2. Knockout.js viewmodels
+        3. The "main" function
+    -->
+    <script src="shapes-data.js" type="text/javascript"></script>
+    <script src="shapes-viewmodels.js" type="text/javascript"></script>
+    <script src="shapes-main.js" type="text/javascript"></script>
+</head>
+<body data-bind="event: { click: CloseAllFlyouts }, clickBubble: false">
+    <div class="ButtonPanel left">
+        <div>Objects</div>
+        <button value="start">Add a circle</button>
+        <button value="start">Remove a circle</button>
+        <button value="start">Add a rectangle</button>
+        <button value="start">Remove a rectangle</button>
+        <button value="start">Add a group of lines</button>
+        <button value="start">Remove a group of lines</button>
+    </div>
+    <div class="ButtonPanel right">
+        <div> Animations</div>
+        <button value="start">Start</button>
+        <button value="start">Stop</button>
+        <label for="input">
+            <input type="checkbox" checked="checked" />
+            <span>Show Debug Center</span>
+        </label>
+    </div>
+    <svg class="SvgMain" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+         color-rendering="auto" shape-rendering="auto"
+         height="800" width="800" viewBox="0 0 800 800">
+
+        <!-- REUSABLE DEFINITIONS -->
+        <defs>
+            <filter id="ds1" height="120%">
+                <desc>Filter</desc>
+                <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+                <feOffset dx="0" dy="0" result="offsetblur" />
+                <feMerge>
+                    <feMergeNode />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+            <filter id="ds2" height="200%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="4" />
+                <feOffset dx="0" dy="0" result="offsetblur" />
+                <feMerge>
+                    <feMergeNode />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+            <marker id="MarkerStartCircle" markerWidth="8" markerHeight="8" refX="5" refY="5">
+                <circle cx="5" cy="5" r="2" fill="rgba(64,64,64,1)" stroke="none" />
+            </marker>
+            <marker id="MarkerMidCircle" markerWidth="8" markerHeight="8" refX="5" refY="5">
+                <circle cx="5" cy="5" r="2" fill="rgba(96,96,96,1)" stroke="none" />
+            </marker>
+            <marker id="MarkerEndArrow" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
+                <polygon points="0,0  5,3  0,6" shape-rendering="geometricPrecision"
+                         stroke="none" stroke-width="0" fill="rgba(128,128,128,1)" />
+            </marker>
+        </defs>
+
+        <!-- CONTENT -->
+        <!--<svg y="20" x="15" width="350" height="0" data-bind="attr:{'height': SvgViewBoxHeight},
+             template: { foreach: IncomingProcessList, name: 'ko-SVG-Widget-Template', afterRender: ProcessConnectionData }"></svg>-->
+        <g transform="translate(0,0)" class="debug_center" shape-rendering="crispEdges">
+            <circle cx="400" cy="400" r="50" shape-rendering="geometricPrecision"></circle>
+            <rect height="50" width="50" x="375" y="375"></rect>
+            <polyline points="401 350, 401 450"></polyline>
+            <polyline points="350 401, 450 401"></polyline>
+        </g>
+
+    </svg>
+
+    <!-- VIEWMODEL-TEMPLATE -->
+    <script id="ko-SVG-Widget-Template" type="text/html">
+        <!--<svg cursor="pointer" width="350" x="0" data-bind="attr: { id: SVG_ID, y: SVG_Container_Top, height: SVG_Container_Height}">
+            <rect x="0" y="0" width="400" height="25" stroke="none" fill="rgba(255,0,0,0.1)" ></rect>
+            <g transform="translate(10,10)" data-bind="attr: { id: G_ID }, event: { mouseover: StatusBar_Open, mouseout: StatusBar_Closed }, mouseBubble:true" shape-rendering="crispEdges">
+
+                <rect id="background_shadow_panel" height="0" width="0" cursor="pointer"
+                      stroke-width="1" stroke="rgba(0,0,0,1)" fill="rgba(0,128,0,1)"
+                      data-bind="attr: { x: BG_ShadowLeft, y: BG_ShadowTop,
+                      width: BG_ShadowWidth, height: BG_ShadowHeight,
+                      filter: BG_ShadowFilter }, mouseBubble:false"></rect>
+
+                <g shape-rendering="geometricPrecision" transform="translate(0,0)">
+                    <rect x="1" y="0" width="250" height="0" stroke-width="0" data-bind="attr: {fill: StatusFillColor, height: StatusBar_Height, y: StatusBar_Top }, mouseBubble:false"></rect>
+                    <g data-bind="visible: ChevronGroup_Displayed, attr: { stroke: CheveronStrokeColor }" fill="none" stroke-width="2">
+                        <polyline data-bind="visible: CheveronDownDisplayed" points="10,14 18,7 26,14" />
+                        <polyline data-bind="visible: ChevronUpDisplayed" points="10,7 18,14 26,7" />
+                        <rect x="0" y="0" width="50" height="20" fill="rgba(0,0,255,0.0)" stroke-width="0" data-bind="event: { click: ListPanel_Display }, clickBubble: false"></rect>
+                    </g>
+                    <g data-bind="visible: EllipsisGroup_Displayed, attr: { fill: EllipsisFillColor }">
+                        <circle cx="224" cy="11" r="2" />
+                        <circle cx="232" cy="11" r="2" />
+                        <circle cx="240" cy="11" r="2" />
+                        <rect x="200" y="0" width="50" height="20" fill="rgba(255,0,0,0)" stroke-width="1" data-bind="event: { click: EllipsisFlyout_Display }, clickBubble: false"></rect>
+                    </g>
+                </g>
+
+
+                <g id="Header_Text_Panels" shape-rendering="geometricPrecision">
+                    <rect x="1" y="0" width="250" height="0" stroke-width="0" fill="rgba(255,255,255,1)"
+                          data-bind="attr: { y: HeaderPanel_Top, height: HeaderPanel_Height  } , mouseBubble:false"></rect>
+                    <image xlink:href="" x="10" y="30" height="32px" width="32px" data-bind="attr: { 'xlink:href': HeaderIcon_Icon }" />
+                    <g data-bind="visible: StatusInfo_Displayed">
+                        <image xlink:href="svg/status_info.svg" x="28" y="44" height="24px" width="24px" />
+                    </g>
+                    <g data-bind="visible: StatusCrit_Displayed">
+                        <image xlink:href="svg/status_crit.svg" x="28" y="44" height="22px" width="22px" />
+                    </g>
+                    <g id="Header_Text">
+                        <text x="50" y="44" fill="black" font-family="Segoe UI" data-bind="text: Name"></text>
+                        <text x="50" y="60" fill="black" font-size="12px" font-family="Segoe UI" data-bind="text: ListProcessInfo"></text>
+                    </g>
+                    <g data-bind="visible: HeaderIconPanel_Displayed, template: { foreach: ListProcess_HeaderIconsList, name: 'ko-SVG-HeaderPanel-LP_HeaderIconsList-Template'}"></g>
+                </g>
+
+
+                <svg id="ListPanel" x="0" y="10" data-bind="visible: ListPanelOpen, attr: { y : ListPanelRect_Top, height: ListPanelRect_Height }">
+                    <rect id="ListPanelRect" fill="rgba(255,255,255,1)" stroke-width="0" x="1" y="0" width="250" height="0" data-bind="attr: { height: ListPanelRect_Height }"></rect>
+                    <g data-bind="template: { foreach: ListProcesses, name: 'ko-SVG-ListProcessChildren-Template'}"></g>
+                </svg>
+
+                <svg id="FooterPanel" x="0" data-bind="visible: NoteGroupedDisplayed, attr: { y: NoteGroup_Top, height: NoteGroup_Height }, mouseBubble:false">
+                    <rect x="1" y="0" height="32" width="250" stroke-width="0" fill="rgba(255,255,255,1)"></rect>
+                    <g shape-rendering="crispEdges" data-bind="template: { foreach: NotificationGroups, name: 'ko-SVG-NotificationGroups-Template'}"></g>
+                </svg>
+
+
+                <g transform="translate(220,20)" data-bind="visible: IsEllipsisFlyoutDisplayed, event: {click: EllipsisFlyout_Handler}" cursor="pointer">
+                    <rect x="0" y="0" width="110" height="51" fill="#FFFFFF" stroke-width="1" stroke="rgba(0,0,0,1)"></rect>
+                    <text x="10" y="20" style="fill: #000000; stroke: none; font-size: 12px;">Load Server Map</text>
+                    <text x="10" y="42" style="fill: #000000; stroke: none; font-size: 12px;">Show Self-Links</text>
+                </g>
+
+            </g>
+        </svg>-->
+    </script>
+
+</body>
+</html>

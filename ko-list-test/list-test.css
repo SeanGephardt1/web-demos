@@ -1,0 +1,85 @@
+﻿*
+{
+    box-sizing: border-box;
+}
+body
+{
+	background-color: rgba(255,255,255,1);
+	color:rgba(0,0,0,1);
+	font-family:'Segoe UI';
+	font-size:medium;
+	margin:0 auto;
+	padding:10px;
+}
+a
+{
+	color:rgba(192,192,192,1);
+	text-decoration:none;
+}
+a:hover
+{
+	color:rgba(255,255,255,1);
+	text-decoration:none;
+}
+a:visited
+{
+	color:rgba(160,160,160,1);
+	text-decoration:none;
+}
+div
+{
+    border: solid 1px rgba(64,64,64,1);
+	padding:10px;
+	margin:10px;
+}
+div.MainLayout
+{
+    border: solid 1px rgba(128,128,128,1);
+	padding:10px;
+	margin:10px;
+}
+table.MainListTable
+{
+	border: solid 1px rgba(128,128,128,1);
+	padding: 10px;
+	margin: 10px;
+	width:calc(100% - 20px);
+}
+table.MainListTable > thead > tr > td
+{
+	border: solid 1px rgba(96,96,96,1);
+	padding:10px;
+	font-weight:700;
+}
+table.MainListTable > thead > tr > td:hover
+{
+	background-color: rgba(192,192,192,1);
+	color: rgba(0,0,0,1);
+	cursor:pointer;
+}
+table.MainListTable > tbody > tr > td
+{
+	border: solid 1px rgba(32,32,32,1);
+	vertical-align:top;
+	padding:4px;
+}
+table.MainListTable > tbody > tr > td > span
+{
+	/*border: solid 1px rgba(32,32,32,1);*/
+	vertical-align:top;
+	padding:4px;
+	text-overflow:ellipsis;
+}
+table.MainListTable > tbody > tr > td:hover
+{
+	background-color: rgba(192,192,192,1);
+	color: rgba(0,0,0,1);
+	cursor:pointer;
+}
+
+img.RowIcon
+{
+	height: 16px;
+	width:16px;
+	vertical-align:top;
+}

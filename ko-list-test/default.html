@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Knockout.js List Table Demo - copyright 2017 Sean Gephardt</title>
+	<link href="list-test.css" rel="stylesheet" />
+	<script src="knockout-3.4.0.min.js" type="text/javascript"></script>
+	<!-- ORDER IS IMPORTANT, Requirements before application specific scripts ! -->
+	<script src="list-test-data.js" type="text/javascript"></script>
+	<script src="list-test-main-viewmodel.js" type="text/javascript"></script>
+	<script src="list-test-main.js" type="text/javascript"></script>
+</head>
+<body>
+	<h1 data-bind="text: Title"></h1>
+	<h2 data-bind="text: ID"></h2>
+	<h2 data-bind="text: TestCountText"></h2>
+
+	<div class="MainLayout">
+		<div data-bind="text: DEBUGFLAG "></div>
+		<table class="MainListTable" data-bind="attr: { id: ID }">
+			<thead>
+				<tr data-bind="template: { name: 'ko-List-ColumnHeaders-template', foreach: Columns }"></tr>
+			</thead>
+			<tbody  data-bind="template: {  name: 'ko-List-Row-template', foreach: VisibleRows }"></tbody>
+		</table>
+	</div>
+
+	<!-- Columns KO Template -->
+	<script type="text/html" id="ko-List-ColumnHeaders-template">
+		<td><span data-bind="text: $data"></span></td>
+	</script>
+
+	<!-- Rows Data KO Templates -->
+	<script type="text/html" id="ko-List-Row-template">
+		<tr data-bind="template: {  name: 'ko-List-RowData-template', foreach: Data } "></tr>
+	</script>
+
+	<script type="text/html" id="ko-List-RowData-template">
+		<td data-bind="visible: $index() < $root.Columns().length">
+			<span><img class="RowIcon" data-bind="attr: {src: Icon}" /></span><span data-bind="text: Text"></span>
+		</td>
+	</script>
+
+</body>
+</html>
