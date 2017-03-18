@@ -4,6 +4,7 @@
 	try {
 		console.info("BEGIN");
 
+        // ANY NEW JAVASCRIPT OBJECT
 		var _nav = new NavigationLinks();
 		_nav.Init();
 
