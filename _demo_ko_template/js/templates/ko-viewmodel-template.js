@@ -13,10 +13,8 @@ function TEMPLATE_ViewModel(title, debugFlag)
 		return;
 	}, this);
 
-	/* 
-	 * Handle All Clicks on the body element, return false.
-	 * <body data-bind="event: { click: CloseAllFlyouts}, clickBubble: false">
-	 * */
+    //  Handle All Clicks on the body element, return false.
+    //  <body data-bind="event: { click: CloseAllFlyouts}, clickBubble: false">
 	this.CloseAllFlyouts = function ( viewModel, event )
 	{
 	    console.debug( "this.CloseAllFlyouts", viewModel, event );

@@ -1,19 +1,16 @@
 "use strict";
 (function ()
 {
-	var _demo_name = "Demo";
-	try
+    var _debug_flag = true;
+	var _demo_name = "Knockout.js demo template";
+    try
 	{
 		console.info("BEGIN", _demo_name);
 
-		//var _nav = new NavigationLinks();
-		//_nav.Init();
-
-		window.document.addEventListener("DOMContentLoaded", function (str)
-		{
-			//	console.log( "DOMContentLoaded." );
-			var _qb_vm = new ListTestViewModel("Query Builder DEBUG");
-			ko.applyBindings(_qb_vm);
+		window.document.addEventListener("DOMContentLoaded", function (ev)
+		{   //	console.log( "DOMContentLoaded." );
+		    var _main_vm = new MainViewModel( _demo_name, _debug_flag );
+			ko.applyBindings( _main_vm );
 			return;
 		});
 	}
