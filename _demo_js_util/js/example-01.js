@@ -25,7 +25,6 @@ $( function ()
 			"border-color": SuperGood.Random.RandomColor()
 		} ).text( SuperGood.Random.OperatingSystem() );
 
-
 		console.log( "Numbers" );
 		console.log( "SuperGood.Random.Number()", SuperGood.Random.Number() );
 		console.log( "SuperGood.Random.Number(2)", SuperGood.Random.Number( 2 ) );
@@ -51,7 +50,12 @@ $( function ()
 		console.log( "SuperGood.Random.WebFontSize()", SuperGood.Random.WebFontSize() );
 		console.log( "SuperGood.Random.RandomFont()", SuperGood.Random.RandomFont() );
 
-		console.log( "" );
+		window.setTimeout( function ()
+		{
+		    console.log( "auto-reloading" );
+		    window.location.reload( true );
+		    return;
+		}, 5000 );
 	}
 	catch ( err )
 	{
