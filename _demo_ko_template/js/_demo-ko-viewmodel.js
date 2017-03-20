@@ -76,6 +76,8 @@ function ChildViewModel( title, parentViewModel )
     var _self = this;
     this.ID = ko.pureComputed( function () { return "child-id-" + Math.random().toPrecision( 5 ).replace( ".", "" ); }, this );
     this.Title = ko.observable( title || "ChildViewModel - Title" );
+    this.Error = ko.observable( false );
+    this.ErrorMessage = ko.observable();
     this.ParentViewModel = ko.observable();
 
     //  this will allow the demo to continue,
@@ -86,7 +88,10 @@ function ChildViewModel( title, parentViewModel )
     {
         if ( parentViewModel == undefined )
         {
-            throw new Error( "ParentViewModel not assigned to this ChildViewModel" );
+            var _e = new Error( "ParentViewModel not assigned to this ChildViewModel" );
+            this.Error( true );
+            this.ErrorMessage( _e.message );
+            throw _e;
         }
         else
         {
