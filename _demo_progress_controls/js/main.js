@@ -3,7 +3,9 @@
 ( function ()
 {
     var _demo_name = "Processing Controls Demo";
-    console.log( "BEGIN" );
+    var _debug_flag = true;
+    console.clear();
+    console.info( "BEGIN", _demo_name );
     try
     {
         window.document.addEventListener( "DOMContentLoaded", function ( e )
@@ -15,15 +17,12 @@
 	}
     catch ( ex )
     {
-        console.log( "in 'catch'" );
+        console.log( "CATCH", _demo_name );
 		console.error(ex.number, ":", ex.name, ":", ex.message);
 		console.error("exception stack::", ex.stack);
 		return;
 	}
-    finally
-    {
-        //  console.log( "in 'finally'" );
-	}
-    console.log( "END" );
+    finally {}
+    console.info( "END", _demo_name );
 	return;
 } )();

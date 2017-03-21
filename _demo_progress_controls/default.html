@@ -3,14 +3,50 @@
 	<title id="PageTitle">Processing Controls, Progress bars, spinners, and the like</title>	
     <link href="css/default.css" rel="stylesheet" />
 	<link href="default.html" rel="prefetch"/>
-
+    <!-- KO ORDER, KO, viewmodels, main -->
     <script src="script/ko/knockout-3.4.2.js" type="text/javascript" ></script>
-	<script src="js/default.js" type="text/javascript" ></script>
+    <script src="js/ko-circle-spinner-vm.js" type="text/javascript" ></script>
+    <script src="js/ko-ellipsis-nodes-vm.js" type="text/javascript" ></script>
+    <script src="js/ko-prog-bar-vm.js" type="text/javascript" ></script>
+    <script src="js/ko-main-vm.js" type="text/javascript" ></script>
+	<script src="js/main.js" type="text/javascript" ></script>
 </head>
-<body>
+ <body data-bind="event: { click: CloseAll }, clickBubble: false">
 	<h1>Processing Controls, Progress bars, spinners, and the like</h1>
-    <div id="progress_bar"></div>
-    <div id="circle_spinner"></div>
-    <div id="ellipsis_nodes"></div>
+    <div data-bind="visible: Error, text: ErrorMessage" style="color:red"></div>
+     <!-- Progress Bar controls -->
+    <div id="progress_bar" class="ControlBox"
+        data-bind="template: { foreach: ProgressBars, name: 'ko-prog-bar-template'}"></div>
+
+    <!--<div id="circle_spinner" class="ControlBox"></div>
+    <div id="ellipsis_nodes" class="ControlBox"></div>-->
+
+     <!-- Progress Bar KO Template -->
+     <!--
+		 data-bind="attr:{ id: ID, 'viewbox' : SvgViewBox, 'height': SvgViewBoxHeight, 'width': SvgViewBoxWidth }"         
+     -->
+    <script type="text/html" id="ko-prog-bar-template">
+    <div data-bind="visible: Error, text: ErrorMessage" style="color:red"></div>
+    <!--<div>
+        <span class="bolded">ID: </span>
+        <span data-bind="text: ID"></span>, 
+        <span class="bolded">$parent.ID: </span>
+        <span data-bind="text: $parent.ID"></span>,
+        <span class="bolded">ParentViewModel().ID: </span>
+        <span data-bind="text: ParentViewModel().ID"></span>
+    </div>-->
+    <div>
+	    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+             color-rendering="optimizeQuality" shape-rendering="geometricPrecision" preserveAspectRatio="xMidYMid slice" 
+             zoomAndPan="magnify" x="0" y="0" height="100" width="100" 
+            class="SvgProgBar">
+            <text x="5" y="16" fill="rgba(0,0,0,1)" font-size="14px" data-bind="text: ID"></text>
+            <rect x="0" y="90" height="10" width="0" fill="rgba(0,128,0,1)"
+                  data-bind="attr: { width: Width }"></rect>
+        </svg>
+        <button data-bind="text: ButtonText, event: { click: Click_Progress }, clickBubble: false"></button>
+    </div>
+    </script>
+
 </body>
 </html>

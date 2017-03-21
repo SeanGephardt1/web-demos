@@ -1,10 +1,13 @@
 ﻿/// <reference path="../script/ko/knockout-3.4.2.js" />
+/// <reference path="ko-prog-bar-vm.js" />
+/// <reference path="ko-ellipsis-nodes-vm.js" />
+/// <reference path="ko-circle-spinner-vm.js" />
 /// "Main" ViewModel V.1.0.0
 "use strict";
 function MainViewModel( demoName, debugFlag )
 {
     var _self = this;
-    this.ID = ko.pureComputed( function () { return "id-" + Math.random().toPrecision( 5 ).replace( ".", "" ); }, this );
+    this.ID = ko.pureComputed( function () { return "main-id-" + Math.random().toPrecision( 5 ).replace( ".", "" ); }, this );
     this.Title = ko.observable( demoName || "Demo Title" );
     this.DEBUGFLAG = ko.observable( debugFlag || false );
     this.DebugOutput = ko.pureComputed( function ()
@@ -16,23 +19,35 @@ function MainViewModel( demoName, debugFlag )
         }
         return;
     }, this );
-    this.DebugOutput();
+    //  MAY NOT NEED
+    //  this.DebugOutput(); 
 
-    // non-standard ko.observables
+    this.Error = ko.observable( false );
+    this.ErrorMessage = ko.observable("No errors");
+
+    // child ko viewmodels
+    this.ProgressBars = ko.observableArray( [
+        new ProgressBarViewModel( this ),
+        new ProgressBarViewModel( this ),
+        new ProgressBarViewModel( this )
+    ] );
 
 
     //-----
+    //  not really being used in this demo
     //  GLOBAL EVENT HANDLERS AND TESTING
     //  Handle All Clicks on the body element, return false.
-    //  <body data-bind="event: { click: CloseAllFlyouts}, clickBubble: false">
+    //  KO events have to return false to work properly with event bubbling on child controls
+    //  <body data-bind="event: { click: CloseAll}, clickBubble: false">
     this.CloseAll = function ( viewModel, event )
     {
-        if ( this.DEBUGFLAG() == true )
-        {
-            console.debug( "this.CloseAll", viewModel, event );
-        }
-        var _rv_false = false;
+        //  console.debug( "MainViewModel.CloseAll" );
+        //if ( this.DEBUGFLAG() == true )
+        //{
+        //    console.debug( "this.CloseAll", viewModel, event );
+        //}
         // handle objects like popups, drop down menus and other UI events
+        var _rv_false = false;
         return _rv_false;
     };
 
