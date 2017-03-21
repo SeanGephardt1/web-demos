@@ -1,4 +1,8 @@
-﻿body
+﻿*
+{
+    box-sizing: border-box;
+}
+body
 {
     background-color: rgba(32, 32, 32, 1);
     color: rgba(224, 224, 224, 1);
