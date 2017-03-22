@@ -42,7 +42,7 @@ function MainViewModel( demoName, debugFlag )
     this.CircleSpinners = ko.observableArray( [
         new CircleSpinnerViewModel( this, window.CircleSpinnerStyles.ArcStyle ),
         new CircleSpinnerViewModel( this, window.CircleSpinnerStyles.DotsStyle ),
-        new CircleSpinnerViewModel( this),
+        new CircleSpinnerViewModel( this, window.CircleSpinnerStyles.PathStyle ),
     ] );
     //  console.debug( "CircleSpinnerStyle", this.CircleSpinners()[0].CircleSpinnerStyles.ArcStyle );
 
