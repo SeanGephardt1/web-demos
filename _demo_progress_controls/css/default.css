@@ -40,7 +40,7 @@ span.c_palette
 
 
 /* progress bar styles */
-#progress_bar > div
+/*#progress_bar > div
 {
     border: solid 1px rgba(64,64,64,1);
     padding:10px;
@@ -51,6 +51,29 @@ span.c_palette
 #progress_bar > div > button
 {
     vertical-align:top;
+}*/
+
+div.SvgTileDiv
+{
+    border: solid 1px rgba(64,64,64,1);
+    background-color:rgba(255,255,255,1);
+    padding:10px;
+    display:inline-block;
+    min-width: 300px;
+    vertical-align:top;
+}
+div.SvgTileDiv > button
+{
+    vertical-align:top;
+}
+
+.TileBgOut
+{
+     background-color:rgba(230,230,230,1);
+}
+.TileBgOver
+{
+     background-color:rgba(255,255,255,1);
 }
 
 /* progress bar - badge border styles */
@@ -94,3 +117,6 @@ span.c_palette
 {
     fill: rgba(0,128,255,1);
 }
+
+/* background mouse styles */
+.

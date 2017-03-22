@@ -161,5 +161,23 @@ function ProgressBarViewModel(pViewModel)
         return;
     };
 
+    // mouse events and KOs for each title background
+    this.TileBackground = ko.observable();
+    this.TileBackground_MouseOver = function ( vm, ev )
+    {   //  console.debug( "TileBackground_MouseOver", ev.fromElement );
+        this.TileBackground( "background-color:rgba(248,248,248,1)" );
+        return;
+    };
+    this.TileBackground_MouseOut = function ( vm, ev )
+    {   //  console.debug( "TileBackground_MouseOut", ev.fromElement );
+        this.TileBackground( "background-color:rgba(230,230,230,1)" );
+        return;
+    };
+    this.Click_Tile = function ( vm, ev )
+    {   //  console.debug( "ProgressBarViewModel.Click_Tile" );
+        this.Click_ChangeBadge( vm, ev );
+        //  this.Click_Progress( vm, ev );
+        return;
+    };
     return;
 };

@@ -64,14 +64,14 @@
         <span class="bolded">ParentViewModel().ID: </span>
         <span data-bind="text: ParentViewModel().ID"></span>
     </div>-->
-    <div>
+    <div class="SvgTileDiv">
 	    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
              color-rendering="optimizeQuality" shape-rendering="geometricPrecision" 
              preserveAspectRatio="xMidYMid slice" zoomAndPan="magnify" 
              x="0" y="0" height="100" width="100" class="BorderBadge"
-             data-bind="attr: { 'class': BadgeBorderClass }">
+             data-bind="attr: { 'class': BadgeBorderClass, style: TileBackground }">
             <!-- progressive rect -->
-            <rect x="0" y="92" height="4" width="0" fill="rgba(0,96,224,1)" fill-opacity="1" data-bind="attr: { width: Width }"></rect>
+            <rect x="0" y="92" height="4" width="0" fill-opacity="1" fill="rgba(0,96,224,1)" data-bind="attr: { width: Width }"></rect>
             <!-- badge -->
             <polygon points="80,0 100,0 100,20" data-bind="visible: HasPolyBadge, attr: { 'class': BadgePolyClass }"/>
             <!-- general text -->
@@ -79,6 +79,8 @@
             <circle r="16" cx="48" cy="48" shape-rendering="geometricPrecision"
                 stroke="rgba(192,0,128,1)" stroke-width="10" stroke-opacity="0.5"
                 fill="rgba(128,0,192,1)" fill-opacity="0.5"></circle>
+            <!-- mouseover rect-->
+            <rect x="0" y="0" height="100" width="100" fill-opacity="0" data-bind="event: { mouseover: TileBackground_MouseOver , mouseout: TileBackground_MouseOut, click: Click_Tile }, clickBubble: false, mouseBubble: true"></rect>
         </svg>
         <button data-bind="text: ProgressButton_Text, event: { click: Click_Progress }, clickBubble: false"></button>
         <button data-bind="text: BadgeButton_Text, event: { click: Click_ChangeBadge }, clickBubble: false"></button>
