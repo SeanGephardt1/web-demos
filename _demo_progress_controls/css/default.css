@@ -39,20 +39,7 @@ span.c_palette
 }
 
 
-/* progress bar styles */
-/*#progress_bar > div
-{
-    border: solid 1px rgba(64,64,64,1);
-    padding:10px;
-    display:inline-block;
-    min-width: 300px;
-    vertical-align:top;
-}
-#progress_bar > div > button
-{
-    vertical-align:top;
-}*/
-
+/* main control prog-tile div styles */
 div.SvgTileDiv
 {
     border: solid 1px rgba(64,64,64,1);
@@ -65,15 +52,6 @@ div.SvgTileDiv
 div.SvgTileDiv > button
 {
     vertical-align:top;
-}
-
-.TileBgOut
-{
-     background-color:rgba(230,230,230,1);
-}
-.TileBgOver
-{
-     background-color:rgba(255,255,255,1);
 }
 
 /* progress bar - badge border styles */
@@ -118,5 +96,25 @@ div.SvgTileDiv > button
     fill: rgba(0,128,255,1);
 }
 
-/* background mouse styles */
-.
+/* circle-spinner-styles */
+div.SvgCircleSpinnerDiv
+{
+    border: solid 1px rgba(64,64,64,1);
+    background-color:rgba(255,255,255,1);
+    padding:10px;
+    display:inline-block;
+    min-width: 300px;
+    vertical-align:top;
+}
+div.SvgCircleSpinnerDiv > button
+{
+    vertical-align:top;
+}
+.SvgCircleSpinner
+{
+     background-color:transparent; 
+     border-width: 1px;
+     border-style: solid;
+     border-color: rgba(0,0,0,1);
+     cursor:pointer; 
+}
