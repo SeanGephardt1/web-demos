@@ -29,8 +29,7 @@ function ProgressBarViewModel(pViewModel)
     //  move to my ko-template demo example
     //  and to "main-viewmodel" code
     this.AssignDefaultValues = ko.pureComputed( function ()
-    {
-        // check for parent viewmodel reference parameter
+    {   // check for parent viewmodel reference parameter
         try
         {
             if ( pViewModel == undefined )
