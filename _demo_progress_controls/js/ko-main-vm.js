@@ -22,8 +22,12 @@ function MainViewModel( demoName, debugFlag )
     //  MAY NOT NEED
     //  this.DebugOutput(); 
 
-    this.Error = ko.observable( false );
+    this.Error = ko.observable( true );
     this.ErrorMessage = ko.observable("No errors");
+
+    this.Show_ColorPalette = ko.observable( true );
+    this.Show_GreyPalette = ko.observable( true );
+
 
     // child ko viewmodels
     this.ProgressBars = ko.observableArray( [

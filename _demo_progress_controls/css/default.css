@@ -4,8 +4,8 @@
 }
 body
 {
-    background-color: rgba(32, 32, 32, 1);
-    color: rgba(224, 224, 224, 1);
+    background-color: rgba(16, 16, 16, 1);
+    color: rgba(240, 240, 240, 1);
     font-family: 'Segoe UI', 'Tahoma', Arial;
     font-weight:100;
 }
@@ -17,31 +17,80 @@ h1
 {
     font-weight:100;
     letter-spacing:-1.5px;
-    color:rgba(255,255,255,1);
+    /*color:rgba(255,255,255,1);*/
 }
 .ControlBox
 {
-    border: solid 1px rgba(128,128,128,1);
+    border: solid 1px rgba(32,32,32,1);
     min-height: 50px;
     margin-bottom:10px;
     padding:10px;
 }
 
+/* palette default style */
+span.c_palette
+{
+    display:inline-block;
+    padding:4px;
+    padding-left:10px;
+    padding-right: 10px;
+    color:rgba(0,0,0,1);
+    border: solid 1px rgba(255,255,255,1);
+}
+
+
 /* progress bar styles */
 #progress_bar > div
 {
-    border: solid 1px rgba(96,96,96,1);
+    border: solid 1px rgba(64,64,64,1);
     padding:10px;
     display:inline-block;
+    min-width: 300px;
     vertical-align:top;
 }
 #progress_bar > div > button
 {
     vertical-align:top;
 }
-.SvgProgBar
+
+/* progress bar - badge border styles */
+.BorderBadge, .bb_orange, .bb_green, .bb_blue
 {
-     border:solid 1px rgba(0,0,0,1);
-     background-color:rgba(255,255,255,1);
+     background-color:rgba(230,230,230,1);
+     border-width: 2px;
+     border-style: solid;
      cursor:pointer; 
+}
+.BorderBadge
+{
+     border-color:rgba(64,64,64,1);
+}
+.bb_orange
+{
+     border-color:rgba(255,192,0,1);
+}
+.bb_green
+{
+     border-color:rgba(0,192,0,1);
+}
+.bb_blue
+{
+     border-color:rgba(0,128,255,1);
+}
+/* progress bar - badge polygon styles */
+.PolyBadge
+{
+    fill: rgba(0,0,0,1);
+}
+.PolyBadgeRed
+{
+    fill: rgba(255,192,0,1);
+}
+.PolyBadgeGreen
+{
+    fill: rgba(0,192,0,1);
+}
+.PolyBadgeBlue
+{
+    fill: rgba(0,128,255,1);
 }
