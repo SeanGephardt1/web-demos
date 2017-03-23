@@ -105,9 +105,12 @@
                  x="0" y="0" height="100" width="100" class="SvgCircleSpinner">
                 <!-- main spinner circle, note different styles -->
                 <circle r="30" cx="48" cy="48" shape-rendering="geometricPrecision"
-                    stroke="rgba(0,0,255,1)" stroke-width="10" stroke-opacity="1" 
-                    fill="none" fill-opacity="1"></circle>
+                    stroke="rgba(0,128,255,1)" stroke-width="6" stroke-opacity="1" 
+                    fill="none" fill-opacity="0" 
+                    data-bind="attr: { 'stroke-dasharray': DashArray, 'transform': Transform }">
+                </circle>
             </svg>
+            <button data-bind="text: LoaderButton_Text, event: { click: Click_CircleSpinner }, clickBubble: false"></button>
         </div>
     </script>
 

@@ -92,5 +92,58 @@ function CircleSpinnerViewModel( pViewModel, spinnerStyle )
     this.AssignDefaultValues();
 
     // specific KOs
+    this.LoaderButton_Text = ko.observable("Run");
+
+    this.Click_CircleSpinner = function ( vm, ev )
+    {
+        //  console.debug( "Click_CircleSpinner" );
+        //  console.debug( "SpinnerStyle", this.SpinnerStyle() );
+        switch( this.SpinnerStyle() )
+        {
+            case 0:
+            {
+                //  console.debug( "CircleSpinnerStyles.ArcStyle" );
+                this.Render_ArcStyle(vm, ev);
+                break;
+            }
+            case 1: { console.debug( "CircleSpinnerStyles.PathStyle" ); break; }
+            case 2: { console.debug( "CircleSpinnerStyles.DotsStyle" ); break; }
+        }
+        return;
+    };
+
+    this.DashArray = ko.observable( 0 );
+    this.Transform = ko.observable();
+    this.Render_ArcStyle = function ( vm, ev )
+    {
+        console.debug( "Render_ArcStyle");
+
+        var _ada = 360 / Math.PI;
+        //console.log( "_ada", _ada );
+        this.DashArray( _ada );
+
+        //  rotate(-45 100 100)"/
+        var _x = 0;
+        var _loop = window.setInterval( function ()
+        {
+            //  console.debug("_x", _x);
+            var _rotate = "rotate(" + _x + " 48 48)";
+            _self.Transform( _rotate );
+            _x = _x + 1;
+
+            if ( _x > 1000 )
+            {
+                window.clearInterval( _loop );
+                _self.DashArray( 0 );
+                //  _self.Transform("");
+            }
+            return;
+        }, 1 );
+
+        return;
+    };
+
+
+    // EVM
     return;
 };

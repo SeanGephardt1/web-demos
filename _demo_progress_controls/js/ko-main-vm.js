@@ -35,16 +35,14 @@ function MainViewModel( demoName, debugFlag )
         //new ProgressBarViewModel( this )
     ] );
 
-    // use a static enum to determine the style
-    //var _static_spinner_styles = window.CircleSpinnerStyles;
-    //console.debug( "_static_spinner_styles", _static_spinner_styles );
-
+    //  console.debug( "CircleSpinnerStyle", window.CircleSpinnerStyles.ArcStyle );
     this.CircleSpinners = ko.observableArray( [
         new CircleSpinnerViewModel( this, window.CircleSpinnerStyles.ArcStyle ),
-        new CircleSpinnerViewModel( this, window.CircleSpinnerStyles.DotsStyle ),
         new CircleSpinnerViewModel( this, window.CircleSpinnerStyles.PathStyle ),
+        new CircleSpinnerViewModel( this, window.CircleSpinnerStyles.DotsStyle ),
     ] );
-    //  console.debug( "CircleSpinnerStyle", this.CircleSpinners()[0].CircleSpinnerStyles.ArcStyle );
+
+
 
     //-----
     //  not really being used in this demo
