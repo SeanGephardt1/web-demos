@@ -3,9 +3,9 @@
 "use strict";
 // public static enum
 var CircleSpinnerStyles = {
-    ArcStyle: 0,
-    PathStyle: 1,
-    DotsStyle: 2
+    ArcStyle: "arcStyle",
+    PathStyle: "pathStyle",
+    DotsStyle: "dotStyle"
 };
 function CircleSpinnerViewModel( pViewModel, spinnerStyle )
 {
@@ -14,6 +14,7 @@ function CircleSpinnerViewModel( pViewModel, spinnerStyle )
     this.Error = ko.observable( false );
     this.ErrorMessage = ko.observable( "No errors" );
     this.ParentViewModel = ko.observable();
+
     this.SpinnerStyle = ko.observable( spinnerStyle || window.CircleSpinnerStyles.ArcStyle );
     //  console.debug( "this.SpinnerStyle", this.SpinnerStyle(), spinnerStyle );
 
@@ -90,14 +91,14 @@ function CircleSpinnerViewModel( pViewModel, spinnerStyle )
         //  console.debug( "SpinnerStyle", this.SpinnerStyle() );
         switch( this.SpinnerStyle() )
         {
-            case 0:
+            case CircleSpinnerStyles.ArcStyle:
             {
                 //  console.debug( "CircleSpinnerStyles.ArcStyle" );
                 this.Render_ArcStyle(vm, ev);
                 break;
             }
-            case 1: { console.debug( "CircleSpinnerStyles.PathStyle" ); break; }
-            case 2: { console.debug( "CircleSpinnerStyles.DotsStyle" ); break; }
+            case CircleSpinnerStyles.PathStyle: { console.debug( "CircleSpinnerStyles.PathStyle" ); break; }
+            case CircleSpinnerStyles.DotsStyle: { console.debug( "CircleSpinnerStyles.DotsStyle" ); break; }
         }
         return;
     };

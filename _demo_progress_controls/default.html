@@ -98,6 +98,7 @@
             <span class="bolded">ParentViewModel().ID: </span>
             <span data-bind="text: ParentViewModel().ID"></span>
         </div>-->
+
         <div class="SvgCircleSpinnerDiv">
 	        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                  color-rendering="optimizeQuality" shape-rendering="geometricPrecision" 
@@ -110,6 +111,7 @@
                     data-bind="attr: { 'stroke-dasharray': DashArray, 'stroke-opacity': StrokeOpacity, 'r': Radius , 'stroke': StrokeColor,  'transform': Transform }">
                 </circle>
             </svg>
+            <span class="SpinnerTypeName" data-bind="text: SpinnerStyle"></span>
             <button data-bind="text: LoaderButton_Text, event: { click: Click_CircleSpinner }, clickBubble: false"></button>
         </div>
     </script>

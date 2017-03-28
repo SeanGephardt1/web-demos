@@ -110,6 +110,12 @@ div.SvgCircleSpinnerDiv > button
 {
     vertical-align:top;
 }
+.SpinnerTypeName
+{
+    color:rgba(0,0,0,1);
+    vertical-align:top;
+    display:inline-block;
+}
 .SvgCircleSpinner
 {
      background-color:transparent; 
