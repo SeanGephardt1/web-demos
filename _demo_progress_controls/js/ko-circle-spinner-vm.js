@@ -15,16 +15,7 @@ function CircleSpinnerViewModel( pViewModel, spinnerStyle )
     this.ErrorMessage = ko.observable( "No errors" );
     this.ParentViewModel = ko.observable();
     this.SpinnerStyle = ko.observable( spinnerStyle || window.CircleSpinnerStyles.ArcStyle );
-
-    // this works, but needs to "new" a CircleSpinnerViewModel
-    //var _static_spinner_styles = new CircleSpinnerViewModel( this ).CircleSpinnerStyles;
-    //console.debug( "_static_spinner_styles", _static_spinner_styles );
-    //this.CircleSpinnerStyles = {
-    //    ArcStyle: 0,
-    //    PathStyle: 1,
-    //    DotsStyle: 2
-    //};
-    //  this.SpinnerStyle = ko.observable( || CircleSpinnerStyles.ArcStyle );
+    //  console.debug( "this.SpinnerStyle", this.SpinnerStyle(), spinnerStyle );
 
     //  assign incoming values
     //  catch, instead of throw
@@ -93,7 +84,6 @@ function CircleSpinnerViewModel( pViewModel, spinnerStyle )
 
     // specific KOs
     this.LoaderButton_Text = ko.observable("Run");
-
     this.Click_CircleSpinner = function ( vm, ev )
     {
         //  console.debug( "Click_CircleSpinner" );
@@ -112,30 +102,70 @@ function CircleSpinnerViewModel( pViewModel, spinnerStyle )
         return;
     };
 
+    // for arcStyle 
+    // compute the size to make the dash look proper
+    this.Radius = ko.observable( 30 );
     this.DashArray = ko.observable( 0 );
+    this.StrokeOpacity = ko.observable( 0 );
+    this.StrokeColor = ko.observable("rgba(0,0,0,1)");
     this.Transform = ko.observable();
+    //  console.debug( "ID", vm.ID() );
+    //  var _r = document.getElementById( vm.ID() ).children[0].attributes["r"].value;
+    //  var _cx = document.getElementById( vm.ID() ).children[0].attributes["cx"].value;
+    //  var _cy = document.getElementById( vm.ID() ).children[0].attributes["cy"].value;
+    //  console.debug( "_r, _cx, _cy", _r, _cx, _cy );
     this.Render_ArcStyle = function ( vm, ev )
-    {
-        console.debug( "Render_ArcStyle");
-
+    {   //  console.debug( "Render_ArcStyle");
         var _ada = 360 / Math.PI;
-        //console.log( "_ada", _ada );
         this.DashArray( _ada );
+        this.StrokeOpacity( 1 );
+        this.Radius( 30 );
 
-        //  rotate(-45 100 100)"/
         var _x = 0;
+
+        var _red = 0;
+        var _green = 96;
+        var _blue = 255;
+        // COME BACK TO MAKING A GRADIENT
+        //  var _blue_hit_bool = false;
+        //  console.debug( "1. _blue", _blue, _blue_hit_bool );
+        //if ( _blue_hit_bool == false )
+        //{
+        //    _blue++;
+        //}
+        //else if ( _blue_hit_bool == true )
+        //{
+        //    _blue--;
+        //}
+        //if ( _blue == 255 )
+        //{
+        //    _blue_hit_bool = true;
+        //}
+        //else if ( _blue == 0 )
+        //{
+        //    _blue_hit_bool = false;
+        //}
+        //  console.debug( "2. _blue", _blue, _blue_hit_bool );
+
+        var _new_color = "rgba(" + _red + "," + _green + "," + _blue + ",1)";
+        //    console.debug( "_new_color", _new_color );
+        _self.StrokeColor( _new_color );
+
         var _loop = window.setInterval( function ()
-        {
-            //  console.debug("_x", _x);
-            var _rotate = "rotate(" + _x + " 48 48)";
+        {   //  console.debug("_x", _x);
+            var _rotate = "rotate(" + _x + " " + document.getElementById( vm.ID() ).children[0].attributes["cx"].value + " " + document.getElementById( vm.ID() ).children[0].attributes["cy"].value + ")";
+            //  console.debug( "_rotate", _rotate );
             _self.Transform( _rotate );
             _x = _x + 1;
 
+            // end when hitting 1000 - for demo purposes
             if ( _x > 1000 )
             {
                 window.clearInterval( _loop );
                 _self.DashArray( 0 );
-                //  _self.Transform("");
+                _self.StrokeOpacity( 0 );
+                _self.Radius( 0 );
+                _self.Transform( "" );
             }
             return;
         }, 1 );

@@ -25,7 +25,7 @@ function MainViewModel( demoName, debugFlag )
     this.Error = ko.observable( false );
     this.ErrorMessage = ko.observable("No errors");
 
-    this.Show_ColorPalette = ko.observable( false );
+    this.Show_ColorPalette = ko.observable( true );
     this.Show_GreyPalette = ko.observable( false );
 
     // child ko viewmodels
