@@ -32,6 +32,7 @@
             //  wait for dom to complete and make any databinding or dom changes
             //  console.log( "window.document.DOMContentLoaded", e.type );
             WriteDefaultScopeText( _test_string, "window.document.addEventListener(DOMContentLoaded), function" );
+            SortThisArray();
             return;
         } );
 	}
@@ -67,4 +68,28 @@ function WriteDefaultScopeText( strSampleText, strCaller )
         //  throw exDom;
     }
     return;
+};
+
+function SortThisArray()
+{	
+    var employees = [];
+	employees[0] = { name: "George", age: 32, retiredate: "March 12, 2014" };
+	employees[1] = { name: "Edward", age: 17, retiredate: "June 2, 2023" };
+	employees[2] = { name: "Christine", age: 58, retiredate: "December 20, 2036" };
+	employees[3] = { name: "Sarah", age: 62, retiredate: "April 30, 2020" };
+    
+	employees.sort( function ( a, b )
+	{
+	    var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+        //  sort string ascending
+	    if ( nameA < nameB ) 
+	        return -1;
+        //  sort string descending    
+	    if ( nameA > nameB )
+	        return 1;
+        //  default return value (no sorting)
+	    return 0;
+	} );
+
+
 };
