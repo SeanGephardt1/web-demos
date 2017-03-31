@@ -24,13 +24,13 @@ function MainViewModel( demoName, debugFlag )
     this.ErrorMessage = ko.observable("No errors");
 
     this.DataArray = ko.observableArray( [
-        new ChildViewModel( "Sean", 49, 3 ),
-        new ChildViewModel( "Kim", 51, 2 ),
-        new ChildViewModel( "Gerry", 47, 6 ),
-        new ChildViewModel( "Zach", 15, 0 ),
-        new ChildViewModel( "Carl", 46, 1 ),
-        new ChildViewModel( "Octo-Mom", 37, 8 ),
-        new ChildViewModel( "Bob", 49, 4 ),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
     ] );
 
     this.SortType = { ASC: "asc", DESC: "desc" };
@@ -160,19 +160,41 @@ function MainViewModel( demoName, debugFlag )
 };
 
 
-function ChildViewModel( name, age )
+function ChildViewModel()
 {
     var _self = this;
     this.ID = ko.pureComputed( function ()
     { return "c-id-" + Math.random().toPrecision( 5 ).replace( ".", "" ); }, this );
 
-    this.Name = ko.observable( name );
-    this.Age = ko.observable( age );
+    this.Name = ko.observable();
+    this.GetName = ko.pureComputed( function ()
+    {
+        var _names = ["John", "Kim", "Mary", "Jennifer", "James", "Sean", "Zach", "Robert", "Carl", "Gibson", "Jimmy", "Scott", "Kathy"];
+        var _index = Math.round( Math.random() * _names.length - 1 );
+
+        if ( _index < 0 )
+        {
+            _index = Math.round( _names.length / 3 );
+        }
+        //  console.debug( _names.length, _index );
+        this.Name( _names[_index] );
+        return;
+    }, this );
+    this.GetName();
+
+    this.Age = ko.observable();
+    this.GetAge = ko.pureComputed( function ()
+    {
+        var _age = Math.round(Math.random() * 100);
+        this.Age( _age );
+        return;
+    }, this );
+    this.GetAge();
 
     this.BornDate = ko.observable();
     this.GetBornDate = ko.pureComputed( function ()
     {
-        var _current_year = (new Date().getFullYear() - age);
+        var _current_year = (new Date().getFullYear() - this.Age());
         //  console.debug( "_current_year", _current_year );
         this.BornDate( _current_year );
         return;

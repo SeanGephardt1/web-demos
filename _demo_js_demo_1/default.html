@@ -21,11 +21,17 @@
         <table>
             <thead>
                 <tr>
-                <td>Name</td>
-                <td>Age</td>
-                <td>BornDate</td>
-                <td>DiedDate</td>
-                <td>Children</td>
+                <td data-bind="click: Click_SortByName">
+                    <span>Name</span>
+                    [<span data-bind="text: CurrentChildrenSort"></span>]       
+                </td>
+                <td data-bind="click: Click_SortByAge">Age</td>
+                <td data-bind="click: Click_SortByBorn">BornDate</td>
+                <td data-bind="click: Click_SortByDied">DiedDate</td>
+                <td data-bind="click: Click_SortByChildren">
+                    <span>Children</span>
+                    [<span data-bind="text: CurrentChildrenSort"></span>]
+                </td>
                 </tr>
             </thead>
             <tbody data-bind="template: { foreach: DataArray, name: 'KO-DataArray-Template'}"></tbody>

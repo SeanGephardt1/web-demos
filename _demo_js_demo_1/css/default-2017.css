@@ -30,9 +30,9 @@ body
 }
 .SortDivTable > table > thead > tr > td
 {
-    background-color:rgba(190,190,190,1);
+    background-color:rgba(255,255,255,1);
     color: rgba(0,0,0,1);
-
+    cursor:pointer;
 }
 .SortDivTable > table > thead > tr > td, .SortDivTable > table > tbody > tr > td
 {
