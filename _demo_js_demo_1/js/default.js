@@ -1,7 +1,7 @@
 ﻿"use strict";
 ( function ()
 {
-    var _demo_name = "JavaScript Funtime";
+    var _demo_name = "HTML JavaScript Knockout.js Array Sorting Demo";
     var _debug_flag = true;
     console.info( "BEGIN", _demo_name );
     try
