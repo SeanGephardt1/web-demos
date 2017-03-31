@@ -11,15 +11,26 @@
 <body>
     <h1 data-bind="text: Title"></h1>
     <h2 data-bind="text: ErrorMessage, visible: ERROR"></h2>
-    <div>
-        <button data-bind="click: SortByName">Sort By Name</button>
-        <button value="">Sort By Age</button>
-        <button value="">Sort By Date Born</button>
-        <button value="">Sort By Date Died</button>
-        <button value="">Sort By Number of Children</button>
+    <div class="SortButtons">
+        <button data-bind="click: Click_SortByName">Sort By Name</button>
+        <button data-bind="click: Click_SortByAge">Sort By Age</button>
+        <button data-bind="click: Click_SortByBorn">Sort By Date Born</button>
+        <button data-bind="click: Click_SortByDied">Sort By Date Died</button>
+        <button data-bind="click: Click_SortByChildren">Sort By Number of Children</button>
     </div>
-    <div>
-        <table data-bind="template: { foreach: DataArray, name: 'KO-DataArray-Template'}"></table>
+    <div class="SortDivTable">
+        <table>
+            <thead>
+                <tr>
+                <td>Name</td>
+                <td>Age</td>
+                <td>BornDate</td>
+                <td>DiedDate</td>
+                <td>Children</td>
+                </tr>
+            </thead>
+            <tbody data-bind="template: { foreach: DataArray, name: 'KO-DataArray-Template'}"></tbody>
+        </table>
     </div>
 
     <script type="text/html" id="KO-DataArray-Template">

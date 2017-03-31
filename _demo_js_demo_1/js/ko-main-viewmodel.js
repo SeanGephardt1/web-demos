@@ -1,6 +1,19 @@
 /// <reference path="knockout-3.4.2.js" />
 /// "Main" ViewModel V.1.0.0
 "use strict";
+ko.observableArray.fn.sortByProperty = function ( prop )
+{
+    this.sort( function ( obj1, obj2 )
+    {
+        if ( obj1[prop] == obj2[prop] )
+            return 0;
+        else if ( obj1[prop] < obj2[prop] )
+            return -1;
+        else
+            return 1;
+    } );
+}
+
 function MainViewModel( demoName, debugFlag )
 {
     var _self = this;
@@ -20,13 +33,11 @@ function MainViewModel( demoName, debugFlag )
         new ChildViewModel( "Bob", 49, 4 ),
     ] );
 
-    this.SortType = { ASC: "asc", DESC: "DESC" };
+    this.SortType = { ASC: "asc", DESC: "desc" };
     this.CurrentNameSort = ko.observable( this.SortType.ASC );
-
-    this.SortByName = function ( vm, ev )
-    {
-        console.debug( "1. SortByName.this.CurrentNameSort", this.CurrentNameSort() );
-        this.SortThisArray( this.DataArray(), "Name", this.CurrentNameSort() );
+    this.Click_SortByName = function ( vm, ev )
+    {   //  console.debug( "1. SortByName.this.CurrentNameSort", this.CurrentNameSort() );
+        this.SortThisArray( "Name", this.CurrentNameSort() );
 
         if ( this.CurrentNameSort() == this.SortType.ASC )
         {
@@ -35,34 +46,121 @@ function MainViewModel( demoName, debugFlag )
         else if ( this.CurrentNameSort() == this.SortType.DESC )
         {
             this.CurrentNameSort( this.SortType.ASC );
-        }
-        console.debug( "2. SortByName.this.CurrentNameSort", this.CurrentNameSort() );
+        }   //  console.debug( "2. SortByName.this.CurrentNameSort", this.CurrentNameSort() );
         return;
     };
 
+    this.CurrentAgeSort = ko.observable( this.SortType.ASC );
+    this.Click_SortByAge = function ( vm, ev )
+    {   //  console.debug( "1. Click_SortByAge.this.CurrentAgeSort", this.CurrentAgeSort() );
+        this.SortThisArray( "Age", this.CurrentAgeSort() );
 
-    // try to handle all sorting, good luck.
-    this.SortThisArray = function(array, key, direction)
-    {
-        array.sort( function ( a, b )
+        if ( this.CurrentAgeSort() == this.SortType.ASC )
         {
-            var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
-            //  sort string ascending
-            if ( nameA < nameB )
-                return -1;
-            //  sort string descending    
-            if ( nameA > nameB )
-                return 1;
-            //  default return value (no sorting)
-            return 0;
-        } );
+            this.CurrentAgeSort( this.SortType.DESC );
+        }
+        else if ( this.CurrentAgeSort() == this.SortType.DESC )
+        {
+            this.CurrentAgeSort( this.SortType.ASC );
+        }   //  console.debug( "2. Click_SortByAge.this.CurrentAgeSort", this.CurrentAgeSort() );
         return;
     };
 
+    this.CurrentBornSort = ko.observable( this.SortType.ASC );
+    this.Click_SortByBorn = function ( vm, ev )
+    {   //  console.debug( "1. Click_SortByBorn.this.CurrentBornSort", this.CurrentBornSort() );
+        this.SortThisArray( "BornDate", this.CurrentBornSort() );
+
+        if ( this.CurrentBornSort() == this.SortType.ASC )
+        {
+            this.CurrentBornSort( this.SortType.DESC );
+        }
+        else if ( this.CurrentBornSort() == this.SortType.DESC )
+        {
+            this.CurrentBornSort( this.SortType.ASC );
+        }   //  console.debug( "2. Click_SortByBorn.this.CurrentBornSort", this.CurrentBornSort() );
+        return;
+    };
+
+    this.CurrentDiedSort = ko.observable( this.SortType.ASC );
+    this.Click_SortByDied = function ( vm, ev )
+    {   //  console.debug( "1. Click_SortByDied.this.CurrentDiedSort", this.CurrentDiedSort() );
+        this.SortThisArray( "DiedDate", this.CurrentDiedSort() );
+
+        if ( this.CurrentDiedSort() == this.SortType.ASC )
+        {
+            this.CurrentDiedSort( this.SortType.DESC );
+        }
+        else if ( this.CurrentDiedSort() == this.SortType.DESC )
+        {
+            this.CurrentDiedSort( this.SortType.ASC );
+        }   //  console.debug( "2. Click_SortByDied.this.CurrentDiedSort", this.CurrentDiedSort() );
+        return;
+    };
+
+    this.CurrentChildrenSort = ko.observable( this.SortType.ASC );
+    this.Click_SortByChildren = function ( vm, ev )
+    {   //  console.debug( "1. Click_SortByChildren.this.CurrentChildrenSort", this.CurrentChildrenSort() );
+        this.SortThisArray( "Children", this.CurrentChildrenSort() );
+
+        if ( this.CurrentChildrenSort() == this.SortType.ASC )
+        {
+            this.CurrentChildrenSort( this.SortType.DESC );
+        }
+        else if ( this.CurrentChildrenSort() == this.SortType.DESC )
+        {
+            this.CurrentChildrenSort( this.SortType.ASC );
+        }   //  console.debug( "2. Click_SortByChildren.this.CurrentChildrenSort", this.CurrentChildrenSort() );
+        return;
+    };
+
+
+    //  try to handle all sorting, good luck.
+    //  this works only for observable properties on a viewmodel
+    //  this.DataArray().sort( function ( left, right )
+    //  { return left.Name == right.Name ? 0 : ( left.Name < right.Name ? -1 : 1 ) } );
+    //  sort string ascending
+    //  if ( key_a < key_b ) return -1;
+    //  sort string descending    
+    //  if ( key_a > key_b ) return 1;
+    //  return 0;        //  default return value (no sorting)
+    this.SortThisArray = function(key, dir)
+    {   //  console.debug( "SortThisArray", key, dir );
+        this.DataArray().sort( function ( a, b )
+        {   
+            var key_a = a[key]();
+            var key_b = b[key]();
+
+            switch ( dir )
+            {
+                case _self.SortType.ASC:
+                    {   //  sort string ascending
+                        if ( key_a < key_b ) return -1;
+                        //  sort string descending    
+                        if ( key_a > key_b ) return 1;
+                        //  default return value (no sorting)
+                        return 0;
+                    }
+                case _self.SortType.DESC:
+                    {   //  sort string ascending
+                        if ( key_a < key_b ) return 1;
+                        //  sort string descending    
+                        if ( key_a > key_b ) return -1;
+                        //  default return value (no sorting)
+                        return 0;
+                    }
+            };
+        } );
+        //  console.debug( "this.DataArray()", this.DataArray() );
+        this.DataArray( this.DataArray() );
+        return;
+    };
+    // end of viewmodel
     return;
 };
 
-function ChildViewModel( name, age, kids )
+
+function ChildViewModel( name, age )
 {
     var _self = this;
     this.ID = ko.pureComputed( function ()
@@ -91,6 +189,12 @@ function ChildViewModel( name, age, kids )
     }, this );
     this.GetDiedDate();
 
-    this.Children = ko.observable( kids );
+    this.Children = ko.observable( );
+    this.GetChildren = ko.pureComputed( function ()
+    {
+        this.Children( Math.round( Math.random() * 10 ) );
+        return;
+    }, this );
+    this.GetChildren();
     return;
 };
