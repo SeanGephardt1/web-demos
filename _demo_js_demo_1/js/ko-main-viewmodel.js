@@ -29,15 +29,42 @@ function MainViewModel( demoName, debugFlag )
         new ChildViewModel()
     ] );
 
-    // maybe compute this button array based on the data someday
-    this.SortButtonArray = ko.observableArray( [
-        new SortButtonViewModel( "First Name", "FirstName", this.SortType.DEFAULT ),
-        new SortButtonViewModel( "Last Name", "LastName", this.SortType.DEFAULT ),
-        new SortButtonViewModel( "Age", "Age", this.SortType.DEFAULT ),
-        new SortButtonViewModel( "Date Born", "BornDate", this.SortType.DEFAULT ),
-        new SortButtonViewModel( "Date Died", "DiedDate", this.SortType.DEFAULT ),
-        new SortButtonViewModel( "# of Children", "Children", this.SortType.DEFAULT )
-    ] );
+    //  maybe compute this button array based on the data someday
+    //  very specific to the "ChildViewModel" used in "this.DataArray"
+    //  checks for a standard "ko.observable" property, and then a child "ko.observable" of "DisplayName"
+    this._button_array = [];
+
+    this.DataArray().forEach( function ( v, i, a )
+    {   //  console.debug( i, v );
+        //  just try to parse the first "ChildViewModel()" in this array
+        if ( i == 0 )
+        {
+            for ( var key in v )
+            {   //  console.debug( 'key:', key, 'value: ' + typeof v[key] );
+                if ( typeof v[key] == "function" )
+                {   //  console.debug( 'key:', key, 'value: ' + typeof v[key], v[key] ); 
+                    //  if v[key].$c == false
+                    //  if v[key].name == "c" -- "e" == "pureComputed"
+                    //  console.debug( 'key:', key, 'value: ' + typeof v[key], v[key].name );
+                    if ( v[key].name == "c" && v[key].DisplayName !== undefined )
+                    {   //  console.debug( 'key:', key, "v[key].name", v[key].name, v[key].DisplayName() );
+                        var _t_btn = new SortButtonViewModel( v[key].DisplayName(), key, _self.SortType.DEFAULT );
+                        _self._button_array.push( _t_btn );
+                    }
+                }
+            }
+        }
+        return;
+    } );
+    //this.SortButtonArray = ko.observableArray( [
+    //    new SortButtonViewModel( "First Name", "FirstName", this.SortType.DEFAULT ),
+    //    new SortButtonViewModel( "Last Name", "LastName", this.SortType.DEFAULT ),
+    //    new SortButtonViewModel( "Age", "Age", this.SortType.DEFAULT ),
+    //    new SortButtonViewModel( "Date Born", "BornDate", this.SortType.DEFAULT ),
+    //    new SortButtonViewModel( "Date Died", "DiedDate", this.SortType.DEFAULT ),
+    //    new SortButtonViewModel( "# of Children", "Children", this.SortType.DEFAULT )
+    //] );
+    this.SortButtonArray = ko.observableArray( this._button_array );
 
     //  sorting observables
     //  sort direction
@@ -175,7 +202,11 @@ function ChildViewModel()
     this._last_names.sort();
 
     this.FirstName = ko.observable();
+    this.FirstName.DisplayName = ko.observable( "First Name" );
+
     this.LastName = ko.observable();
+    this.LastName.DisplayName = ko.observable("Last Name");
+
     this.GetNames = ko.pureComputed( function ()
     {
         var _index = Math.round( Math.random() * this._first_names.length - 1 );
@@ -197,6 +228,8 @@ function ChildViewModel()
     this.GetNames();
 
     this.Age = ko.observable();
+    this.Age.DisplayName = ko.observable( "Age" );
+
     this.GetAge = ko.pureComputed( function ()
     {
         var _age = Math.round( Math.random() * 100 );
@@ -210,6 +243,8 @@ function ChildViewModel()
     this.GetAge();
 
     this.BornDate = ko.observable();
+    this.BornDate.DisplayName = ko.observable("Date born");
+
     this.GetBornDate = ko.pureComputed( function ()
     {
         var _current_year = (new Date().getFullYear() - this.Age());
@@ -219,6 +254,8 @@ function ChildViewModel()
     this.GetBornDate();
 
     this.DiedDate = ko.observable();
+    this.DiedDate.DisplayName = ko.observable( "Date died" );
+
     this.GetDiedDate = ko.pureComputed( function ()
     {
         this.DiedDate( Math.round( new Date().getFullYear() + Math.random() * 30 ) );
@@ -226,7 +263,9 @@ function ChildViewModel()
     }, this );
     this.GetDiedDate();
 
-    this.Children = ko.observable( );
+    this.Children = ko.observable();
+    this.Children.DisplayName = ko.observable( "# of children" );
+
     this.GetChildren = ko.pureComputed( function ()
     {
         this.Children( Math.round( Math.random() * 10 ) );
