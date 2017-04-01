@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title id="PageTitle">Getting dirty with HTML, JavaScript and CSS</title>
+    <title id="PageTitle">HTML JavaScript Knockout.js Array Sorting Demo</title>
     <link href="css/default-2017.css" rel="stylesheet" />
     <link href="default.html" rel="prefetch" />
     <script src="script/ko/knockout-3.4.2.js" type="text/javascript"></script>
@@ -10,60 +10,42 @@
 <body>
     <h1 data-bind="text: Title"></h1>
     <h2 data-bind="text: ErrorMessage, visible: ERROR"></h2>
-    <div class="SortButtonsTop" data-bind="visible: DEBUGFLAG">
-        <button data-bind="click: Click_SortByFirstName">Sort By First Name</button>
-        <button data-bind="click: Click_SortByLastName">Sort By Last Name</button>
-        <button data-bind="click: Click_SortByAge">Sort By Age</button>
-        <button data-bind="click: Click_SortByBorn">Sort By Date Born</button>
-        <button data-bind="click: Click_SortByDied">Sort By Date Died</button>
-        <button data-bind="click: Click_SortByChildren">Sort By Number of Children</button>
+
+    <div class="SortButtonsTop" data-bind="visible: DEBUGFLAG,
+        template: { foreach: SortButtonArray, name: 'KO-SortButtonArray-Template'}">
     </div>
-    <div class="SortButtonsBottom">
-        <button data-bind="click: Click_NewKODataArray">new data</button>
+
+    <div class="SortButtonsTop">
+        <button data-bind="click: Click_DataArray_NewData">new data</button>
         <button data-bind="click: Click_DataArray_Add">add data</button>
         <button data-bind="click: Click_DataArray_Remove">remove data</button>
     </div>
+
     <div class="SortDivTable">
         <table cellpadding="0" cellspacing="0">
             <thead>
-                <tr>
-                <td data-bind="click: Click_SortByFirstName">
-                    <span  class="DataKeyName">First Name</span>
-                    <!--[<span data-bind="text: CurrentSort_FirstName().text"></span>]-->
-                    <span  class="DataKeySort" data-bind="html: CurrentSort_FirstName().arrow"></span>
-                </td>
-                <td data-bind="click: Click_SortByLastName">
-                    <span  class="DataKeyName">Last Name</span>
-                    <!--[<span data-bind="text: CurrentSort_LastName().text"></span>]-->
-                    <span  class="DataKeySort" data-bind="html: CurrentSort_LastName().arrow"></span>
-                </td>
-                <td data-bind="click: Click_SortByAge">
-                    <span  class="DataKeyName">Age</span>
-                    <!--[<span data-bind="text: CurrentSort_Age().text"></span>]-->       
-                    <span  class="DataKeySort" data-bind="html: CurrentSort_Age().arrow"></span>    
-                </td>
-                <td data-bind="click: Click_SortByBorn">
-                    <span  class="DataKeyName">Date Born</span>
-                    <!--[<span data-bind="text: CurrentSort_Born().text"></span>]-->     
-                    <span class="DataKeySort"  data-bind="html: CurrentSort_Born().arrow"></span>       
-                </td>
-                <td data-bind="click: Click_SortByDied">
-                    <span class="DataKeyName">Date Died</span>
-                    <!--[<span data-bind="text: CurrentSort_Died().text"></span>]-->
-                    <span  class="DataKeySort" data-bind="html: CurrentSort_Died().arrow"></span>                       
-                </td>
-                <td data-bind="click: Click_SortByChildren">
-                    <span class="DataKeyName">Children</span>
-                    <!--[<span data-bind="text: CurrentSort_Children().text"></span>]-->
-                    <span class="DataKeySort" data-bind="html: CurrentSort_Children().arrow"></span>
-                </td>
-                </tr>
+                <tr data-bind="template: { foreach: SortButtonArray, name: 'KO-SortTabButtonArray-Template'}"></tr>
             </thead>
             <tbody data-bind="template: { foreach: DataArray, name: 'KO-DataArray-Template'}"></tbody>
         </table>
     </div>
 
+    <!-- begin knockout templates -->
+    <!-- button array template -->
+    <script type="text/html" id="KO-SortButtonArray-Template">
+        <button data-bind="text: Text, click: $parent.Click_SortByColumnName"></button>
+    </script>
 
+    <!-- table tab button array template -->
+    <script type="text/html" id="KO-SortTabButtonArray-Template">
+        <td data-bind="click: $parent.Click_SortByColumnName">
+            <span  class="DataKeyName" data-bind="text: Text"></span>
+            <!--[<span data-bind="text: CurrentSort_LastName().text"></span>]-->
+            <span  class="DataKeySort" data-bind="html: SortDirection().arrow"></span>
+        </td>
+    </script>
+
+    <!-- data array content template -->
     <script type="text/html" id="KO-DataArray-Template">
         <tr>
         <td data-bind="text: FirstName"></td>

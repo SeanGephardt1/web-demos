@@ -23,6 +23,12 @@ function MainViewModel( demoName, debugFlag )
     this.ERROR = ko.observable(false);
     this.ErrorMessage = ko.observable("No errors");
 
+    this.SortType = {
+        DEFAULT: { text: "default", arrow: "&varr;" },
+        ASC: { text: "asc", arrow: "&uarr;" },
+        DESC: { text: "desc", arrow: "&darr;" }
+    };
+
     this.DataArray = ko.observableArray( [
         new ChildViewModel(),
         new ChildViewModel(),
@@ -33,231 +39,64 @@ function MainViewModel( demoName, debugFlag )
         new ChildViewModel(),
     ] );
 
-    this.SortType2 = {
-        DEFAULT: { text: "default", arrow: "&varr;" },
-        ASC: { text: "asc", arrow: "&uarr;" },
-        DESC: { text: "desc", arrow: "&darr;" }
-    };
+    // maybe compute this button array based on the data someday
+    this.SortButtonArray = ko.observableArray( [
+        new SortButtonViewModel( "First Name", "FirstName", this.SortType.DEFAULT ),
+        new SortButtonViewModel( "Last Name", "LastName", this.SortType.DEFAULT ),
+        new SortButtonViewModel( "Age", "Age", this.SortType.DEFAULT ),
+        new SortButtonViewModel( "Date Born", "BornDate", this.SortType.DEFAULT ),
+        new SortButtonViewModel( "Date Died", "DiedDate", this.SortType.DEFAULT ),
+        new SortButtonViewModel( "# of Children", "Children", this.SortType.DEFAULT )
+    ] );
 
-    this.CurrentSort_FirstName = ko.observable( this.SortType2.DEFAULT );
-    this.Click_SortByFirstName = function ( vm, ev )
-    {
-        //  console.debug( "1. SortByName.this.CurrentNameSort", this.CurrentSort_Name() );
-        if ( this.CurrentSort_FirstName() == this.SortType2.DEFAULT )
-        {   // console.debug( "unsorted" );
-            this.CurrentSort_FirstName( this.SortType2.ASC );
+    //  sorting observables
+    //  sort direction
+    this.CurrentSort = ko.observable( this.SortType.DEFAULT );
+    //  event handler, see template "KO-SortTabButtonArray-Template"
+    this.Click_SortByColumnName = function ( vm, ev )
+    {   //  console.debug( "B: Click_SortByColumnName", vm.ColumnName(), _self.CurrentSort() );
+        if ( _self.CurrentSort() == _self.SortType.DEFAULT )
+        { 
+            _self.CurrentSort( _self.SortType.ASC );
         }
-        else if ( this.CurrentSort_FirstName() == this.SortType2.ASC )
+        else if ( _self.CurrentSort() == _self.SortType.ASC )
         {
-            this.CurrentSort_FirstName( this.SortType2.DESC );
+            _self.CurrentSort( _self.SortType.DESC );
         }
-        else if ( this.CurrentSort_FirstName() == this.SortType2.DESC )
+        else if ( _self.CurrentSort() == _self.SortType.DESC )
         {
-            this.CurrentSort_FirstName( this.SortType2.ASC );
-        }   
-        this.SortThisArray( "FirstName", this.CurrentSort_FirstName() );
-        //  console.debug( "2. SortByName.this.CurrentNameSort", this.CurrentSort_Name() );
+            _self.CurrentSort( _self.SortType.ASC );
+        } 
 
-        // change siblings
-        //  this.CurrentSort_FirstName( this.SortType2.DEFAULT );
-        this.CurrentSort_LastName( this.SortType2.DEFAULT );
-        this.CurrentSort_Age( this.SortType2.DEFAULT );
-        this.CurrentSort_Born( this.SortType2.DEFAULT );
-        this.CurrentSort_Died( this.SortType2.DEFAULT );
-        this.CurrentSort_Children( this.SortType2.DEFAULT );
+        // reset sibling buttons
+        _self.SortButtonArray().forEach( function ( v, i, a )
+        {
+            if ( v.ColumnName() !== vm.ColumnName() )
+            {
+                v.SortDirection( _self.SortType.DEFAULT );
+            }
+            else
+            {
+                v.SortDirection( _self.CurrentSort() );
+            }
+            return;
+        } );
+
+        console.debug( "SORTING:", vm.ColumnName(), _self.CurrentSort().text );
+        _self.SortThisArray( vm.ColumnName(), _self.CurrentSort() );
         return;
     };
-
-    this.CurrentSort_LastName = ko.observable( this.SortType2.DEFAULT );
-    this.Click_SortByLastName = function ( vm, ev )
-    {
-        //  console.debug( "1. SortByName.this.CurrentNameSort", this.CurrentSort_Name() );
-        if ( this.CurrentSort_LastName() == this.SortType2.DEFAULT )
-        {   // console.debug( "unsorted" );
-            this.CurrentSort_LastName( this.SortType2.ASC );
-        }
-        else if ( this.CurrentSort_LastName() == this.SortType2.ASC )
-        {
-            this.CurrentSort_LastName( this.SortType2.DESC );
-        }
-        else if ( this.CurrentSort_LastName() == this.SortType2.DESC )
-        {
-            this.CurrentSort_LastName( this.SortType2.ASC );
-        }
-        this.SortThisArray( "LastName", this.CurrentSort_LastName() );
-        //  console.debug( "2. SortByName.this.CurrentNameSort", this.CurrentSort_Name() );
-
-        // change siblings
-        this.CurrentSort_FirstName( this.SortType2.DEFAULT );
-        // this.CurrentSort_LastName( this.SortType2.DEFAULT );
-        this.CurrentSort_Age( this.SortType2.DEFAULT );
-        this.CurrentSort_Born( this.SortType2.DEFAULT );
-        this.CurrentSort_Died( this.SortType2.DEFAULT );
-        this.CurrentSort_Children( this.SortType2.DEFAULT );
-        return;
-    };
-
-    this.CurrentSort_Age = ko.observable( this.SortType2.DEFAULT );
-    this.Click_SortByAge = function ( vm, ev )
-    { 
-        //  console.debug( "1. Click_SortByAge.this.CurrentSort_Age", this.CurrentSort_Age() );
-        if ( this.CurrentSort_Age() == this.SortType2.DEFAULT )
-        {   // console.debug( "unsorted" );
-            this.CurrentSort_Age( this.SortType2.ASC );
-        }
-        else if ( this.CurrentSort_Age() == this.SortType2.ASC )
-        {
-            this.CurrentSort_Age( this.SortType2.DESC );
-        }
-        else if ( this.CurrentSort_Age() == this.SortType2.DESC )
-        {
-            this.CurrentSort_Age( this.SortType2.ASC );
-        }
-        this.SortThisArray( "Age", this.CurrentSort_Age() );
-        //  console.debug( "2. Click_SortByAge.this.CurrentNameSort", this.CurrentSort_Name() );
-
-        // change siblings
-        this.CurrentSort_FirstName( this.SortType2.DEFAULT );
-        this.CurrentSort_LastName( this.SortType2.DEFAULT );
-        //this.CurrentSort_Age( this.SortType2.DEFAULT );
-        this.CurrentSort_Born( this.SortType2.DEFAULT );
-        this.CurrentSort_Died( this.SortType2.DEFAULT );
-        this.CurrentSort_Children( this.SortType2.DEFAULT );
-        return;
-    };
-
-    this.CurrentSort_Born = ko.observable( this.SortType2.DEFAULT );
-    this.Click_SortByBorn = function ( vm, ev )
-    { 
-        //  console.debug( "1. Click_SortByBorn.this.CurrentSort_Born", this.CurrentSort_Born() );
-        if ( this.CurrentSort_Born() == this.SortType2.DEFAULT )
-        {   // console.debug( "unsorted" );
-            this.CurrentSort_Born( this.SortType2.ASC );
-        }
-        else if ( this.CurrentSort_Born() == this.SortType2.ASC )
-        {
-            this.CurrentSort_Born( this.SortType2.DESC );
-        }
-        else if ( this.CurrentSort_Born() == this.SortType2.DESC )
-        {
-            this.CurrentSort_Born( this.SortType2.ASC );
-        }
-        this.SortThisArray( "BornDate", this.CurrentSort_Born() );
-        //  console.debug( "2. Click_SortByBorn.this.CurrentSort_Born", this.CurrentSort_Born() );
-
-        // change siblings
-        this.CurrentSort_FirstName( this.SortType2.DEFAULT );
-        this.CurrentSort_LastName( this.SortType2.DEFAULT );
-        this.CurrentSort_Age( this.SortType2.DEFAULT );
-        //  this.CurrentSort_Born( this.SortType2.DEFAULT );
-        this.CurrentSort_Died( this.SortType2.DEFAULT );
-        this.CurrentSort_Children( this.SortType2.DEFAULT );
-        return;
-    };
-
-    this.CurrentSort_Died = ko.observable( this.SortType2.DEFAULT );
-    this.Click_SortByDied = function ( vm, ev )
-    {  
-        //  console.debug( "1. Click_SortByDied.this.CurrentSort_Died", this.CurrentSort_Died() );
-        if ( this.CurrentSort_Died() == this.SortType2.DEFAULT )
-        {   // console.debug( "unsorted" );
-            this.CurrentSort_Died( this.SortType2.ASC );
-        }
-        else if ( this.CurrentSort_Died() == this.SortType2.ASC )
-        {
-            this.CurrentSort_Died( this.SortType2.DESC );
-        }
-        else if ( this.CurrentSort_Died() == this.SortType2.DESC )
-        {
-            this.CurrentSort_Died( this.SortType2.ASC );
-        }
-        this.SortThisArray( "DiedDate", this.CurrentSort_Died() );
-        //  console.debug( "2. Click_SortByDied.this.CurrentSort_Born", this.CurrentSort_Born() );
-
-        // change siblings
-        this.CurrentSort_FirstName( this.SortType2.DEFAULT );
-        this.CurrentSort_LastName( this.SortType2.DEFAULT );
-        this.CurrentSort_Age( this.SortType2.DEFAULT );
-        this.CurrentSort_Born( this.SortType2.DEFAULT );
-        //  this.CurrentSort_Died( this.SortType2.DEFAULT );
-        this.CurrentSort_Children( this.SortType2.DEFAULT );
-        return;
-    };
-
-    this.CurrentSort_Children = ko.observable( this.SortType2.DEFAULT );
-    this.Click_SortByChildren = function ( vm, ev )
-    {
-        //  console.debug( "1. Click_SortByChildren.this.CurrentSort_Children", this.CurrentSort_Children() );
-        if ( this.CurrentSort_Children() == this.SortType2.DEFAULT )
-        {   // console.debug( "unsorted" );
-            this.CurrentSort_Children( this.SortType2.ASC );
-        }
-        else if ( this.CurrentSort_Children() == this.SortType2.ASC )
-        {
-            this.CurrentSort_Children( this.SortType2.DESC );
-        }
-        else if ( this.CurrentSort_Children() == this.SortType2.DESC )
-        {
-            this.CurrentSort_Children( this.SortType2.ASC );
-        }
-        this.SortThisArray( "Children", this.CurrentSort_Children() );
-        //  console.debug( "2. Click_SortByChildren.this.CurrentSort_Children", this.CurrentSort_Children() );
-
-        // change siblings
-        this.CurrentSort_FirstName( this.SortType2.DEFAULT );
-        this.CurrentSort_LastName( this.SortType2.DEFAULT );
-        this.CurrentSort_Age( this.SortType2.DEFAULT );
-        this.CurrentSort_Born( this.SortType2.DEFAULT );
-        this.CurrentSort_Died( this.SortType2.DEFAULT );
-        //  this.CurrentSort_Children( this.SortType2.DEFAULT );
-        return;
-    };
-
-    // create new data for this.DataArray
-    this.Click_NewKODataArray = function ( vm, ev )
-    {
-        this.DataArray([        
-            new ChildViewModel(),
-            new ChildViewModel(),
-            new ChildViewModel(),
-            new ChildViewModel(),
-            new ChildViewModel(),
-            new ChildViewModel(),
-            new ChildViewModel()
-        ] );
-        return;
-    };
-    this.Click_DataArray_Add = function ( vm, ev )
-    {
-        this.DataArray.push( new ChildViewModel() );
-        return;
-    }
-    this.Click_DataArray_Remove = function ( vm, ev )
-    {
-        this.DataArray.pop( new ChildViewModel() );
-        return;
-    }
-
-
-    //  try to handle all sorting, good luck.
-    //  this works only for observable properties on a viewmodel
-    //  this.DataArray().sort( function ( left, right )
-    //  { return left.Name == right.Name ? 0 : ( left.Name < right.Name ? -1 : 1 ) } );
-    //  sort string ascending
-    //  if ( key_a < key_b ) return -1;
-    //  sort string descending    
-    //  if ( key_a > key_b ) return 1;
-    //  return 0;        //  default return value (no sorting)
-    this.SortThisArray = function(key, dir)
+    //  Sort this data array by ko property of "ChildViewModel"
+    this.SortThisArray = function ( key, dir )
     {   //  console.debug( "SortThisArray", key, dir );
         this.DataArray().sort( function ( a, b )
-        {   
+        {
             var key_a = a[key]();
             var key_b = b[key]();
             //  console.debug( "dir", dir, _self.SortType2.ASC );
             switch ( dir )
             {
-                case _self.SortType2.ASC:
+                case _self.SortType.ASC:
                     {   //  sort string ascending
                         if ( key_a < key_b ) return -1;
                         //  sort string descending    
@@ -265,7 +104,7 @@ function MainViewModel( demoName, debugFlag )
                         //  default return value (no sorting)
                         return 0;
                     }
-                case _self.SortType2.DESC:
+                case _self.SortType.DESC:
                     {   //  sort string ascending
                         if ( key_a < key_b ) return 1;
                         //  sort string descending    
@@ -279,16 +118,53 @@ function MainViewModel( demoName, debugFlag )
         this.DataArray( this.DataArray() );
         return;
     };
+
+    // create new, add, remove data for this.DataArray
+    this.Click_DataArray_NewData = function ( vm, ev )
+    {   //console.debug( "Click_DataArray_NewData" );
+        var _new = [];
+        for ( var i = 0; i < this.DataArray().length; i++ )
+        {
+            _new[i] = new ChildViewModel();
+        }
+        this.DataArray( _new );
+        _self.SortButtonArray().forEach( function ( v, i, a )
+        {
+            v.SortDirection( _self.SortType.DEFAULT );
+            return;
+        } );
+        return;
+    };
+    this.Click_DataArray_Add = function ( vm, ev )
+    {
+        this.DataArray.push( new ChildViewModel() );
+        return;
+    }
+    this.Click_DataArray_Remove = function ( vm, ev )
+    {
+        this.DataArray.pop( new ChildViewModel() );
+        return;
+    }
+
     // end of viewmodel
     return;
 };
 
+function SortButtonViewModel( text, columnName, direction )
+{
+    var _self = this;
+    this.ID = ko.pureComputed( function () { return "btn-id-" + Math.random().toPrecision( 3 ).replace( ".", "" ); }, this );
+
+    this.Text = ko.observable( text );
+    this.ColumnName = ko.observable( columnName );
+    this.SortDirection = ko.observable( direction );
+};
 
 function ChildViewModel()
 {
     var _self = this;
     this.ID = ko.pureComputed( function ()
-    { return "c-id-" + Math.random().toPrecision( 5 ).replace( ".", "" ); }, this );
+    { return "c-id-" + Math.random().toPrecision( 3 ).replace( ".", "" ); }, this );
 
     this.FirstName = ko.observable();
     this.LastName = ko.observable();
