@@ -10,21 +10,32 @@
 <body>
     <h1 data-bind="text: Title"></h1>
     <h2 data-bind="text: ErrorMessage, visible: ERROR"></h2>
-    <div class="SortButtons" data-bind="visible: DEBUGFLAG">
-        <button data-bind="click: Click_SortByName">Sort By Name</button>
+    <div class="SortButtonsTop" data-bind="visible: DEBUGFLAG">
+        <button data-bind="click: Click_SortByFirstName">Sort By First Name</button>
+        <button data-bind="click: Click_SortByLastName">Sort By Last Name</button>
         <button data-bind="click: Click_SortByAge">Sort By Age</button>
         <button data-bind="click: Click_SortByBorn">Sort By Date Born</button>
         <button data-bind="click: Click_SortByDied">Sort By Date Died</button>
         <button data-bind="click: Click_SortByChildren">Sort By Number of Children</button>
     </div>
+    <div class="SortButtonsBottom">
+        <button data-bind="click: Click_NewKODataArray">new data</button>
+        <button data-bind="click: Click_DataArray_Add">add data</button>
+        <button data-bind="click: Click_DataArray_Remove">remove data</button>
+    </div>
     <div class="SortDivTable">
         <table cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
-                <td data-bind="click: Click_SortByName">
-                    <span  class="DataKeyName">Name</span>
-                    <!--[<span data-bind="text: CurrentSort_Name().text"></span>]-->
-                    <span  class="DataKeySort" data-bind="html: CurrentSort_Name().arrow"></span>
+                <td data-bind="click: Click_SortByFirstName">
+                    <span  class="DataKeyName">First Name</span>
+                    <!--[<span data-bind="text: CurrentSort_FirstName().text"></span>]-->
+                    <span  class="DataKeySort" data-bind="html: CurrentSort_FirstName().arrow"></span>
+                </td>
+                <td data-bind="click: Click_SortByLastName">
+                    <span  class="DataKeyName">Last Name</span>
+                    <!--[<span data-bind="text: CurrentSort_LastName().text"></span>]-->
+                    <span  class="DataKeySort" data-bind="html: CurrentSort_LastName().arrow"></span>
                 </td>
                 <td data-bind="click: Click_SortByAge">
                     <span  class="DataKeyName">Age</span>
@@ -52,9 +63,11 @@
         </table>
     </div>
 
+
     <script type="text/html" id="KO-DataArray-Template">
         <tr>
-        <td data-bind="text: Name"></td>
+        <td data-bind="text: FirstName"></td>
+        <td data-bind="text: LastName"></td>
         <td data-bind="text: Age"></td>
         <td data-bind="text: BornDate"></td>
         <td data-bind="text: DiedDate"></td>

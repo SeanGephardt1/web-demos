@@ -39,27 +39,57 @@ function MainViewModel( demoName, debugFlag )
         DESC: { text: "desc", arrow: "&darr;" }
     };
 
-    this.CurrentSort_Name = ko.observable( this.SortType2.DEFAULT );
-    this.Click_SortByName = function ( vm, ev )
+    this.CurrentSort_FirstName = ko.observable( this.SortType2.DEFAULT );
+    this.Click_SortByFirstName = function ( vm, ev )
     {
         //  console.debug( "1. SortByName.this.CurrentNameSort", this.CurrentSort_Name() );
-        if ( this.CurrentSort_Name() == this.SortType2.DEFAULT )
+        if ( this.CurrentSort_FirstName() == this.SortType2.DEFAULT )
         {   // console.debug( "unsorted" );
-            this.CurrentSort_Name( this.SortType2.ASC );
+            this.CurrentSort_FirstName( this.SortType2.ASC );
         }
-        else if ( this.CurrentSort_Name() == this.SortType2.ASC )
+        else if ( this.CurrentSort_FirstName() == this.SortType2.ASC )
         {
-            this.CurrentSort_Name( this.SortType2.DESC );
+            this.CurrentSort_FirstName( this.SortType2.DESC );
         }
-        else if ( this.CurrentSort_Name() == this.SortType2.DESC )
+        else if ( this.CurrentSort_FirstName() == this.SortType2.DESC )
         {
-            this.CurrentSort_Name( this.SortType2.ASC );
+            this.CurrentSort_FirstName( this.SortType2.ASC );
         }   
-        this.SortThisArray( "Name", this.CurrentSort_Name() );
+        this.SortThisArray( "FirstName", this.CurrentSort_FirstName() );
         //  console.debug( "2. SortByName.this.CurrentNameSort", this.CurrentSort_Name() );
 
         // change siblings
-        //  this.CurrentSort_Name( this.SortyType2.DEFAULT );
+        //  this.CurrentSort_FirstName( this.SortType2.DEFAULT );
+        this.CurrentSort_LastName( this.SortType2.DEFAULT );
+        this.CurrentSort_Age( this.SortType2.DEFAULT );
+        this.CurrentSort_Born( this.SortType2.DEFAULT );
+        this.CurrentSort_Died( this.SortType2.DEFAULT );
+        this.CurrentSort_Children( this.SortType2.DEFAULT );
+        return;
+    };
+
+    this.CurrentSort_LastName = ko.observable( this.SortType2.DEFAULT );
+    this.Click_SortByLastName = function ( vm, ev )
+    {
+        //  console.debug( "1. SortByName.this.CurrentNameSort", this.CurrentSort_Name() );
+        if ( this.CurrentSort_LastName() == this.SortType2.DEFAULT )
+        {   // console.debug( "unsorted" );
+            this.CurrentSort_LastName( this.SortType2.ASC );
+        }
+        else if ( this.CurrentSort_LastName() == this.SortType2.ASC )
+        {
+            this.CurrentSort_LastName( this.SortType2.DESC );
+        }
+        else if ( this.CurrentSort_LastName() == this.SortType2.DESC )
+        {
+            this.CurrentSort_LastName( this.SortType2.ASC );
+        }
+        this.SortThisArray( "LastName", this.CurrentSort_LastName() );
+        //  console.debug( "2. SortByName.this.CurrentNameSort", this.CurrentSort_Name() );
+
+        // change siblings
+        this.CurrentSort_FirstName( this.SortType2.DEFAULT );
+        // this.CurrentSort_LastName( this.SortType2.DEFAULT );
         this.CurrentSort_Age( this.SortType2.DEFAULT );
         this.CurrentSort_Born( this.SortType2.DEFAULT );
         this.CurrentSort_Died( this.SortType2.DEFAULT );
@@ -87,7 +117,8 @@ function MainViewModel( demoName, debugFlag )
         //  console.debug( "2. Click_SortByAge.this.CurrentNameSort", this.CurrentSort_Name() );
 
         // change siblings
-        this.CurrentSort_Name( this.SortType2.DEFAULT );
+        this.CurrentSort_FirstName( this.SortType2.DEFAULT );
+        this.CurrentSort_LastName( this.SortType2.DEFAULT );
         //this.CurrentSort_Age( this.SortType2.DEFAULT );
         this.CurrentSort_Born( this.SortType2.DEFAULT );
         this.CurrentSort_Died( this.SortType2.DEFAULT );
@@ -115,7 +146,8 @@ function MainViewModel( demoName, debugFlag )
         //  console.debug( "2. Click_SortByBorn.this.CurrentSort_Born", this.CurrentSort_Born() );
 
         // change siblings
-        this.CurrentSort_Name( this.SortType2.DEFAULT );
+        this.CurrentSort_FirstName( this.SortType2.DEFAULT );
+        this.CurrentSort_LastName( this.SortType2.DEFAULT );
         this.CurrentSort_Age( this.SortType2.DEFAULT );
         //  this.CurrentSort_Born( this.SortType2.DEFAULT );
         this.CurrentSort_Died( this.SortType2.DEFAULT );
@@ -143,7 +175,8 @@ function MainViewModel( demoName, debugFlag )
         //  console.debug( "2. Click_SortByDied.this.CurrentSort_Born", this.CurrentSort_Born() );
 
         // change siblings
-        this.CurrentSort_Name( this.SortType2.DEFAULT );
+        this.CurrentSort_FirstName( this.SortType2.DEFAULT );
+        this.CurrentSort_LastName( this.SortType2.DEFAULT );
         this.CurrentSort_Age( this.SortType2.DEFAULT );
         this.CurrentSort_Born( this.SortType2.DEFAULT );
         //  this.CurrentSort_Died( this.SortType2.DEFAULT );
@@ -171,13 +204,39 @@ function MainViewModel( demoName, debugFlag )
         //  console.debug( "2. Click_SortByChildren.this.CurrentSort_Children", this.CurrentSort_Children() );
 
         // change siblings
-        this.CurrentSort_Name( this.SortType2.DEFAULT );
+        this.CurrentSort_FirstName( this.SortType2.DEFAULT );
+        this.CurrentSort_LastName( this.SortType2.DEFAULT );
         this.CurrentSort_Age( this.SortType2.DEFAULT );
         this.CurrentSort_Born( this.SortType2.DEFAULT );
         this.CurrentSort_Died( this.SortType2.DEFAULT );
         //  this.CurrentSort_Children( this.SortType2.DEFAULT );
         return;
     };
+
+    // create new data for this.DataArray
+    this.Click_NewKODataArray = function ( vm, ev )
+    {
+        this.DataArray([        
+            new ChildViewModel(),
+            new ChildViewModel(),
+            new ChildViewModel(),
+            new ChildViewModel(),
+            new ChildViewModel(),
+            new ChildViewModel(),
+            new ChildViewModel()
+        ] );
+        return;
+    };
+    this.Click_DataArray_Add = function ( vm, ev )
+    {
+        this.DataArray.push( new ChildViewModel() );
+        return;
+    }
+    this.Click_DataArray_Remove = function ( vm, ev )
+    {
+        this.DataArray.pop( new ChildViewModel() );
+        return;
+    }
 
 
     //  try to handle all sorting, good luck.
@@ -231,21 +290,30 @@ function ChildViewModel()
     this.ID = ko.pureComputed( function ()
     { return "c-id-" + Math.random().toPrecision( 5 ).replace( ".", "" ); }, this );
 
-    this.Name = ko.observable();
-    this.GetName = ko.pureComputed( function ()
+    this.FirstName = ko.observable();
+    this.LastName = ko.observable();
+    this.GetNames = ko.pureComputed( function ()
     {
-        var _names = ["John", "Kim", "Mary", "Jennifer", "James", "Sean", "Zach", "Robert", "Carl", "Gibson", "Jimmy", "Scott", "Kathy"];
-        var _index = Math.round( Math.random() * _names.length - 1 );
-
+        var _first_names = ["John", "Kim", "Mary", "Jennifer", "James", "Sean", "Zach", "Robert", "Carl", "Gibson", "Jimmy", "Scott", "Kathy"];
+        var _index = Math.round( Math.random() * _first_names.length - 1 );
         if ( _index < 0 )
         {
-            _index = Math.round( _names.length / 3 );
+            _index = Math.round( _first_names.length / 3 );
         }
         //  console.debug( _names.length, _index );
-        this.Name( _names[_index] );
+        this.FirstName( _first_names[_index] );
+
+        var _last_names = ["Smith", "Bailey", "Williams", "Jones","Doe","Rocker","Kunis","Fender","Englebert","Foxy-Shazam"];
+        _index = Math.round( Math.random() * _last_names.length - 1 );
+        if ( _index < 0 )
+        {
+            _index = Math.round( _last_names.length / 3 );
+        }
+        this.LastName( _last_names[_index] );
+        //  console.debug( "this.FirstName", this.FirstName(), "this.LastName", this.LastName() );
         return;
     }, this );
-    this.GetName();
+    this.GetNames();
 
     this.Age = ko.observable();
     this.GetAge = ko.pureComputed( function ()
@@ -260,7 +328,6 @@ function ChildViewModel()
     this.GetBornDate = ko.pureComputed( function ()
     {
         var _current_year = (new Date().getFullYear() - this.Age());
-        //  console.debug( "_current_year", _current_year );
         this.BornDate( _current_year );
         return;
     }, this );
