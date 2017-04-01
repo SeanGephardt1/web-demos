@@ -55,6 +55,7 @@ function MainViewModel( demoName, debugFlag )
         }
         return;
     } );
+
     this.SortButtonArray = ko.observableArray( this._button_array );
 
     //  sorting observables
