@@ -43,8 +43,7 @@ function MainViewModel( demoName, debugFlag )
             {   //  console.debug( 'key:', key, 'value: ' + typeof v[key] );
                 if ( typeof v[key] == "function" )
                 {   //  console.debug( 'key:', key, 'value: ' + typeof v[key], v[key] ); 
-                    //  if v[key].$c == false
-                    //  if v[key].name == "c" -- "e" == "pureComputed"
+                    //  if v[key].name == "c" -- "c" == "ko.observable()" "e" == "ko.pureComputed()"
                     //  console.debug( 'key:', key, 'value: ' + typeof v[key], v[key].name );
                     if ( v[key].name == "c" && v[key].DisplayName !== undefined )
                     {   //  console.debug( 'key:', key, "v[key].name", v[key].name, v[key].DisplayName() );
@@ -56,14 +55,6 @@ function MainViewModel( demoName, debugFlag )
         }
         return;
     } );
-    //this.SortButtonArray = ko.observableArray( [
-    //    new SortButtonViewModel( "First Name", "FirstName", this.SortType.DEFAULT ),
-    //    new SortButtonViewModel( "Last Name", "LastName", this.SortType.DEFAULT ),
-    //    new SortButtonViewModel( "Age", "Age", this.SortType.DEFAULT ),
-    //    new SortButtonViewModel( "Date Born", "BornDate", this.SortType.DEFAULT ),
-    //    new SortButtonViewModel( "Date Died", "DiedDate", this.SortType.DEFAULT ),
-    //    new SortButtonViewModel( "# of Children", "Children", this.SortType.DEFAULT )
-    //] );
     this.SortButtonArray = ko.observableArray( this._button_array );
 
     //  sorting observables
