@@ -1,19 +1,6 @@
 /// <reference path="knockout-3.4.2.js" />
 /// "Main" ViewModel V.1.0.0
 "use strict";
-//ko.observableArray.fn.sortByProperty = function ( prop )
-//{
-//    this.sort( function ( obj1, obj2 )
-//    {
-//        if ( obj1[prop] == obj2[prop] )
-//            return 0;
-//        else if ( obj1[prop] < obj2[prop] )
-//            return -1;
-//        else
-//            return 1;
-//    } );
-//}
-
 function MainViewModel( demoName, debugFlag )
 {
     var _self = this;
@@ -37,6 +24,9 @@ function MainViewModel( demoName, debugFlag )
         new ChildViewModel(),
         new ChildViewModel(),
         new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel()
     ] );
 
     // maybe compute this button array based on the data someday
@@ -51,6 +41,7 @@ function MainViewModel( demoName, debugFlag )
 
     //  sorting observables
     //  sort direction
+    this.SortedColumn = ko.observable();
     this.CurrentSort = ko.observable( this.SortType.DEFAULT );
     //  event handler, see template "KO-SortTabButtonArray-Template"
     this.Click_SortByColumnName = function ( vm, ev )
@@ -76,14 +67,19 @@ function MainViewModel( demoName, debugFlag )
                 v.SortDirection( _self.SortType.DEFAULT );
             }
             else
-            {
+            {   //  console.debug( _self.SortedColumn(), v.ColumnName() );
+                if ( _self.SortedColumn() !== v.ColumnName() )
+                {
+                    _self.CurrentSort( _self.SortType.ASC );
+                }
+                _self.SortedColumn( v.ColumnName() );
                 v.SortDirection( _self.CurrentSort() );
             }
             return;
         } );
 
-        console.debug( "SORTING:", vm.ColumnName(), _self.CurrentSort().text );
-        _self.SortThisArray( vm.ColumnName(), _self.CurrentSort() );
+        //  console.debug( "SORTING:", _self.SortedColumn(), _self.CurrentSort().text );
+        _self.SortThisArray( _self.SortedColumn(), _self.CurrentSort() );
         return;
     };
     //  Sort this data array by ko property of "ChildViewModel"
@@ -122,17 +118,24 @@ function MainViewModel( demoName, debugFlag )
     // create new, add, remove data for this.DataArray
     this.Click_DataArray_NewData = function ( vm, ev )
     {   //console.debug( "Click_DataArray_NewData" );
+        // create new array based on previous length
         var _new = [];
         for ( var i = 0; i < this.DataArray().length; i++ )
         {
             _new[i] = new ChildViewModel();
         }
         this.DataArray( _new );
+
+        // reset the sort direction
         _self.SortButtonArray().forEach( function ( v, i, a )
         {
             v.SortDirection( _self.SortType.DEFAULT );
             return;
         } );
+
+        // reset sorted columns
+        _self.SortedColumn("");
+
         return;
     };
     this.Click_DataArray_Add = function ( vm, ev )
@@ -154,7 +157,6 @@ function SortButtonViewModel( text, columnName, direction )
 {
     var _self = this;
     this.ID = ko.pureComputed( function () { return "btn-id-" + Math.random().toPrecision( 3 ).replace( ".", "" ); }, this );
-
     this.Text = ko.observable( text );
     this.ColumnName = ko.observable( columnName );
     this.SortDirection = ko.observable( direction );
@@ -166,26 +168,29 @@ function ChildViewModel()
     this.ID = ko.pureComputed( function ()
     { return "c-id-" + Math.random().toPrecision( 3 ).replace( ".", "" ); }, this );
 
+    this._first_names = ["Allan", "Bob", "Catherine", "David", "Elmer", "Frank", "Gerry", "Herbert", "Ichabod", "Kelly", "Larry", "Mike", "Noel", "Oscar", "Paul", "Qunicy", "Rebecca", "Susan", "Terry", "Usha", "Vera", "Wendy", "Xana", "Yolanda", "Zena"];
+    this._first_names.sort();
+
+    this._last_names = ["Ambercrombie","Balley","Cristov","Dearborn","Everly","Frodenhimer","Grenman","Hotchkins","Klover","LaFluer","Michaels","Nelson","Otherman","Peterson","Qunitosa","Reed","Silvers","Thomas","Unger","Varvatos","Williams","Xhiao","Yonkers","Zeta-Jones"];
+    this._last_names.sort();
+
     this.FirstName = ko.observable();
     this.LastName = ko.observable();
     this.GetNames = ko.pureComputed( function ()
     {
-        var _first_names = ["John", "Kim", "Mary", "Jennifer", "James", "Sean", "Zach", "Robert", "Carl", "Gibson", "Jimmy", "Scott", "Kathy"];
-        var _index = Math.round( Math.random() * _first_names.length - 1 );
+        var _index = Math.round( Math.random() * this._first_names.length - 1 );
         if ( _index < 0 )
         {
-            _index = Math.round( _first_names.length / 3 );
+            _index = Math.round( this._first_names.length / 3 );
         }
-        //  console.debug( _names.length, _index );
-        this.FirstName( _first_names[_index] );
+        this.FirstName( this._first_names[_index] );
 
-        var _last_names = ["Smith", "Bailey", "Williams", "Jones","Doe","Rocker","Kunis","Fender","Englebert","Foxy-Shazam"];
-        _index = Math.round( Math.random() * _last_names.length - 1 );
+        _index = Math.round( Math.random() * this._last_names.length - 1 );
         if ( _index < 0 )
         {
-            _index = Math.round( _last_names.length / 3 );
+            _index = Math.round( this._last_names.length / 3 );
         }
-        this.LastName( _last_names[_index] );
+        this.LastName( this._last_names[_index] );
         //  console.debug( "this.FirstName", this.FirstName(), "this.LastName", this.LastName() );
         return;
     }, this );
@@ -194,7 +199,11 @@ function ChildViewModel()
     this.Age = ko.observable();
     this.GetAge = ko.pureComputed( function ()
     {
-        var _age = Math.round(Math.random() * 100);
+        var _age = Math.round( Math.random() * 100 );
+        if ( _age < 13 )
+        {
+            _age = 13;
+        }
         this.Age( _age );
         return;
     }, this );
@@ -212,9 +221,7 @@ function ChildViewModel()
     this.DiedDate = ko.observable();
     this.GetDiedDate = ko.pureComputed( function ()
     {
-        var _current_year = Math.round(new Date().getFullYear() + Math.random() * 30);
-        //console.debug( "_current_year", _current_year );
-        this.DiedDate( _current_year );
+        this.DiedDate( Math.round( new Date().getFullYear() + Math.random() * 30 ) );
         return;
     }, this );
     this.GetDiedDate();

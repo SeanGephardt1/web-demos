@@ -11,9 +11,7 @@
     <h1 data-bind="text: Title"></h1>
     <h2 data-bind="text: ErrorMessage, visible: ERROR"></h2>
 
-    <div class="SortButtonsTop" data-bind="visible: DEBUGFLAG,
-        template: { foreach: SortButtonArray, name: 'KO-SortButtonArray-Template'}">
-    </div>
+    <div class="SortButtonsTop" data-bind="visible: DEBUGFLAG, template: { foreach: SortButtonArray, name: 'KO-SortButtonArray-Template'}"></div>
 
     <div class="SortButtonsTop">
         <button data-bind="click: Click_DataArray_NewData">new data</button>
@@ -30,6 +28,8 @@
         </table>
     </div>
 
+
+    <!-- end HTML layout -->
     <!-- begin knockout templates -->
     <!-- button array template -->
     <script type="text/html" id="KO-SortButtonArray-Template">
@@ -40,7 +40,7 @@
     <script type="text/html" id="KO-SortTabButtonArray-Template">
         <td data-bind="click: $parent.Click_SortByColumnName">
             <span  class="DataKeyName" data-bind="text: Text"></span>
-            <!--[<span data-bind="text: CurrentSort_LastName().text"></span>]-->
+            [<span data-bind="text: SortDirection().text"></span>]
             <span  class="DataKeySort" data-bind="html: SortDirection().arrow"></span>
         </td>
     </script>
