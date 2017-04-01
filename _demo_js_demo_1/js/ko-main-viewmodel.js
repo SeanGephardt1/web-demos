@@ -1,18 +1,18 @@
 /// <reference path="knockout-3.4.2.js" />
 /// "Main" ViewModel V.1.0.0
 "use strict";
-ko.observableArray.fn.sortByProperty = function ( prop )
-{
-    this.sort( function ( obj1, obj2 )
-    {
-        if ( obj1[prop] == obj2[prop] )
-            return 0;
-        else if ( obj1[prop] < obj2[prop] )
-            return -1;
-        else
-            return 1;
-    } );
-}
+//ko.observableArray.fn.sortByProperty = function ( prop )
+//{
+//    this.sort( function ( obj1, obj2 )
+//    {
+//        if ( obj1[prop] == obj2[prop] )
+//            return 0;
+//        else if ( obj1[prop] < obj2[prop] )
+//            return -1;
+//        else
+//            return 1;
+//    } );
+//}
 
 function MainViewModel( demoName, debugFlag )
 {
@@ -33,84 +33,149 @@ function MainViewModel( demoName, debugFlag )
         new ChildViewModel(),
     ] );
 
-    this.SortType = { ASC: "asc", DESC: "desc" };
-    this.CurrentNameSort = ko.observable( this.SortType.ASC );
+    this.SortType2 = {
+        DEFAULT: { text: "default", arrow: "&varr;" },
+        ASC: { text: "asc", arrow: "&uarr;" },
+        DESC: { text: "desc", arrow: "&darr;" }
+    };
+
+    this.CurrentSort_Name = ko.observable( this.SortType2.DEFAULT );
     this.Click_SortByName = function ( vm, ev )
-    {   //  console.debug( "1. SortByName.this.CurrentNameSort", this.CurrentNameSort() );
-        this.SortThisArray( "Name", this.CurrentNameSort() );
-
-        if ( this.CurrentNameSort() == this.SortType.ASC )
-        {
-            this.CurrentNameSort( this.SortType.DESC );
+    {
+        //  console.debug( "1. SortByName.this.CurrentNameSort", this.CurrentSort_Name() );
+        if ( this.CurrentSort_Name() == this.SortType2.DEFAULT )
+        {   // console.debug( "unsorted" );
+            this.CurrentSort_Name( this.SortType2.ASC );
         }
-        else if ( this.CurrentNameSort() == this.SortType.DESC )
+        else if ( this.CurrentSort_Name() == this.SortType2.ASC )
         {
-            this.CurrentNameSort( this.SortType.ASC );
-        }   //  console.debug( "2. SortByName.this.CurrentNameSort", this.CurrentNameSort() );
+            this.CurrentSort_Name( this.SortType2.DESC );
+        }
+        else if ( this.CurrentSort_Name() == this.SortType2.DESC )
+        {
+            this.CurrentSort_Name( this.SortType2.ASC );
+        }   
+        this.SortThisArray( "Name", this.CurrentSort_Name() );
+        //  console.debug( "2. SortByName.this.CurrentNameSort", this.CurrentSort_Name() );
+
+        // change siblings
+        //  this.CurrentSort_Name( this.SortyType2.DEFAULT );
+        this.CurrentSort_Age( this.SortType2.DEFAULT );
+        this.CurrentSort_Born( this.SortType2.DEFAULT );
+        this.CurrentSort_Died( this.SortType2.DEFAULT );
+        this.CurrentSort_Children( this.SortType2.DEFAULT );
         return;
     };
 
-    this.CurrentAgeSort = ko.observable( this.SortType.ASC );
+    this.CurrentSort_Age = ko.observable( this.SortType2.DEFAULT );
     this.Click_SortByAge = function ( vm, ev )
-    {   //  console.debug( "1. Click_SortByAge.this.CurrentAgeSort", this.CurrentAgeSort() );
-        this.SortThisArray( "Age", this.CurrentAgeSort() );
-
-        if ( this.CurrentAgeSort() == this.SortType.ASC )
-        {
-            this.CurrentAgeSort( this.SortType.DESC );
+    { 
+        //  console.debug( "1. Click_SortByAge.this.CurrentSort_Age", this.CurrentSort_Age() );
+        if ( this.CurrentSort_Age() == this.SortType2.DEFAULT )
+        {   // console.debug( "unsorted" );
+            this.CurrentSort_Age( this.SortType2.ASC );
         }
-        else if ( this.CurrentAgeSort() == this.SortType.DESC )
+        else if ( this.CurrentSort_Age() == this.SortType2.ASC )
         {
-            this.CurrentAgeSort( this.SortType.ASC );
-        }   //  console.debug( "2. Click_SortByAge.this.CurrentAgeSort", this.CurrentAgeSort() );
+            this.CurrentSort_Age( this.SortType2.DESC );
+        }
+        else if ( this.CurrentSort_Age() == this.SortType2.DESC )
+        {
+            this.CurrentSort_Age( this.SortType2.ASC );
+        }
+        this.SortThisArray( "Age", this.CurrentSort_Age() );
+        //  console.debug( "2. Click_SortByAge.this.CurrentNameSort", this.CurrentSort_Name() );
+
+        // change siblings
+        this.CurrentSort_Name( this.SortType2.DEFAULT );
+        //this.CurrentSort_Age( this.SortType2.DEFAULT );
+        this.CurrentSort_Born( this.SortType2.DEFAULT );
+        this.CurrentSort_Died( this.SortType2.DEFAULT );
+        this.CurrentSort_Children( this.SortType2.DEFAULT );
         return;
     };
 
-    this.CurrentBornSort = ko.observable( this.SortType.ASC );
+    this.CurrentSort_Born = ko.observable( this.SortType2.DEFAULT );
     this.Click_SortByBorn = function ( vm, ev )
-    {   //  console.debug( "1. Click_SortByBorn.this.CurrentBornSort", this.CurrentBornSort() );
-        this.SortThisArray( "BornDate", this.CurrentBornSort() );
-
-        if ( this.CurrentBornSort() == this.SortType.ASC )
-        {
-            this.CurrentBornSort( this.SortType.DESC );
+    { 
+        //  console.debug( "1. Click_SortByBorn.this.CurrentSort_Born", this.CurrentSort_Born() );
+        if ( this.CurrentSort_Born() == this.SortType2.DEFAULT )
+        {   // console.debug( "unsorted" );
+            this.CurrentSort_Born( this.SortType2.ASC );
         }
-        else if ( this.CurrentBornSort() == this.SortType.DESC )
+        else if ( this.CurrentSort_Born() == this.SortType2.ASC )
         {
-            this.CurrentBornSort( this.SortType.ASC );
-        }   //  console.debug( "2. Click_SortByBorn.this.CurrentBornSort", this.CurrentBornSort() );
+            this.CurrentSort_Born( this.SortType2.DESC );
+        }
+        else if ( this.CurrentSort_Born() == this.SortType2.DESC )
+        {
+            this.CurrentSort_Born( this.SortType2.ASC );
+        }
+        this.SortThisArray( "BornDate", this.CurrentSort_Born() );
+        //  console.debug( "2. Click_SortByBorn.this.CurrentSort_Born", this.CurrentSort_Born() );
+
+        // change siblings
+        this.CurrentSort_Name( this.SortType2.DEFAULT );
+        this.CurrentSort_Age( this.SortType2.DEFAULT );
+        //  this.CurrentSort_Born( this.SortType2.DEFAULT );
+        this.CurrentSort_Died( this.SortType2.DEFAULT );
+        this.CurrentSort_Children( this.SortType2.DEFAULT );
         return;
     };
 
-    this.CurrentDiedSort = ko.observable( this.SortType.ASC );
+    this.CurrentSort_Died = ko.observable( this.SortType2.DEFAULT );
     this.Click_SortByDied = function ( vm, ev )
-    {   //  console.debug( "1. Click_SortByDied.this.CurrentDiedSort", this.CurrentDiedSort() );
-        this.SortThisArray( "DiedDate", this.CurrentDiedSort() );
-
-        if ( this.CurrentDiedSort() == this.SortType.ASC )
-        {
-            this.CurrentDiedSort( this.SortType.DESC );
+    {  
+        //  console.debug( "1. Click_SortByDied.this.CurrentSort_Died", this.CurrentSort_Died() );
+        if ( this.CurrentSort_Died() == this.SortType2.DEFAULT )
+        {   // console.debug( "unsorted" );
+            this.CurrentSort_Died( this.SortType2.ASC );
         }
-        else if ( this.CurrentDiedSort() == this.SortType.DESC )
+        else if ( this.CurrentSort_Died() == this.SortType2.ASC )
         {
-            this.CurrentDiedSort( this.SortType.ASC );
-        }   //  console.debug( "2. Click_SortByDied.this.CurrentDiedSort", this.CurrentDiedSort() );
+            this.CurrentSort_Died( this.SortType2.DESC );
+        }
+        else if ( this.CurrentSort_Died() == this.SortType2.DESC )
+        {
+            this.CurrentSort_Died( this.SortType2.ASC );
+        }
+        this.SortThisArray( "DiedDate", this.CurrentSort_Died() );
+        //  console.debug( "2. Click_SortByDied.this.CurrentSort_Born", this.CurrentSort_Born() );
+
+        // change siblings
+        this.CurrentSort_Name( this.SortType2.DEFAULT );
+        this.CurrentSort_Age( this.SortType2.DEFAULT );
+        this.CurrentSort_Born( this.SortType2.DEFAULT );
+        //  this.CurrentSort_Died( this.SortType2.DEFAULT );
+        this.CurrentSort_Children( this.SortType2.DEFAULT );
         return;
     };
 
-    this.CurrentChildrenSort = ko.observable( this.SortType.ASC );
+    this.CurrentSort_Children = ko.observable( this.SortType2.DEFAULT );
     this.Click_SortByChildren = function ( vm, ev )
-    {   //  console.debug( "1. Click_SortByChildren.this.CurrentChildrenSort", this.CurrentChildrenSort() );
-        this.SortThisArray( "Children", this.CurrentChildrenSort() );
-
-        if ( this.CurrentChildrenSort() == this.SortType.ASC )
-        {
-            this.CurrentChildrenSort( this.SortType.DESC );
+    {
+        //  console.debug( "1. Click_SortByChildren.this.CurrentSort_Children", this.CurrentSort_Children() );
+        if ( this.CurrentSort_Children() == this.SortType2.DEFAULT )
+        {   // console.debug( "unsorted" );
+            this.CurrentSort_Children( this.SortType2.ASC );
         }
-        else if ( this.CurrentChildrenSort() == this.SortType.DESC )
+        else if ( this.CurrentSort_Children() == this.SortType2.ASC )
         {
-            this.CurrentChildrenSort( this.SortType.ASC );
-        }   //  console.debug( "2. Click_SortByChildren.this.CurrentChildrenSort", this.CurrentChildrenSort() );
+            this.CurrentSort_Children( this.SortType2.DESC );
+        }
+        else if ( this.CurrentSort_Children() == this.SortType2.DESC )
+        {
+            this.CurrentSort_Children( this.SortType2.ASC );
+        }
+        this.SortThisArray( "Children", this.CurrentSort_Children() );
+        //  console.debug( "2. Click_SortByChildren.this.CurrentSort_Children", this.CurrentSort_Children() );
+
+        // change siblings
+        this.CurrentSort_Name( this.SortType2.DEFAULT );
+        this.CurrentSort_Age( this.SortType2.DEFAULT );
+        this.CurrentSort_Born( this.SortType2.DEFAULT );
+        this.CurrentSort_Died( this.SortType2.DEFAULT );
+        //  this.CurrentSort_Children( this.SortType2.DEFAULT );
         return;
     };
 
@@ -130,10 +195,10 @@ function MainViewModel( demoName, debugFlag )
         {   
             var key_a = a[key]();
             var key_b = b[key]();
-
+            //  console.debug( "dir", dir, _self.SortType2.ASC );
             switch ( dir )
             {
-                case _self.SortType.ASC:
+                case _self.SortType2.ASC:
                     {   //  sort string ascending
                         if ( key_a < key_b ) return -1;
                         //  sort string descending    
@@ -141,7 +206,7 @@ function MainViewModel( demoName, debugFlag )
                         //  default return value (no sorting)
                         return 0;
                     }
-                case _self.SortType.DESC:
+                case _self.SortType2.DESC:
                     {   //  sort string ascending
                         if ( key_a < key_b ) return 1;
                         //  sort string descending    

@@ -10,7 +10,7 @@
 <body>
     <h1 data-bind="text: Title"></h1>
     <h2 data-bind="text: ErrorMessage, visible: ERROR"></h2>
-    <div class="SortButtons">
+    <div class="SortButtons" data-bind="visible: DEBUGFLAG">
         <button data-bind="click: Click_SortByName">Sort By Name</button>
         <button data-bind="click: Click_SortByAge">Sort By Age</button>
         <button data-bind="click: Click_SortByBorn">Sort By Date Born</button>
@@ -18,19 +18,33 @@
         <button data-bind="click: Click_SortByChildren">Sort By Number of Children</button>
     </div>
     <div class="SortDivTable">
-        <table>
+        <table cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
                 <td data-bind="click: Click_SortByName">
-                    <span>Name</span>
-                    [<span data-bind="text: CurrentChildrenSort"></span>]       
+                    <span  class="DataKeyName">Name</span>
+                    <!--[<span data-bind="text: CurrentSort_Name().text"></span>]-->
+                    <span  class="DataKeySort" data-bind="html: CurrentSort_Name().arrow"></span>
                 </td>
-                <td data-bind="click: Click_SortByAge">Age</td>
-                <td data-bind="click: Click_SortByBorn">BornDate</td>
-                <td data-bind="click: Click_SortByDied">DiedDate</td>
+                <td data-bind="click: Click_SortByAge">
+                    <span  class="DataKeyName">Age</span>
+                    <!--[<span data-bind="text: CurrentSort_Age().text"></span>]-->       
+                    <span  class="DataKeySort" data-bind="html: CurrentSort_Age().arrow"></span>    
+                </td>
+                <td data-bind="click: Click_SortByBorn">
+                    <span  class="DataKeyName">Date Born</span>
+                    <!--[<span data-bind="text: CurrentSort_Born().text"></span>]-->     
+                    <span class="DataKeySort"  data-bind="html: CurrentSort_Born().arrow"></span>       
+                </td>
+                <td data-bind="click: Click_SortByDied">
+                    <span class="DataKeyName">Date Died</span>
+                    <!--[<span data-bind="text: CurrentSort_Died().text"></span>]-->
+                    <span  class="DataKeySort" data-bind="html: CurrentSort_Died().arrow"></span>                       
+                </td>
                 <td data-bind="click: Click_SortByChildren">
-                    <span>Children</span>
-                    [<span data-bind="text: CurrentChildrenSort"></span>]
+                    <span class="DataKeyName">Children</span>
+                    <!--[<span data-bind="text: CurrentSort_Children().text"></span>]-->
+                    <span class="DataKeySort" data-bind="html: CurrentSort_Children().arrow"></span>
                 </td>
                 </tr>
             </thead>

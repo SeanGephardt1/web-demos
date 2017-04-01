@@ -41,3 +41,17 @@ body
     padding:10px;
     width:calc(20%);
 }
+
+/* for the spacing on the column headers */
+.DataKeyName
+{
+    border: solid 0px rgba(255,0,0,1);
+    display:inline-block;
+}
+.DataKeySort
+{
+    border: solid 0px rgba(255,0,0,1);
+    font-weight:900;
+    display:inline-block;
+    float:right;
+}
