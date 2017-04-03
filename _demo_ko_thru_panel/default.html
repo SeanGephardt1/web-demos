@@ -5,23 +5,29 @@
     <title>Knockout.js demo template</title>
     <!-- order is important! -->
     <!-- first: stylesheet -->
-    <link href="css/_demo_ko.css" rel="stylesheet" />
+    <link href="css/demo.css" rel="stylesheet" />
     <!-- second: javascript libraries-->
     <script src="script/knockout-3.4.0.js" type="text/javascript"></script>
     <!-- third: json data-->
-    <script src="js/_demo_ko_data.js"></script>
+    <script src="js/ko-data.js"></script>
     <!-- forth: knockout.js viewmodels -->
-    <script src="js/_demo-ko-viewmodel.js"></script>
+    <script src="js/ko-main-viewmodel.js"></script>
     <!-- fifth: "main" methos -->
-    <script src="js/_demo-main.js"></script>
+    <script src="js/main.js"></script>
 </head>
 <body data-bind="event: { click: CloseAll }, clickBubble: false">
+    <div class="MainContainer">
+        <div class="Column">left</div>
+        <div class="Column">center</div>
+        <div class="Column">right</div>
+    </div>
 
-    <div><span class="bolded">DEBUGFLAG: </span><span data-bind="text: DEBUGFLAG"></span></div>
+    <!--<div><span class="bolded">DEBUGFLAG: </span><span data-bind="text: DEBUGFLAG"></span></div>
     <div><span class="bolded">ID: </span><span data-bind="text: ID"></span></div>
     <div><span class="bolded">Title: </span><span data-bind="text: Title"></span></div>
-    <div><span class="bolded">ComputedMathValue: </span><span data-bind="text: ComputedMathValue"></span></div>
-    <div data-bind="template: { foreach: ChildCollection, name: 'KO-ChildCollection-Template'}"></div>
+    <div><span class="bolded">ComputedMathValue: </span><span data-bind="text: ComputedMathValue"></span></div>-->
+
+    <!--<div data-bind="template: { foreach: ChildCollection, name: 'KO-ChildCollection-Template'}"></div>
 
     <script type="text/html" id="KO-ChildCollection-Template">
         <div>
@@ -41,6 +47,6 @@
         <span class="bolded">ParentViewModel().Title: </span>
         <span data-bind="text: ParentViewModel().Title"></span>
         </div>
-    </script>
+    </script>-->
 </body>
 </html>
