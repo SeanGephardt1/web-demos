@@ -17,17 +17,22 @@
 </head>
 <body data-bind="event: { click: CloseAll }, clickBubble: false">
     <div class="MainContainer">
-        <div class="Column">left</div>
-        <div class="Column">center</div>
-        <div class="Column">right</div>
+        <table class="MainTable" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="Column TwoHun">
+                    <div data-bind="template: { foreach: ChildCollection, name: 'KO-ChildCollection-Template'}"></div>
+                </td>
+                <td class="Column FourHun">
+                    <div data-bind="template: { foreach: ChildCollection, name: 'KO-ChildCollection-Template'}"></div>
+                </td>
+                <td class="Column TwoHun">
+                    <div data-bind="template: { foreach: ChildCollection, name: 'KO-ChildCollection-Template'}"></div>
+                </td>
+            </tr>
+        </table>
     </div>
 
-    <!--<div><span class="bolded">DEBUGFLAG: </span><span data-bind="text: DEBUGFLAG"></span></div>
-    <div><span class="bolded">ID: </span><span data-bind="text: ID"></span></div>
-    <div><span class="bolded">Title: </span><span data-bind="text: Title"></span></div>
-    <div><span class="bolded">ComputedMathValue: </span><span data-bind="text: ComputedMathValue"></span></div>-->
-
-    <!--<div data-bind="template: { foreach: ChildCollection, name: 'KO-ChildCollection-Template'}"></div>
+    <!-- BEGIN KO TEMPLATES -->
 
     <script type="text/html" id="KO-ChildCollection-Template">
         <div>
@@ -47,6 +52,11 @@
         <span class="bolded">ParentViewModel().Title: </span>
         <span data-bind="text: ParentViewModel().Title"></span>
         </div>
-    </script>-->
+    </script>
+
+    <!--<div><span class="bolded">DEBUGFLAG: </span><span data-bind="text: DEBUGFLAG"></span></div>
+    <div><span class="bolded">ID: </span><span data-bind="text: ID"></span></div>
+    <div><span class="bolded">Title: </span><span data-bind="text: Title"></span></div>
+    <div><span class="bolded">ComputedMathValue: </span><span data-bind="text: ComputedMathValue"></span></div>-->
 </body>
 </html>
