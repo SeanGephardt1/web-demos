@@ -2,7 +2,7 @@
 ( function ()
 {
     var _debug_flag = false;
-    var _demo_name = "Knockout.js Demo Template";
+    var _demo_name = "JavaScript Knockout.js \'Thru-Panel\' Demo";
     try
     {
         console.info( "BEGIN", _demo_name );

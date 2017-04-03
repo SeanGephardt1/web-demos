@@ -19,13 +19,7 @@ function MainViewModel(demoName, debugFlag) {
     this.ErrorMessage = ko.observable("No errors");
 
     // non-standard ko.observables
-    this.ComputedMathValue = ko.observable(0);
-    this.Compute_NewMathValue = ko.pureComputed(function() {
-        var _temp_val = Math.random().toPrecision(5).replace(".", "");
-        this.ComputedMathValue(_temp_val);
-        return;
-    }, this);
-    this.Compute_NewMathValue();
+
 
     // ko.observableArray collection of viewmodels for html templates
     this.ChildCollection = ko.observableArray([
@@ -33,7 +27,7 @@ function MainViewModel(demoName, debugFlag) {
         new ChildViewModel("Child 2", this),
         new ChildViewModel("Child 3", this),
         new ChildViewModel("Child 4", this),
-        new ChildViewModel("Child 5"),
+        new ChildViewModel("Child 5", this),
     ]);
 
     //  Handle All Clicks on the body element, return false.
@@ -46,21 +40,6 @@ function MainViewModel(demoName, debugFlag) {
         // handle objects like popups, drop down menus and other UI events
         return _rv_false;
     };
-
-    //  test method - to reload page to see new random ID and ComputedMathValue values
-    //  set DEBUGFLAG to false doesn't reload
-    //  uncomment call to disable
-    this.DEBUG_PageReload = ko.pureComputed(function() { //  console.debug( "this.DEBUG_PageReload", this.DEBUGFLAG() );
-        if (this.DEBUGFLAG() == true) {
-            window.setTimeout(function() {
-                window.location.reload(true);
-                return;
-            }, 5000);
-        }
-        return;
-    }, this);
-    //  this.DEBUG_PageReload();
-
     return;
 };
 
