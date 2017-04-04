@@ -17,40 +17,54 @@
 </head>
 <body data-bind="event: { click: CloseAll }, clickBubble: false">
     <div class="MainContainer">
-        <table class="MainTable" cellpadding="0" cellspacing="0">
-            <tr>
-                <td class="Column TwoHun">
-                    <div data-bind="template: { foreach: ChildCollection, name: 'KO-ChildCollection-Template'}"></div>
-                </td>
-                <td class="Column FourHun">
-                    <div data-bind="template: { foreach: ChildCollection, name: 'KO-ChildCollection-Template'}"></div>
-                </td>
-                <td class="Column TwoHun">
-                    <div data-bind="template: { foreach: ChildCollection, name: 'KO-ChildCollection-Template'}"></div>
-                </td>
-            </tr>
-        </table>
+        <div class="AppHeader">
+            <span class="AppName" data-bind="text: Title"></span>
+            <button class="AppBtn">Add Connection</button>
+            <button class="AppBtn">Break Connection</button>
+            <button class="AppBtn" style="margin-right:80px;">Fix Connection</button>
+            <button class="AppBtn" data-bind="event: { click: Refresh_DataCollection}, clickBubble: false">Refresh Data</button>
+        </div>
+        <div class="AppContainer">
+            <div class="AppColumn LeftCol" data-bind="template: { foreach: ChildCollection, name: 'KO-ChildCollection-Template'}"></div>
+            <div class="AppColumn CenterCol" data-bind="template: { foreach: ChildCollection, name: 'KO-ChildCollection-Template'}"></div>
+            <div class="AppColumn RightCol" data-bind="template: { foreach: ChildCollection, name: 'KO-ChildCollection-Template'}"></div>
+        </div>
     </div>
 
     <!-- BEGIN KO TEMPLATES -->
 
     <script type="text/html" id="KO-ChildCollection-Template">
-        <div>
-        <div data-bind="visible: Error, text: ErrorMessage" style="color:red"></div>
-        <span class="bolded">ID: </span>
-        <span data-bind="text: ID"></span>, 
-        <span class="bolded">Title: </span>
-        <span data-bind="text: Title"></span>
-        <br/>
-        <span class="bolded">$parent.ID: </span>
-        <span data-bind="text: $parent.ID"></span>
-        <span class="bolded">$parent.Title: </span>
-        <span data-bind="text: $parent.Title"></span>, 
-        <br/>
-        <span class="bolded">ParentViewModel().ID: </span>
-        <span data-bind="text: ParentViewModel().ID"></span>,
-        <span class="bolded">ParentViewModel().Title: </span>
-        <span data-bind="text: ParentViewModel().Title"></span>
+        <div class="Panel">
+            <div class="Panel_Error" data-bind="visible: Error, text: ErrorMessage"></div>
+            <div class="Panel_Header">
+                <div class="Panel_Header_Status"></div>
+                <div class="Panel_Header_Block">
+                    <img class="Panel_Header_Icon" src="img/win10-normal.svg" />
+                    <div class="Panel_Header_Title" data-bind="text: Title"></div>
+                    <div class="Panel_Header_Chevron" data-bind="event: { click: $root.Click_OpenClose_ListPanel }, clickBubble: false">
+                        <img src="img/ChevronDown.svg" />
+                    </div>
+                    <div class="Panel_Header_Status_Icons">
+                        <img src="img/InputOutput.svg" />
+                        <img src="img/DirectorySync.svg" />
+                        <!--<img src="img/DevConsole.svg" />
+                        <img src="img/Automation.svg" />
+                        <img src="img/LocalNetwork.svg" />
+                        <img src="img/DevConsole.svg" />
+                        <img src="img/Automation.svg" />
+                        <img src="img/LocalNetwork.svg" />-->
+                    </div>
+                    <div class="Panel_Header_Notification_Icons">
+                        <span>50</span>
+                        <img src="img/Notification.svg" />
+                        <span>50</span>
+                        <img src="img/DirectorySync.svg" />
+                        <span>50</span>
+                        <img src="img/DevConsole.svg" />
+                    </div>
+                </div>                
+            </div>
+            <!--<div class="Panel_ListArea"></div>-->
         </div>
     </script>
 

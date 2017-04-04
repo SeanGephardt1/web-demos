@@ -19,22 +19,97 @@ function MainViewModel(demoName, debugFlag) {
     this.ErrorMessage = ko.observable("No errors");
 
     // non-standard ko.observables
-
+    
 
     // ko.observableArray collection of viewmodels for html templates
     this.ChildCollection = ko.observableArray([
-        new ChildViewModel("Child 1", this),
+        new ChildViewModel("Child 1 - this is the child of the damned.", this),
         new ChildViewModel("Child 2", this),
         new ChildViewModel("Child 3", this),
         new ChildViewModel("Child 4", this),
-        new ChildViewModel("Child 5", this),
+        new ChildViewModel( "Child 5", this ),
+        new ChildViewModel( "Child 1", this ),
+        new ChildViewModel( "Child 2", this ),
+        new ChildViewModel( "Child 3", this ),
+        new ChildViewModel( "Child 4", this ),
+        new ChildViewModel( "Child 5", this ),
+        new ChildViewModel( "Child 1", this ),
+        new ChildViewModel( "Child 2", this ),
+        new ChildViewModel( "Child 3", this ),
+        new ChildViewModel( "Child 4", this ),
+        //new ChildViewModel( "Child 5" ),
+        //new ChildViewModel( "Child 1", this ),
+        //new ChildViewModel( "Child 2", this ),
+        //new ChildViewModel( "Child 3", this ),
+        //new ChildViewModel( "Child 4", this ),
+        //new ChildViewModel( "Child 5", this ),
+        //new ChildViewModel( "Child 5", this ),
+        //new ChildViewModel( "Child 1", this ),
+        //new ChildViewModel( "Child 2", this ),
+        //new ChildViewModel( "Child 3", this ),
+        //new ChildViewModel( "Child 4", this ),
+        //new ChildViewModel( "Child 5", this ),
+        //new ChildViewModel( "Child 1", this ),
+        //new ChildViewModel( "Child 2", this ),
+        //new ChildViewModel( "Child 3", this ),
+        //new ChildViewModel( "Child 4", this ),
+        //new ChildViewModel( "Child 5", this ),
     ]);
+
+
+    // Refresh the data
+    this.Refresh_DataCollection = function ( vm, ev )
+    {
+        console.debug("Refresh_DataCollection");
+        return false;
+    };
+
+
+    // handle all clild chevrons
+    this.Click_OpenClose_ListPanel = function ( vm, ev )
+    {
+        console.debug( "ChildViewModel.Click_OpenClose_ListPanel" );
+        return;
+    };
+
+    //	BEGIN MAIN LAYOUT OBJECTS
+    this.MainContainer_CSS_Style = ko.observable();
+
+    // centers the SVG canvas
+    this.Resize_MainContainer = function ()
+    {
+        //var _client_rect_one = window.document.body.getClientRects();
+        //console.log( "_client_rect_one", _client_rect_one[0] );
+        //var _client_rect_two = window.document.body.getBoundingClientRect();
+        //console.log( "_client_rect_two", _client_rect_two );
+
+        var _cr_3 = document.getElementsByClassName( "MainContainer" )[0].getClientRects()[0];
+        //  console.log( "_cr_3", _cr_3 );
+
+
+        //var _h = _client_rect[0].height;
+        //var _w = _client_rect[0].width;
+        //	console.debug( "_w, _h", _w, _h );
+
+        return;
+    };
+    this.Resize_MainContainer();
+    window.addEventListener( "resize", function ()
+    {	//	
+        console.log( "window.addEventListener.resize" );
+        _self.Resize_MainContainer();
+        return;
+    }, false );
+
 
     //  Handle All Clicks on the body element, return false.
     //  <body data-bind="event: { click: CloseAllFlyouts}, clickBubble: false">
-    this.CloseAll = function(viewModel, event) {
-        if (this.DEBUGFLAG() == true) {
-            console.debug("this.CloseAll", viewModel, event);
+    this.CloseAll = function ( vm, ev )
+    {
+        console.debug( "this.CloseAll", vm, ev );
+        if ( this.DEBUGFLAG() == true )
+        {
+            console.debug( "this.CloseAll", vm, ev );
         }
         var _rv_false = false;
         // handle objects like popups, drop down menus and other UI events
@@ -69,5 +144,8 @@ function ChildViewModel(title, parentViewModel) {
         console.error(exNoParent.stack);
         //  throw exNoParent;
     }
+
+
+
     return;
 };
