@@ -2,7 +2,8 @@
 /// "Main" ViewModel V.1.0.0
 "use strict";
 
-function MainViewModel(demoName, debugFlag) {
+function MainViewModel( demoName, debugFlag, demoData )
+{
     var _self = this;
     this.ID = ko.pureComputed(function() { return "id-" + Math.random().toPrecision(5).replace(".", ""); }, this);
     this.Title = ko.observable(demoName || "Demo Title");
@@ -19,41 +20,38 @@ function MainViewModel(demoName, debugFlag) {
     this.ErrorMessage = ko.observable("No errors");
 
     // non-standard ko.observables
-    
+    this.MainData = ko.observable();
+    //  this exception handling will allow the demo to continue,
+    //  and provides a better explanation in the browser console
+    try
+    {
+        if ( demoData == undefined )
+        {
+            var _e = new Error( "Data was not available or incorrectly formated." );
+            this.Error( true );
+            this.ErrorMessage( _e.message );
+            throw _e;
+        }
+        else
+        {
+            this.MainData( new ThruDataViewModel( demoData ) );
+        }
+    }
+    catch ( exMain_BadData )
+    {
+        console.error( exMain_BadData.stack );  //  throw exNoParent;
+    }
+
+
+
 
     // ko.observableArray collection of viewmodels for html templates
     this.ChildCollection = ko.observableArray([
-        new ChildViewModel("Child 1 - this is the child of the damned.", this),
+        new ChildViewModel("Child 1 - this is the child of the damned. Let's all become wrappers and try to fix this race condition.", this),
         new ChildViewModel("Child 2", this),
         new ChildViewModel("Child 3", this),
         new ChildViewModel("Child 4", this),
-        new ChildViewModel( "Child 5", this ),
-        new ChildViewModel( "Child 1", this ),
-        new ChildViewModel( "Child 2", this ),
-        new ChildViewModel( "Child 3", this ),
-        new ChildViewModel( "Child 4", this ),
-        new ChildViewModel( "Child 5", this ),
-        new ChildViewModel( "Child 1", this ),
-        new ChildViewModel( "Child 2", this ),
-        new ChildViewModel( "Child 3", this ),
-        new ChildViewModel( "Child 4", this ),
-        //new ChildViewModel( "Child 5" ),
-        //new ChildViewModel( "Child 1", this ),
-        //new ChildViewModel( "Child 2", this ),
-        //new ChildViewModel( "Child 3", this ),
-        //new ChildViewModel( "Child 4", this ),
-        //new ChildViewModel( "Child 5", this ),
-        //new ChildViewModel( "Child 5", this ),
-        //new ChildViewModel( "Child 1", this ),
-        //new ChildViewModel( "Child 2", this ),
-        //new ChildViewModel( "Child 3", this ),
-        //new ChildViewModel( "Child 4", this ),
-        //new ChildViewModel( "Child 5", this ),
-        //new ChildViewModel( "Child 1", this ),
-        //new ChildViewModel( "Child 2", this ),
-        //new ChildViewModel( "Child 3", this ),
-        //new ChildViewModel( "Child 4", this ),
-        //new ChildViewModel( "Child 5", this ),
+        new ChildViewModel( "Child 5", this )
     ]);
 
 

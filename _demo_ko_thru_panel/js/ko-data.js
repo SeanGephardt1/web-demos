@@ -1,30 +1,23 @@
 ﻿"use strict";
-var _data = [
+var _demo_data = [
 	{
-		key: 'Type',
-		values:
+        ID: "abc-123-def-456",
+	    Name: "SuperWindowsMachine-2017-001",
+	    State: "online", // "offline", "rebooting"
+        IP: "191.100.121.11",
+        Status: "normal", // "critical"
+        Services:
         [
-			'Perf',
-			'SecurityEvent',
-			'WindowsFirewall',
-			'ServiceFabricOperationalEvent',
-			'Syslog',
-			'Event',
-			'Heartbeat',
-			'AzureActivity',
-			'ProtectionStatus',
-			'Alert',
-			'Usage',
-			'Update',
-			'SecurityBaseline',
-			'ConfigurationChange',
-			'ServiceFabricReliableServiceEvent',
-			'ComputerGroup',
-			'ServiceFabricReliableActorEvent',
-			'Operation',
-			'SecurityBaselineSummary',
-			'UpdateSummary'
-		]
+            { Name: "CCComExec", Active: false, Status: "running" },
+            { Name: "Windows Search", Active: true, Status: "running" },
+            { Name: "Remote Registry", Active: false, Status: "stopped" },
+            { Name: "Net/TCP Sharing", Active: false, Status: "running" },
+            { Name: "Defrag", Active: false, Status: "running" },
+            { Name: "Intel V-Hardware Monitor", Active: false, Status: "running" },
+            { Name: "Group Policy", Active: false, Status: "running" },
+            { Name: "Remote Desktop Service", Active: false, Status: "running" },
+            { Name: "Windows Update Service", Active: false, Status: "running" },
+        ],
 	},
 ];
 

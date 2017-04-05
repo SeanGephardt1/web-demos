@@ -3,12 +3,13 @@
 {
     var _debug_flag = false;
     var _demo_name = "JavaScript Knockout.js \'Thru-Panel\' Demo";
+
     try
     {
         console.info( "BEGIN", _demo_name );
         window.document.addEventListener( "DOMContentLoaded", function ( ev )
         {   //	console.log( "DOMContentLoaded." );
-            var _main_vm = new MainViewModel( _demo_name, _debug_flag );
+            var _main_vm = new MainViewModel( _demo_name, _debug_flag, _demo_data );
             ko.applyBindings( _main_vm );
             return;
         } );
