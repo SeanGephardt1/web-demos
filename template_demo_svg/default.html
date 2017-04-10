@@ -41,28 +41,40 @@
 			</filter>
 		</defs>
 
-			<!-- debug center test -->
-			<g id="DebugCrosshairs" shape-rendering="crispEdges" fill="none" stroke-width="1" stroke="rgba(0,0,0,1)" stroke-opacity="1"
-			   data-bind="visible: DEBUG, attr: { 'transform' : DEBUG_Crosshairs_Transform}">
-				<rect y="-50" x="-50" width="100" height="100"></rect>
-				<circle r="10" cx="0" cy="0" shape-rendering="geometricPrecision"></circle>
-				<line x1="-100" y1="0" x2="100" y2="0" stroke-linecap="butt"></line>
-				<line x1="0" y1="-100" x2="0" y2="100" stroke-linecap="square"></line>
-			</g>
+		<!-- debug center test -->
+		<g id="DebugCrosshairs" shape-rendering="geometricPrecision" fill="none" stroke-width="1" stroke="rgba(0,0,0,1)" stroke-opacity="1"
+			data-bind="visible: DEBUG, attr: { 'transform' : DEBUG_Crosshairs_Transform_Translate }" >
+			<rect y="-50" x="-50" width="100" height="100"></rect>
+			<circle r="10" cx="0" cy="0"></circle>
+			<line x1="-100" y1="0" x2="100" y2="0" stroke-linecap="butt"></line>
+			<line x1="0" y1="-100" x2="0" y2="100" stroke-linecap="square"></line>
+            <!--<animateTransform attributeType="xml" attributeName="transform" type="rotate" dur="5000ms" from="0" to="360" repeatCount="1"/>-->
 
-
-		<!--<g id="MainLayoutCentered" data-bind="attr: { transform: SvgZoomScaleTransform }">-->
+            <!--<animateTransform attributeType="xml" attributeName="transform" type="rotate" dur="1000ms" from="0" to="0"
+                data-bind="attr: { 'to': DEBUG_Crosshairs_Transform_Rotate_From, 'from':  DEBUG_Crosshairs_Transform_Rotate_To }"/>-->
+		</g>
 
 		<g id="MainLayoutCentered">
-			<!-- debug column backgrounds -->
-			<g>
-				<rect y="50" x="50" width="100" height="100" 
-                      fill="rgba(222,222,222,1)" fill-opacity="0.1" 
-                      stroke="rgba(255,0,0,1)" stroke-opacity="1" stroke-width="0" stroke-linejoin="miter" 
-                      shape-rendering="crispEdges"
-					  data-bind="visible: DEBUG"></rect>
-			</g>
+			<g  transform="translate(100,100)">
+                <!--<rect fill="#FE9FFF" width="100px" height="100px"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="5s" repeatDur="indefinite"/></rect>-->
 
+				<rect y="0" x="0" width="100" height="100" 
+                      fill="rgba(222,222,222,1)" fill-opacity="1" 
+                      stroke="rgba(0,0,128,1)" stroke-opacity="1" stroke-width="4" stroke-linejoin="miter" 
+                      shape-rendering="geometricPrecision"
+					  data-bind="visible: DEBUG">
+                        <animateTransform attributeType="xml"
+                        attributeName="transform"
+                        type="rotate"
+                        from="0 50 50"
+                        to="360 50 50"
+                        dur="2s"
+                        repeatCount="1"/>
+                      <!--<animateTransform attributeType="xml" attributeName="transform" type="translate" from="0" to="360" begin="0" dur="1000ms"/>-->
+                      <!--<animateTransform attributeType="xml" attributeName="transform" type="translate" from="360" to="0" begin="1000ms" dur="1000ms" end="100" />
+                      <animateTransform attributeType="xml" attributeName="transform" type="scale" from="1" to="2" begin="2000ms" dur="1000ms" />-->
+                </rect>
+			</g>
 
 
 			<!-- control columns -->
@@ -75,9 +87,7 @@
 
 	<!-- FOCUS-VIEWMODEL-TEMPLATE -->
 	<script id="ko-SVG-Widget-Template" type="text/html">
-        <svg>
-
-        </svg>
+        <svg></svg>
 		<!--<svg cursor="pointer" width="350"  x="0" data-bind="attr: { id: SVG_ID, y: SVG_Container_Top, height: SVG_Container_Height}" >-->
 			<!--<rect x="0" y="0" width="400" height="25" stroke="none" fill="rgba(255,0,0,0.1)" ></rect>-->
 			<!--<g transform="translate(10,10)" data-bind="attr: { id: G_ID }, event: { mouseover: StatusBar_Open, mouseout: StatusBar_Closed }, mouseBubble:true" shape-rendering="crispEdges">-->

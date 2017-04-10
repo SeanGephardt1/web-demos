@@ -23,7 +23,10 @@ function KoSvgMainViewModel( debug, title, data )
 
     //  for render time, it's better to set these to "0"
     //  less rendering flashs
-	this.DEBUG_Crosshairs_Transform = ko.observable( "translate(100,100)" );
+	this.DEBUG_Crosshairs_Transform_Translate = ko.observable( "translate(100,100)" );
+	this.DEBUG_Crosshairs_Transform_Rotate_To = ko.observable();
+	this.DEBUG_Crosshairs_Transform_Rotate_From = ko.observable();
+
 	this.SvgViewBox = ko.observable( "0 0 10 10" );
 	this.SvgViewBoxHeight = ko.observable( "100" );
 	this.SvgViewBoxWidth = ko.observable( "200" );
@@ -44,9 +47,18 @@ function KoSvgMainViewModel( debug, title, data )
 		//  console.log( "_svg_vb", _svg_vb ); 
 		this.SvgViewBox( _svg_vb );
 
-		var _debug_crosshairs = __template_translate_text.replace( "[y]", ( this.SvgViewBoxHeight() / 2 ) ).replace( "[x]", ( this.SvgViewBoxWidth() / 2 ) );
-		//  console.debug( "_debug_crosshairs", _debug_crosshairs );
-		this.DEBUG_Crosshairs_Transform( _debug_crosshairs );
+		var _debug_crosshairs_transform = __template_translate_text.replace( "[y]", ( this.SvgViewBoxHeight() / 2 ) ).replace( "[x]", ( this.SvgViewBoxWidth() / 2 ) );
+		_debug_crosshairs_transform = _debug_crosshairs_transform + " rotate(45 0 0)";
+		console.debug( "_debug_crosshairs_transform", _debug_crosshairs_transform );
+		this.DEBUG_Crosshairs_Transform_Translate( _debug_crosshairs_transform );
+
+		//var _zero = "0";
+		//var _threesixty = "360";
+		//var _to = _zero + " " + ( this.SvgViewBoxHeight() / 2 ) + " " + ( this.SvgViewBoxWidth() / 2 );
+		//var _from = _threesixty + " " + ( this.SvgViewBoxHeight() / 2 ) + " " + ( this.SvgViewBoxWidth() / 2 );
+		//console.debug( "_to", _to );
+		//console.debug( "_from", _from );
+
 
 		return;
 	};
