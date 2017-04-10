@@ -1,46 +1,43 @@
 /// <reference path="knockout-3.4.2.js" />
 /* 
-	DOCUMENT LEVEL KO.JS TEMPLATE VIEWMODEL OBJECTS
-	Main App Root View Model - ServiceMapViewModel
-	
-	CODE FUNCTION TEMPLATES
+	KNOCKOUT.JS CODE FUNCTION TEMPLATES
 	this.Object_Method = function ( vm, ev ) { console.debug("Object_Method", vm, ev); return; };
 	this.Object_Method = ko.computed(function ( vm, ev ) { console.debug("Object_Method", vm, ev); return; }, this);
 	this.Object_Method = ko.pureComputed(function ( vm, ev ) { console.debug("Object_Method", vm, ev); return; }, this);
 */
 "use strict";
-function KoSvgMainViewModel( title, data ) 
+function KoSvgMainViewModel( debug, title, data ) 
 {	
 	var _self = this;
-	this.DEBUG = ko.observable( data.Debug );	//	console.debug( "DEBUG:", data.Debug, this.DEBUG() );
+	this.DEBUG = ko.observable( data.DEBUG );
+    //  console.debug( "DEBUG:", data.DEBUG, this.DEBUG() );
+	this.Data = ko.observable( data || {} );
+	//  console.debug( "DATA:", data, this.Data() );
+
 	this.ID = ko.pureComputed( function () { return "skg-svg-ko-demo-id-" + Math.random().toPrecision( 3 ).replace( ".", "" ); }, this );
 	this.Title = ko.observable( title );
 
-	//	BEGIN LAYOUT OBJECTS
-	//	SET SVG DEFAULT DIMENSIONS
-    //	TESTING FOR CENTER - REMOVE ON CODE COMPLETE
+    //  main svg dimension
 	this._default_translate_text = "translate(0,0)";
 	this._default_scale_text = "scale(1)";
 
-	this.SvgViewBox = ko.observable( "0 0 0 0" );
-	this.SvgViewBoxHeight = ko.observable( "0" );
-	this.SvgViewBoxWidth = ko.observable( "0" );
+	this.SvgViewBox = ko.observable( "0 0 100 100" );
+	this.SvgViewBoxHeight = ko.observable( "100" );
+	this.SvgViewBoxWidth = ko.observable( "200" );
 
 	//	FOR ZOOMING & DRAGGING
 	this.Resize_SvgViewBoxDimensions = function ()
 	{
 	    //var __template_translate_text = "translate([x],[y])";
 	    //var _client_rect = window.document.body.getClientRects();
-
-
-	    ////	console.log( "_client_rect", _client_rect[0] );
+	    //  console.log( "_client_rect", _client_rect[0] );
 
 		//var _h = _client_rect[0].height - 10;// + "px";
 		//var _w = _client_rect[0].width;// + "px";
-		////	console.debug( "_w, _h", _w, _h );
+		//  console.debug( "_w, _h", _w, _h );
 
 		//var _svg_vb = "\"" + _client_rect[0].top + " " + _client_rect[0].left + " " + ( _h * 2 ) + " " + ( _w * 2 ) + "\"";
-		////	console.log( "_svg_vb", _svg_vb ); 
+		//	console.log( "_svg_vb", _svg_vb ); 
 
 		//this.SvgViewBoxHeight( _h );
 		//this.SvgViewBoxWidth( _w );

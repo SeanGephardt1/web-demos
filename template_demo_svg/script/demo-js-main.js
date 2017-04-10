@@ -5,14 +5,13 @@
 	{
 		var _demo_name = "seangephardt.com SVG Knockout.js demo";
 		var _debug_flag = true;
-		var _data = [];
 
 		try
 		{
 		    console.info( "BEGIN", _demo_name, new Date().toTimeString() );
 			window.document.addEventListener("DOMContentLoaded", function (str)
-			{   //	console.log( "DOMContentLoaded." );
-				window.KoSvgMainVm = new KoSvgMainViewModel( _debug_flag, _demo_name, _data );
+			{
+			    window.KoSvgMainVm = new KoSvgMainViewModel( _debug_flag, _demo_name, window._debug_data_001 );
 				ko.applyBindings( window.KoSvgMainVm );
 				return;
 			});
