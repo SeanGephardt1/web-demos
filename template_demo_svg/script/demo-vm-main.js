@@ -21,29 +21,33 @@ function KoSvgMainViewModel( debug, title, data )
 	this._default_translate_text = "translate(0,0)";
 	this._default_scale_text = "scale(1)";
 
-	this.SvgViewBox = ko.observable( "0 0 100 100" );
+    //  for render time, it's better to set these to "0"
+    //  less rendering flashs
+	this.DEBUG_Crosshairs_Transform = ko.observable( "translate(100,100)" );
+	this.SvgViewBox = ko.observable( "0 0 10 10" );
 	this.SvgViewBoxHeight = ko.observable( "100" );
 	this.SvgViewBoxWidth = ko.observable( "200" );
 
-	//	FOR ZOOMING & DRAGGING
+	//	for resizing the main SVG element and the "debug crosshairs"
 	this.Resize_SvgViewBoxDimensions = function ()
 	{
-	    //var __template_translate_text = "translate([x],[y])";
-	    //var _client_rect = window.document.body.getClientRects();
+	    var __template_translate_text = "translate([x],[y])";
+	    var _client_rect = window.document.body.getClientRects();
 	    //  console.log( "_client_rect", _client_rect[0] );
+	    var _h = _client_rect[0].height - 10;
+	    var _w = _client_rect[0].width - 10;
+        //  console.debug( "_w, _h", _w, _h );
+	    this.SvgViewBoxHeight( _h );
+	    this.SvgViewBoxWidth( _w );
 
-		//var _h = _client_rect[0].height - 10;// + "px";
-		//var _w = _client_rect[0].width;// + "px";
-		//  console.debug( "_w, _h", _w, _h );
+		var _svg_vb = "\"" + _client_rect[0].top + " " + _client_rect[0].left + " " + ( _h * 2 ) + " " + ( _w * 2 ) + "\"";
+		//  console.log( "_svg_vb", _svg_vb ); 
+		this.SvgViewBox( _svg_vb );
 
-		//var _svg_vb = "\"" + _client_rect[0].top + " " + _client_rect[0].left + " " + ( _h * 2 ) + " " + ( _w * 2 ) + "\"";
-		//	console.log( "_svg_vb", _svg_vb ); 
+		var _debug_crosshairs = __template_translate_text.replace( "[y]", ( this.SvgViewBoxHeight() / 2 ) ).replace( "[x]", ( this.SvgViewBoxWidth() / 2 ) );
+		//  console.debug( "_debug_crosshairs", _debug_crosshairs );
+		this.DEBUG_Crosshairs_Transform( _debug_crosshairs );
 
-		//this.SvgViewBoxHeight( _h );
-		//this.SvgViewBoxWidth( _w );
-		//this.SvgViewBox( _svg_vb );
-
-		//  this.SvgZoomScaleTransform( _new_transform );
 		return;
 	};
 	window.addEventListener( "resize", function ()

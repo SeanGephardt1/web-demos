@@ -3,7 +3,7 @@
 (
 	function ()
 	{
-		var _demo_name = "seangephardt.com SVG Knockout.js demo";
+	    var _demo_name = "SVG Knockout.js demo, seangephardt.com";
 		var _debug_flag = true;
 
 		try
