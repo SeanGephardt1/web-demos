@@ -48,14 +48,14 @@ function KoSvgMainViewModel( debug, title, data )
 		this.SvgViewBox( _svg_vb );
 
 		var _debug_crosshairs_transform = __template_translate_text.replace( "[y]", ( this.SvgViewBoxHeight() / 2 ) ).replace( "[x]", ( this.SvgViewBoxWidth() / 2 ) );
-		_debug_crosshairs_transform = _debug_crosshairs_transform + " rotate(13 0 0)";
+		//  _debug_crosshairs_transform = _debug_crosshairs_transform + " rotate(13 0 0)";
 		console.debug( "_debug_crosshairs_transform", _debug_crosshairs_transform );
 		this.DEBUG_Crosshairs_Transform_Translate( _debug_crosshairs_transform );
 
 		var _zero = "0";
 		var _threesixty = "360";
-		var _to = _zero + " " + ( this.SvgViewBoxHeight() / 2 ) + " " + ( this.SvgViewBoxWidth() / 2 );
-		var _from = _threesixty + " " + ( this.SvgViewBoxHeight() / 2 ) + " " + ( this.SvgViewBoxWidth() / 2 );
+		var _to = _zero;    // + " " + ( this.SvgViewBoxHeight() / 2 ) + " " + ( this.SvgViewBoxWidth() / 2 );
+		var _from = _threesixty;    //+ " " + ( this.SvgViewBoxHeight() / 2 ) + " " + ( this.SvgViewBoxWidth() / 2 );
 		//console.debug( "_to", _to );
 	    //console.debug( "_from", _from );
 		this.DEBUG_Crosshairs_Transform_Rotate_To( _from );
