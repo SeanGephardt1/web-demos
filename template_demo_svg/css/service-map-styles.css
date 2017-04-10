@@ -1,0 +1,20 @@
+﻿*
+{
+    /*box-sizing: border-box;*/
+}
+body
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	/*background-color: rgba(192,192,192,1);*/
+	color:rgba(0,0,0,1);
+	font-family:'Segoe UI';
+	font-size:medium;
+	margin:0 auto;
+	padding:0;
+	text-align:center;
+	overflow:auto;
+}
