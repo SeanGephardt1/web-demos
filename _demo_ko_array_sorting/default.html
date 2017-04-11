@@ -35,6 +35,11 @@
         <div>
             <span>CurrentPage:</span>
             <span data-bind="text: CurrentPage"></span>
+            <span class="CurrentPage">Current Page: <span data-bind="text: CurrentPage() + 1"></span></span> 
+        </div>
+        <div>
+            <span>Select a page size</span>
+            <select data-bind="options: PageSizeOptions, value: PageSize"></select>
         </div>
     </div>
 
@@ -46,16 +51,10 @@
             <tbody data-bind="template: { foreach: PageDataArray, name: 'KO-DataArray-Template'}"></tbody>
             <tfoot>
                 <tr>
-                    <td>
-                        <button data-bind="click: Click_PreviousPage, attr: { 'disabled': PreviousPageButtonDisabled }"><<</button>
-                    </td>
-                    <td colspan="4" style="text-align:center">
-                        <span> Current Page: </span>
-                        <span data-bind="text: CurrentPage() + 1"></span>
+                    <td colspan="6" style="text-align:center; padding-top:8px;">
+                        <span class="PageButton" data-bind="click: Click_PreviousPage">&larr;</span>
                         <span data-bind="template: { foreach: PageNumbers , name: 'KO-PageNumberIndex-Template'}"></span>
-                    </td>
-                    <td style="text-align:right">
-                        <button data-bind="click: Click_NextPage, attr: { 'disabled': NextPageButtonDisabled }">>></button>
+                        <span class="PageButton" data-bind="click: Click_NextPage">&rarr;</span>
                     </td>
                 </tr>
             </tfoot>
@@ -80,7 +79,10 @@
 
     <!-- paging number index template -->
     <script type="text/html" id="KO-PageNumberIndex-Template">
-        <span class="PageNumber" data-bind="text: $data, click: $root.Click_GotoPageNumber"></span>
+        <span class="PageNumber" data-bind="text: $data, 
+            click: $root.Click_GotoPageNumber,
+            css: {'PageNumberSelected': $root.CurrentPage() + 1 == $data }">
+        </span>
     </script>
 
 

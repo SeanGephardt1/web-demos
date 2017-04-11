@@ -10,6 +10,8 @@ function MainViewModel( demoName, debugFlag )
     this.ERROR = ko.observable( false );
     this.ErrorMessage = ko.observable( "No errors" );
 
+
+
     this.SortType = {
         DEFAULT: { text: "default", arrow: "&varr;" },
         ASC: { text: "asc", arrow: "&uarr;" },
@@ -73,7 +75,6 @@ function MainViewModel( demoName, debugFlag )
         }
         return;
     } );
-
 
     this.SortButtonArray = ko.observableArray( this._button_array );
 
@@ -189,6 +190,8 @@ function MainViewModel( demoName, debugFlag )
     }
 
     // for pagination
+    this.PageSizeOptions = ko.observableArray( [3, 5, 10, 20] );
+
     this._default_page_size = 5;
     this.PageSize = ko.observable( this._default_page_size );
     this.NumberOfPages = ko.observable( 0 );
@@ -227,16 +230,11 @@ function MainViewModel( demoName, debugFlag )
     },this);
 
     // paging events
-    this.PreviousPageButtonDisabled = ko.observable( false );
-    this.NextPageButtonDisabled = ko.observable( false );
-
     this.Click_PreviousPage = function ( vm, ev )
     {
         //  console.debug( "Click_PreviousPage", this.CurrentPage(), this.NumberOfPages() );
         if ( this.CurrentPage() == 0 )
         {
-            //this.PreviousPageButtonDisabled( true );
-            //this.NextPageButtonDisabled( false );
             return;
         }
 
