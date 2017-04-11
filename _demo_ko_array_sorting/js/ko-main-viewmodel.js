@@ -4,11 +4,11 @@
 function MainViewModel( demoName, debugFlag )
 {
     var _self = this;
-    this.ID = ko.pureComputed(function() { return "id-" + Math.random().toPrecision(5).replace(".", ""); }, this);
-    this.Title = ko.observable(demoName || "Demo Title");
-    this.DEBUGFLAG = ko.observable(debugFlag || false);
-    this.ERROR = ko.observable(false);
-    this.ErrorMessage = ko.observable("No errors");
+    this.ID = ko.pureComputed( function () { return "id-" + Math.random().toPrecision( 5 ).replace( ".", "" ); }, this );
+    this.Title = ko.observable( demoName || "Demo Title" );
+    this.DEBUGFLAG = ko.observable( debugFlag || false );
+    this.ERROR = ko.observable( false );
+    this.ErrorMessage = ko.observable( "No errors" );
 
     this.SortType = {
         DEFAULT: { text: "default", arrow: "&varr;" },
@@ -17,6 +17,24 @@ function MainViewModel( demoName, debugFlag )
     };
 
     this.DataArray = ko.observableArray( [
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
         new ChildViewModel(),
         new ChildViewModel(),
         new ChildViewModel(),
@@ -55,6 +73,7 @@ function MainViewModel( demoName, debugFlag )
         }
         return;
     } );
+
 
     this.SortButtonArray = ko.observableArray( this._button_array );
 
@@ -137,9 +156,10 @@ function MainViewModel( demoName, debugFlag )
     // create new, add, remove data for this.DataArray
     this.Click_DataArray_NewData = function ( vm, ev )
     {   //console.debug( "Click_DataArray_NewData" );
-        // create new array based on previous length
+        // create new array based on random number
         var _new = [];
-        for ( var i = 0; i < this.DataArray().length; i++ )
+        var _new_rnd = Math.round( Math.random() * 99 );
+        for ( var i = 0; i < _new_rnd; i++ )
         {
             _new[i] = new ChildViewModel();
         }
@@ -167,6 +187,66 @@ function MainViewModel( demoName, debugFlag )
         this.DataArray.pop( new ChildViewModel() );
         return;
     }
+
+    // for pagination
+    this._default_page_size = 5;
+    this.PageSize = ko.observable( this._default_page_size );
+    this.NumberOfPages = ko.observable( 0 );
+    this.CurrentPage = ko.observable( 0 );
+    this.PageDataArray = ko.observableArray( [] );
+
+    this.Get_PageData = ko.computed(function()
+    {
+        //console.debug( "Get_PageData" );
+        console.debug( "DataArray", this.DataArray().length );
+        //console.debug( "PageDataArray", this.PageDataArray().length );
+        console.debug( "PageSize", this.PageSize() );
+        console.debug( "this.NumberOfPages", this.NumberOfPages() );
+        console.debug( "CurrentPage", this.CurrentPage() );
+
+        var _num_pages = Math.round( this.DataArray().length / this.PageSize() );
+        console.debug( "this._num_pages", _num_pages );
+        this.NumberOfPages( _num_pages );
+
+        var _begin = this.CurrentPage() * this.PageSize();
+        var _end = _begin + this.PageSize();
+        console.debug( "_begin, _end", _begin, _end );
+
+        var _current_slice = this.DataArray().slice( _begin, _end );
+        //  console.debug( "_current_slice", _current_slice );
+        this.PageDataArray( _current_slice );
+        return;
+    },this);
+
+    // paging events
+    this.PreviousPageButtonDisabled = ko.observable( false );
+    this.NextPageButtonDisabled = ko.observable( false );
+
+    this.Click_PreviousPage = function ( vm, ev )
+    {
+        console.debug( "Click_PreviousPage", this.CurrentPage(), this.NumberOfPages() );
+        //if ( this.CurrentPage() == 0 )
+        //{
+        //    this.PreviousPageButtonDisabled( true );
+        //    this.NextPageButtonDisabled( false );
+        //}
+
+        this.CurrentPage( this.CurrentPage() - 1 );
+        return;
+    };
+    this.Click_NextPage = function ( vm, ev )
+    {
+        console.debug( "Click_NextPage", this.CurrentPage(), this.NumberOfPages() );
+
+        //if ( this.CurrentPage() == this.NumberOfPages() )
+        //{
+        //    this.PreviousPageButtonDisabled( false );
+        //    this.NextPageButtonDisabled( true );
+        //}
+
+        this.CurrentPage( this.CurrentPage() + 1 );
+        return;
+    };
 
     // end of viewmodel
     return;
