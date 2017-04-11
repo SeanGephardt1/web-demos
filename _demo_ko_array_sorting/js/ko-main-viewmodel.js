@@ -192,12 +192,11 @@ function MainViewModel( demoName, debugFlag )
     this._default_page_size = 5;
     this.PageSize = ko.observable( this._default_page_size );
     this.NumberOfPages = ko.observable( 0 );
+    this.PageNumbers = ko.observableArray( [] );
     this.CurrentPage = ko.observable( 0 );
     this.PageDataArray = ko.observableArray( [] );
-
     this.Get_PageData = ko.computed(function()
-    {
-        //  console.debug( "Get_PageData" );
+    {   //  console.debug( "Get_PageData" );
         //  console.debug( "DataArray", this.DataArray().length );
         //  console.debug( "PageDataArray", this.PageDataArray().length );
         //  console.debug( "PageSize", this.PageSize() );
@@ -207,6 +206,15 @@ function MainViewModel( demoName, debugFlag )
         var _num_pages = Math.round( this.DataArray().length / this.PageSize() );
         //  console.debug( "this._num_pages", _num_pages );
         this.NumberOfPages( _num_pages );
+
+        var _temp_page_numbers = [];
+        for ( var i = 0; i < this.NumberOfPages() ; i++ )
+        {
+            var _new_i = i + 1;
+            //  console.debug( "_new_i", _new_i );
+            _temp_page_numbers[i] = _new_i;
+        }
+        this.PageNumbers( _temp_page_numbers );
 
         var _begin = this.CurrentPage() * this.PageSize();
         var _end = _begin + this.PageSize();
@@ -247,7 +255,14 @@ function MainViewModel( demoName, debugFlag )
         this.CurrentPage( this.CurrentPage() + 1 );
         return;
     };
-
+    this.Click_GotoPageNumber = function ( data, ev )
+    {
+        //  console.debug( "Click_GotoPageNumber", data, ev );
+        //  console.debug( "CurrentPage", _self.CurrentPage() );
+        _self.CurrentPage( data - 1 );
+        //  console.debug( "CurrentPage", _self.CurrentPage() );
+        return;
+    };
     // end of viewmodel
     return;
 };

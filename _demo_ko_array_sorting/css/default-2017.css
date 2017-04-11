@@ -74,3 +74,12 @@ button
     display:inline-block;
     float:right;
 }
+
+/* paging index styles*/
+span.PageNumber
+{
+    cursor:pointer;
+    border: solid 1px rgba(128,128,128,1);
+    padding-left:4px;
+    padding-right:4px;
+}

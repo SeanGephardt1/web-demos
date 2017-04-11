@@ -19,7 +19,7 @@
         <button data-bind="click: Click_DataArray_Remove">remove data</button>
     </div>
 
-    <div class="SortButtonsTop" >
+    <div class="SortButtonsTop" data-bind="visible: DEBUGFLAG">
         <div>
             <span>Total rows:</span>
             <span data-bind="text: DataArray().length"></span>
@@ -49,8 +49,10 @@
                     <td>
                         <button data-bind="click: Click_PreviousPage, attr: { 'disabled': PreviousPageButtonDisabled }"><<</button>
                     </td>
-                    <td colspan="4">
-                        <span data-bind="text: NumberOfPages"></span>
+                    <td colspan="4" style="text-align:center">
+                        <span> Current Page: </span>
+                        <span data-bind="text: CurrentPage() + 1"></span>
+                        <span data-bind="template: { foreach: PageNumbers , name: 'KO-PageNumberIndex-Template'}"></span>
                     </td>
                     <td style="text-align:right">
                         <button data-bind="click: Click_NextPage, attr: { 'disabled': NextPageButtonDisabled }">>></button>
@@ -75,6 +77,12 @@
             <span  class="DataKeySort" data-bind="html: SortDirection().arrow"></span>
         </td>
     </script>
+
+    <!-- paging number index template -->
+    <script type="text/html" id="KO-PageNumberIndex-Template">
+        <span class="PageNumber" data-bind="text: $data, click: $root.Click_GotoPageNumber"></span>
+    </script>
+
 
     <!-- data array content template -->
     <script type="text/html" id="KO-DataArray-Template">
