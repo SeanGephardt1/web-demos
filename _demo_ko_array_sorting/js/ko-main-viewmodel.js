@@ -174,7 +174,7 @@ function MainViewModel( demoName, debugFlag )
 
         // reset sorted columns
         _self.SortedColumn("");
-
+        _self.CurrentPage( 0 );
         return;
     };
     this.Click_DataArray_Add = function ( vm, ev )
@@ -197,20 +197,20 @@ function MainViewModel( demoName, debugFlag )
 
     this.Get_PageData = ko.computed(function()
     {
-        //console.debug( "Get_PageData" );
-        console.debug( "DataArray", this.DataArray().length );
-        //console.debug( "PageDataArray", this.PageDataArray().length );
-        console.debug( "PageSize", this.PageSize() );
-        console.debug( "this.NumberOfPages", this.NumberOfPages() );
-        console.debug( "CurrentPage", this.CurrentPage() );
+        //  console.debug( "Get_PageData" );
+        //  console.debug( "DataArray", this.DataArray().length );
+        //  console.debug( "PageDataArray", this.PageDataArray().length );
+        //  console.debug( "PageSize", this.PageSize() );
+        //  console.debug( "this.NumberOfPages", this.NumberOfPages() );
+        //  console.debug( "CurrentPage", this.CurrentPage() );
 
         var _num_pages = Math.round( this.DataArray().length / this.PageSize() );
-        console.debug( "this._num_pages", _num_pages );
+        //  console.debug( "this._num_pages", _num_pages );
         this.NumberOfPages( _num_pages );
 
         var _begin = this.CurrentPage() * this.PageSize();
         var _end = _begin + this.PageSize();
-        console.debug( "_begin, _end", _begin, _end );
+        //  console.debug( "_begin, _end", _begin, _end );
 
         var _current_slice = this.DataArray().slice( _begin, _end );
         //  console.debug( "_current_slice", _current_slice );
@@ -224,25 +224,25 @@ function MainViewModel( demoName, debugFlag )
 
     this.Click_PreviousPage = function ( vm, ev )
     {
-        console.debug( "Click_PreviousPage", this.CurrentPage(), this.NumberOfPages() );
-        //if ( this.CurrentPage() == 0 )
-        //{
-        //    this.PreviousPageButtonDisabled( true );
-        //    this.NextPageButtonDisabled( false );
-        //}
+        //  console.debug( "Click_PreviousPage", this.CurrentPage(), this.NumberOfPages() );
+        if ( this.CurrentPage() == 0 )
+        {
+            //this.PreviousPageButtonDisabled( true );
+            //this.NextPageButtonDisabled( false );
+            return;
+        }
 
         this.CurrentPage( this.CurrentPage() - 1 );
         return;
     };
     this.Click_NextPage = function ( vm, ev )
     {
-        console.debug( "Click_NextPage", this.CurrentPage(), this.NumberOfPages() );
+        //  console.debug( "Click_NextPage", this.CurrentPage(), this.NumberOfPages() );
 
-        //if ( this.CurrentPage() == this.NumberOfPages() )
-        //{
-        //    this.PreviousPageButtonDisabled( false );
-        //    this.NextPageButtonDisabled( true );
-        //}
+        if ( this.CurrentPage() == ( this.NumberOfPages() - 1))
+        {
+            return;
+        }
 
         this.CurrentPage( this.CurrentPage() + 1 );
         return;
