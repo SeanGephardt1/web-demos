@@ -1,0 +1,176 @@
+﻿https://demos.shieldui.com/web/treeview/checkboxes
+
+http://www.jqueryrain.com/?Lm1MWBI4
+
+http://www.jqueryrain.com/?pl_6d8jV
+
+
+    <!-- leaf template MAY NOT BE NEEDED -->
+    <script type="text/html" id="KO-Leaf-Template">
+        <!--<h1>nope</h1>-->
+            <!--<div data-bind="template: { foreach: ChildCollection, name: 'KO-Node-Template'}"></div>-->
+        <!--<div class="Node">-->
+            <!--<div data-bind="text: DisplayText, attr: { title: TitleText }"></div>-->
+			<!--<label data-bind="attr: { for: ID,  title: TitleText }, 
+                event: { change: function(vm,ev) { CheckThisItem(vm,ev,$parent); }, click: HandleClickChangeEvent }, 
+                changeBubble:false, clickBubble: false">
+				<span data-bind="html: IconValue, clickBubble: false"></span>
+				<input type="checkbox" data-bind="attr: { id: ID, checked: IsCheckBoxChecked }, clickBubble: false" />
+				<span data-bind="text: DisplayText, clickBubble: false"></span>
+			</label>-->
+            <!--<div data-bind="visible: HasNodesCollection, template: { foreach: NodesCollection, name: 'KO-Leaf-Template'}"></div>-->
+            <!--<div data-bind="template: { foreach: NodesCollection, name: 'KO-Leaf-Template'}"></div>-->
+        <!--</div>-->
+    </script>
+
+	<!-- NameSelector.Options Template -->
+	<!--<script type="text/html" id="kot-NameSelectorOptionsTemplate">
+		<div class="nubbin-dropdown-option" data-bind="visible: IsEnabled, css: { 'nubbin-dropdown-option-selected' : IsChecked }, clickBubble: false">
+			<label class="nddo-label" data-bind="attr: { for: Id }, event: { change: function(vm,ev) { CheckThisItem(vm,ev,$parent); }, click: HandleClickChangeEvent }, changeBubble:false, clickBubble: false">
+				<span class="nui-icon-svg" data-bind="html: IconValue, visible: IconValue, clickBubble: false"></span>
+				<input type="checkbox" data-bind="visible: ShowCheckbox, attr: { id: Id, checked: IsCheckBoxChecked }, clickBubble: false" />
+				<span data-bind="text: TextValue, clickBubble: false"></span>
+			</label>
+		</div>
+	</script>-->
+
+
+	-- sort of working
+	    <script type="text/html" id="KO-Node-Template">
+        <div class="NodePanel">
+            <div class="Node" data-bind="attr: { id: ID }, css: { 'NodeChecked' : IsChecked }">
+                <img data-bind="css: { 'NodeOpenCloseImage': HasNodesCollection, 'HideNodeIcon' : NodeStateImageDisplayed },
+                    attr: { src: NodeStateImage }, click: ShowHideChildCollection, clickBubble: false" />
+			    <label data-bind="attr: { for: CheckBoxId,  title: TitleText }, event: { change: function(vm,ev) { CheckThisItem(vm,ev,$parent); }, click: HandleClickChangeEvent }, 
+                    changeBubble:false, clickBubble: false">
+				    <input type="checkbox" data-bind="visible: ShowCheckBox, attr: { id: CheckBoxId, checked: IsChecked }, clickBubble: false" />
+				    <img class="NodeSvgIcon" data-bind="attr: { src: IconValue}" />
+				    <span data-bind="text: DisplayText, clickBubble: false"></span>
+			    </label>
+            </div>
+
+            <div class="NodeCollectionPanel" data-bind="visible: ShowNodeCollection, attr: { id: NodesCollectionID }, template: { foreach: NodesCollection, name: 'KO-Node-Template'}"></div>
+        </div>
+    </script>
+
+
+
+        if ( parentViewModel == undefined ) { console.warn( "NO parentViewModel" ); return; }
+        else if ( parentViewModel.constructor.name == 'ScopeSelectorViewModel' ) { console.debug( "DO NOTHING?? parentViewModel.constructor.name", parentViewModel.constructor.name ); return; }
+        else if ( parentViewModel.constructor.name == 'NodeViewModel' )
+        {   //  console.debug( "parentViewModel.constructor.name", parentViewModel.constructor.name, parentViewModel.IsChecked(), this.IsChecked() );
+            var _temp_flag = false;
+            parentViewModel.NodesCollection().forEach( function ( v, i, a )
+            {   //, _self.DisplayText(), _self.IsChecked() 
+                //  console.debug( "parentViewModel.NodesCollection", i, _temp_flag, v.DisplayText(),  v.IsChecked());
+                if ( v.IsChecked() == true )
+                {
+                    _temp_flag = true;
+                }
+                return;
+            } );
+            parentViewModel.IsChecked( _temp_flag );
+            //  console.debug( "ADD PARENT NODES parentViewModel", parentViewModel.IsChecked() );
+            // end
+        }
+        // check siblings
+
+
+
+
+
+
+
+
+
+
+	    var _debug_nodes_2 = [
+        new NodeViewModel( "Node D", null, this ),
+        new NodeViewModel( "Node E", null, this ),
+        new NodeViewModel( "Node F", null, this )
+    ];
+
+    var _debug_nodes = [
+        new NodeViewModel( "Node A", _debug_nodes_2, this ),
+        new NodeViewModel( "Node B", null, this ),
+        new NodeViewModel( "Node C", null, this )
+    ];
+
+    var _granchild_nodes_111 = [
+        new NodeViewModel( "Node 1.1.1", _debug_nodes, this ),
+        new NodeViewModel( "Node 1.1.2", null, this ),
+        new NodeViewModel( "Node 1.1.3", null, this ),
+    ];
+    var _granchild_nodes_211 = [
+        new NodeViewModel( "Node 2.1.1" ),
+        new NodeViewModel( "Node 2.1.2" ),
+        new NodeViewModel( "Node 2.1.3" ),
+    ];
+    var _granchild_nodes_311 = [
+        new NodeViewModel( "Node 3.1.1" ),
+        new NodeViewModel( "Node 3.1.2" ),
+        new NodeViewModel( "Node 3.1.3" ),
+    ];
+
+    var _child_nodes_11 = [
+        new NodeViewModel( "Node 1.0", _granchild_nodes_111, this ),
+        new NodeViewModel( "Node 1.1", null, this ),
+        new NodeViewModel( "Node 1.2", null, this ),
+        new NodeViewModel( "Node 1.3", null, this ),
+    ];
+    var _child_nodes_21 = [
+        new NodeViewModel( "Node 2.0", _granchild_nodes_211 ),
+        new NodeViewModel( "Node 2.1"),
+        new NodeViewModel( "Node 2.2" ),
+        new NodeViewModel( "Node 2.3" )
+    ];
+    var _child_nodes_31 = [
+        new NodeViewModel( "Node 3.1", _granchild_nodes_311  ),
+        new NodeViewModel( "Node 3.2" ),
+        new NodeViewModel( "Node 3.3" ),
+    ];
+
+
+    this.DefaultNodeCollection = ko.observableArray([
+        new NodeViewModel( "Node 1", _child_nodes_11, this ),
+        new NodeViewModel( "Node 2", _child_nodes_21, this ),
+        new NodeViewModel( "Node 3", _child_nodes_31, this ),
+        new NodeViewModel( "Node 4", null, this ),
+    ]);
+
+
+1:12 PM 4/21/2017
+    // data nodes
+    //  this.DefaultNodeCollection = ko.observableArray( [] );
+    //this.SetupDefaultData = ko.computed( function ()
+    //{
+    //    var _level_one_count = Math.round( Math.random() * 10 );
+    //    //  console.debug( "_level_one_count", _level_one_count );
+    //    if ( _level_one_count < 1 )
+    //    {
+    //        _level_one_count = 1;
+    //    }
+    //    console.debug( "_level_one_count", _level_one_count );
+
+    //    for ( var i = 0; i < _level_one_count ; i++ )
+    //    {   //  console.debug( "i =", i );
+    //        var _level_one_node = new NodeViewModel( "Node " + i, [], null);
+
+    //        var _level_two_count = Math.round( Math.random() * 10 );
+    //        if ( _level_one_count < 1 )
+    //        {
+    //            _level_one_count = 1;
+    //        }
+
+    //        for ( var j = 0; j < _level_one_count ; j++ )
+    //        {   //  
+    //            console.debug( "j =", j );
+    //            var _level_two_node = new NodeViewModel( "Node " + j, [], _level_one_node );
+    //            _level_one_node.NodesCollection.push( _level_two_node );
+    //        }
+
+    //        console.debug( "_level_one_node", _level_one_node.NodesCollection() );
+    //        this.DefaultNodeCollection.push( _level_one_node );
+    //    }
+    //    return;
+    //}, this );
