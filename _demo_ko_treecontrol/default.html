@@ -47,7 +47,7 @@
         <div class="NodePanel">
             <div class="Node" data-bind="attr: { id: ID }, css: { 'NodeChecked' : IsChecked }">
                 <img data-bind="css: { 'NodeOpenCloseImage': HasNodesCollection, 'HideNodeIcon' : NodeStateImageDisplayed },
-                    attr: { src: NodeStateImage }, click: ShowHideChildCollection, clickBubble: false" />
+                    attr: { src: NodeStateImage }, click: ShowHide_ChildCollection, clickBubble: false" />
 			    <label data-bind="attr: { for: CheckBoxId,  title: TitleText }, event: { change: CheckThisItem, click: HandleClickChangeEvent }, 
                     changeBubble:false, clickBubble: false">
 				    <input type="checkbox" data-bind="visible: ShowCheckBox, checked: IsCheckedAttribute, attr: { id: CheckBoxId, checked: IsChecked }" />
@@ -56,7 +56,10 @@
                     <span class="bolded" data-bind="visible: $root.DEBUGFLAG, text: IsChecked"></span>
 			    </label>
             </div>
-            <div class="NodeCollectionPanel" data-bind="visible: ShowNodeCollection, attr: { id: NodesCollectionID }, template: { foreach: NodesCollection, name: 'KO-Node-Template'}"></div>
+            <div class="NodeCollectionPanel" data-bind="visible: ShowNodeCollection, 
+            attr: { id: NodesCollectionID }, 
+            css: { 'NodeCollectionPanelChecked' : IsChecked },
+            template: { foreach: NodesCollection, name: 'KO-Node-Template'}"></div>
         </div>
     </script>
 

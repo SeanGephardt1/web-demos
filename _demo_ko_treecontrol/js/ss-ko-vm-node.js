@@ -24,15 +24,9 @@ function NodeViewModel( displayText, childNodes,  parent_vm  )
     this.HasNodesCollection = ko.observable( false );
     this.ShowNodeCollection = ko.observable( false );
 
+    this.ParentNode = ko.observable();
     this.NodesCollectionID = ko.pureComputed( function () { return "ss-nodes-id-" + Math.random().toPrecision( 5 ).replace( ".", "" ); }, this );
     this.NodesCollection = ko.observableArray( childNodes );
-
-    //  this.ParentViewModel = ko.observable();
-    //  console.debug( this.ID(), "parent_vm", parent_vm );
-    //  this.ParentNode = ko.observable( parent_vm || undefined );
-    this.ParentNode = ko.observable();
-    //  console.debug( this.ID(), "ParentNode", this.ParentNode() );
-    //  console.debug( "this.NodesCollection().forEach" );
     this.NodesCollection().forEach( function ( v, i, a )
     {
         //  console.debug( i, v.constructor.name, _self.constructor.name );
@@ -40,7 +34,6 @@ function NodeViewModel( displayText, childNodes,  parent_vm  )
         //  console.debug( i, v.DisplayText(), v.ParentNode().DisplayText() );
         return;
     } );
-
     this.Compute_NodesCollection = ko.computed( function ()
     {   //  console.debug( "Compute_NodesCollection", this.NodesCollection().length );
         if ( this.NodesCollection().length > 0 )
@@ -56,7 +49,7 @@ function NodeViewModel( displayText, childNodes,  parent_vm  )
         //  console.debug(" this.HasNodesCollection", this.DisplayText(), this.NodesCollection().length, this.HasNodesCollection());
         return;
     }, this );
-    this.ShowHideChildCollection = function ( vm, ev )
+    this.ShowHide_ChildCollection = function ( vm, ev )
     {   //  console.debug( "ShowHideChildCollection", vm.ID(), vm.NodesCollection().length, vm.ShowNodeCollection() );
         if ( vm.NodesCollection().length == 0 )
         {
@@ -148,12 +141,12 @@ function NodeViewModel( displayText, childNodes,  parent_vm  )
             this.SetNodesCollectionCheckedStatus();
         }
 
+        //  CHANGE TO BUSINESS RULES
         //  check for parentNode() or root node viewModel
         if ( this.ParentNode() !== undefined )
         {
             this.SetParentNodedCheckedStatus();
         }
-
         return;
     };
     // set this vm.NodesCollection items
@@ -174,30 +167,48 @@ function NodeViewModel( displayText, childNodes,  parent_vm  )
         } );
         return;
     };
-    this.SetParentNodedCheckedStatus = function ()
-    {
-        //  console.debug( "this.SetParentNodedCheckedStatus", this.ParentNode().DisplayText(), this.ParentNode().IsChecked(), this.IsChecked() );
 
-        var _temp_flag = false;
+    //  BUSINESS RULES NEEDED HERE
+    //  currently, recurses upward to check all parent nodes
+    this.SetParentNodedCheckedStatus = function ()
+    {   //  console.debug( "this.SetParentNodedCheckedStatus", this.ParentNode().DisplayText(), this.ParentNode().IsChecked(), this.IsChecked() );
+        if ( this.ParentNode() == undefined )
+        {
+            return;
+        }
+
+        var _temp_count = 0;
+        var _pnode_child_count = this.ParentNode().NodesCollection().length;
+        //  console.debug( "_pnode_child_count", _pnode_child_count, "this.ParentNode().NodesCollection().length", this.ParentNode().NodesCollection().length );
+
         this.ParentNode().NodesCollection().forEach( function ( v, i, a )
         {   //, _self.DisplayText(), _self.IsChecked() 
             //  console.debug( "parentViewModel.NodesCollection", i, _temp_flag, v.DisplayText(),  v.IsChecked());
             if ( v.IsChecked() == true )
             {
-                _temp_flag = true;
+                _temp_count++;
             }
             return;
         } );
-        this.ParentNode().IsChecked( _temp_flag );
+
+        //  console.debug("_temp_count, _pnode_child_count", _temp_count, _pnode_child_count );
+        if ( _temp_count == _pnode_child_count )
+        {
+            this.ParentNode().IsChecked( true );
+        }
+        else
+        {
+            this.ParentNode().IsChecked( false );
+        }
+        _temp_count = 0;
 
         //  console.debug( "this.SetParentNodedCheckedStatus", this.ParentNode().DisplayText(), this.ParentNode().IsChecked(), this.IsChecked() );
-
         //  console.debug( "this.ParentNode().ParentNode()", this.ParentNode().ParentNode() );
+        //  rules needed here:
         if ( this.ParentNode().ParentNode() !== undefined )
         {
             this.ParentNode().SetParentNodedCheckedStatus();
         }
-
         return;
     };
     return;

@@ -1,7 +1,6 @@
 /// <reference path="knockout-3.4.2.js" />
 /// "ScopeSelectorViewModel" ViewModel V.1.0.0
 "use strict";
-
 function ScopeSelectorViewModel(demoName, debugFlag, featureFlag) {
     var _self = this;
     this.ID = ko.pureComputed(function() { return "id-" + Math.random().toPrecision(5).replace(".", ""); }, this);
@@ -80,11 +79,14 @@ function ScopeSelectorViewModel(demoName, debugFlag, featureFlag) {
     }, this );
     this.SortNodesCollection = function ( vm, ev )
     {
-        console.debug( "this.SortNodesCollection", vm.ID(), ev.type );
+        console.debug( "this.SortNodesCollection", vm.ID(), vm.SearchBoxValue() );
+
+
         return true;
     };
 
     // counting selected
+    this._temp_count = 0;
     this.SelectedNodesCount = ko.observable( 0 );
     this.SelectedNodesCountText = ko.observable( "" );
     this.Compute_SelectedNodesCountText = ko.computed( function ()
@@ -116,8 +118,6 @@ function ScopeSelectorViewModel(demoName, debugFlag, featureFlag) {
         this.SelectedNodesCountText( _number_text + " " + _item + " " + _selected );
         return;
     }, this );
-
-    this._temp_count = 0;
     this.CountCheckedNodes = function ( nodeCollection )
     {   //  console.debug( "_self._temp_count", _self._temp_count );
         nodeCollection.forEach( function ( v, i, a )
@@ -147,8 +147,6 @@ function ScopeSelectorViewModel(demoName, debugFlag, featureFlag) {
     }, this );
 
 
-
-
     // Buttons handlers
     this.Click_SaveButton = function ( vm, ev )
     {
@@ -165,16 +163,16 @@ function ScopeSelectorViewModel(demoName, debugFlag, featureFlag) {
     // opens first node, for three levels
     this.ExpandFirstNode = function ()
     {   //  console.debug( "this.ExpandFirstNode::MAY NOT BE NEEDED" );        
-        this.DefaultNodeCollection()[0].ShowHideChildCollection( this.DefaultNodeCollection()[0] );
+        this.DefaultNodeCollection()[0].ShowHide_ChildCollection( this.DefaultNodeCollection()[0] );
         //  this.DefaultNodeCollection()[0].IsChecked( true );
 
-        this.DefaultNodeCollection()[0].NodesCollection()[0].ShowHideChildCollection( this.DefaultNodeCollection()[0].NodesCollection()[0] );
+        this.DefaultNodeCollection()[0].NodesCollection()[0].ShowHide_ChildCollection( this.DefaultNodeCollection()[0].NodesCollection()[0] );
         //  this.DefaultNodeCollection()[0].NodesCollection()[0].IsChecked( true );
 
-        this.DefaultNodeCollection()[0].NodesCollection()[0].NodesCollection()[0].ShowHideChildCollection( this.DefaultNodeCollection()[0].NodesCollection()[0].NodesCollection()[0] );
+        this.DefaultNodeCollection()[0].NodesCollection()[0].NodesCollection()[0].ShowHide_ChildCollection( this.DefaultNodeCollection()[0].NodesCollection()[0].NodesCollection()[0] );
         //  this.DefaultNodeCollection()[0].NodesCollection()[0].NodesCollection()[0].IsChecked( true );
 
-        this.DefaultNodeCollection()[0].NodesCollection()[0].NodesCollection()[0].NodesCollection()[0].ShowHideChildCollection( this.DefaultNodeCollection()[0].NodesCollection()[0].NodesCollection()[0].NodesCollection()[0] );
+        this.DefaultNodeCollection()[0].NodesCollection()[0].NodesCollection()[0].NodesCollection()[0].ShowHide_ChildCollection( this.DefaultNodeCollection()[0].NodesCollection()[0].NodesCollection()[0].NodesCollection()[0] );
         //  this.DefaultNodeCollection()[0].NodesCollection()[0].NodesCollection()[0].NodesCollection()[0].IsChecked( true );
 
         //window.setTimeout( function ()
@@ -185,7 +183,7 @@ function ScopeSelectorViewModel(demoName, debugFlag, featureFlag) {
 
         return;
     };
-    //  this.ExpandFirstNode();
+    this.ExpandFirstNode();
 
     //  Handle All Clicks on the body element, return false. <body data-bind="event: { click: CloseAll }, clickBubble: false">
     this.CloseAll = function ( viewModel, event )
