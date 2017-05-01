@@ -1,0 +1,32 @@
+    //this._random_icon_array = [
+    //    "svg/ADFS.svg",
+    //    "svg/DatabaseCache.svg",
+    //    "svg/DatabaseSQLServer.svg",
+    //    "svg/DirectorySync.svg",
+    //    "svg/GeoReplicationStandard.svg",
+    //    "svg/LocalNetwork.svg",
+    //    "svg/Server.svg",
+    //    "svg/ServerCloud.svg",
+    //    "svg/ServerFarm.svg",
+    //    "svg/ServerProxy.svg",
+    //    "svg/VPNSiteToSite.svg",
+    //];
+
+    //this.RandomIcon = ko.computed( function ()
+    //{   //  console.debug( "RandomIcon" );
+    //    var _random = Math.round( Math.random() * this._random_icon_array.length );
+
+    //    if ( _random == this._random_icon_array.length )
+    //    {
+    //        _random = Math.round( Math.random() * this._random_icon_array.length - 1 );
+    //    }
+
+    //    if ( _random < 0 )
+    //    {
+    //        _random = 0;
+    //    }
+
+    //    var _icon = this._random_icon_array[_random];
+    //    this.IconValue( _icon );
+    //    return;
+    //}, this );
