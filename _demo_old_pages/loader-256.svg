@@ -1,0 +1,26 @@
+<svg version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     x="0px" y="0px" width="256px" height="256px" viewBox="0 0 256 256" >    <!--<rect x="0" y="0" height="256" width="256" stroke="rgba(0,0,0,1)" fill="rgba(224,224,224,0.1)"/>
+  <rect x="0" y="0" height="128" width="128" stroke="none" fill="rgba(255,0,0,0.1)"/>
+  <rect x="128" y="0" height="128" width="128" stroke="none" fill="rgba(255,255,0,0.1)"/>
+  <rect x="0" y="128" height="128" width="128" stroke="none" fill="rgba(0,255,0,0.1)"/> 
+  <rect x="128" y="128" height="128" width="128" stroke="none" fill="rgba(0,0,255,0.11)"/>-->    
+  
+  <g id="MsftBackground" stroke="rgba(0,0,0,0)" fill="rgba(0,128,190,1)">
+    <animateTransform attributeName="transform" attributeType="XML"
+      type="rotate" from="0 128 128" to="360 128 128"
+      begin="0s" dur="1s" repeatCount="5"/>     
+
+    <!-- centered -->
+    <!--<circle cx="128" cy="128" r="16" fill="rgba(190,190,190,0.4)" stroke="none"></circle>-->  
+
+    <!-- circle of circles, starting top center, clockwise -->
+    <circle cx="128" cy="32" r="16" ></circle> 
+    <circle cx="192" cy="64" r="16"></circle>
+    <circle cx="224" cy="128" r="16"></circle>
+    <circle cx="192" cy="192" r="16"></circle>
+    <circle cx="128" cy="224" r="16"></circle>
+    <circle cx="64" cy="192" r="16"></circle>
+    <circle cx="32" cy="128" r="16"></circle>
+    <circle cx="64" cy="64" r="16"></circle>           
+  </g>
+</svg>

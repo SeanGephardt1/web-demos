@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>SVG CSS Spinner Test</title>
+	<meta charset="utf-8" />
+    <style>
+.LoaderAnimation
+{
+    /*border: solid 1px red;*/
+    animation: LoadingSpinner 1s linear infinite;
+}
+/* Standard syntax */
+@keyframes LoadingSpinner
+{
+    0%
+    {
+        /*background-color: red;*/
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        /*background-color: blue;*/
+        transform:rotate(360deg);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <img class="LoaderAnimation" src="loader.svg" width="100"/>
+</body>
+</html>
