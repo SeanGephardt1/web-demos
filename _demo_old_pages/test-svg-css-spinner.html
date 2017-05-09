@@ -4,29 +4,107 @@
     <title>SVG CSS Spinner Test</title>
 	<meta charset="utf-8" />
     <style>
-.LoaderAnimation
-{
-    /*border: solid 1px red;*/
-    animation: LoadingSpinner 1s linear infinite;
-}
-/* Standard syntax */
-@keyframes LoadingSpinner
-{
-    0%
-    {
-        /*background-color: red;*/
-        transform: rotate(0deg);
-    }
-    100%
-    {
-        /*background-color: blue;*/
-        transform:rotate(360deg);
-    }
-}
+        .LoaderAnimation
+        {   /*border: solid 1px red;*/
+            animation: LoadingSpinner 1s linear infinite;
+        }
+        @keyframes LoadingSpinner
+        {
+            0%
+            {
+                /*background-color: red;*/
+                transform: rotate(0deg);
+            }
+            100%
+            {
+                /*background-color: blue;*/
+                transform:rotate(360deg);
+            }
+        }
 
+        .FullPage
+        {
+            border: solid 0px rgba(0,0,0,1);
+            position:absolute;
+            top:0px;
+            left:0px;
+            right:0px;
+            bottom:0px;
+            background-color: rgba(0,0,0,0.95);
+            display: none;
+            text-align:center;
+        }
+        .Centered
+        {
+            vertical-align:top;
+            margin-top:250px;
+        }
+        .CloseButton
+        {
+             float:right;
+        }
+        .CloseButton > svg
+        {
+            cursor:pointer;
+            float:right;
+            width:32px;
+            border: solid 2px rgba(0,128,190,1);
+            border-radius:22px;
+            margin-top:8px;
+            margin-right:8px;
+            padding:5px;
+        }
+        .CloseButton > svg:hover
+        {
+            border: solid 2px rgba(0,190,255,1);
+            background-color: rgba(0,64,128,1);
+            stroke: rgba(255,255,255,1);
+        }
+        .CloseButton > svg > path
+        { 
+            stroke: rgba(0,128,190,1);
+            stroke-width:1;
+        }
     </style>
+    <script type="text/javascript">
+        function Click_ShowFullPageSpinner()
+        {
+            console.debug("Click_ShowFullPageSpinner");
+            var _fps = document.getElementById( "FullPageDiv" );
+            _fps.style.display = "block";
+            return;
+        }
+
+        function Click_CloseFullPageSpinner()
+        {
+            console.debug( "Click_CloseFullPageSpinner" );
+            var _fps = document.getElementById( "FullPageDiv" );
+            _fps.style.display = "none";
+            return;
+        }
+    </script>
 </head>
 <body>
-    <img class="LoaderAnimation" src="loader.svg" width="100"/>
+    <div>
+        <h1>SVG CSS Spinner Demo</h1>
+        <h5>This demo uses a SVG in a IMG element, and CSS to "spin" the SVG IMG.</h5>
+        <button id="FullPageSpinner1" onclick="Click_ShowFullPageSpinner()">Show full page spinner</button>
+    </div>
+    <div>
+        <img class="LoaderAnimation" src="loader.svg" width="128"/>
+        <img class="LoaderAnimation" src="loader.svg" width="64"/>
+        <img class="LoaderAnimation" src="loader.svg" width="32"/>
+        <img class="LoaderAnimation" src="loader.svg" width="16"/>
+        <img class="LoaderAnimation" src="loader.svg" width="8"/>
+    </div>
+    <div id="FullPageDiv" class="FullPage">
+        <img class="LoaderAnimation Centered" src="loader.svg" width="256"/>
+        <div class="CloseButton" onclick="Click_CloseFullPageSpinner()">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+                x="0px" y="0px" width="32px" height="32px" viewBox="0 0 16 16" style="enable-background:new 0 0 32 32;" >
+                <path d="M8.699,8L14,13.309L13.309,14L8,8.699L2.691,14L2,13.309L7.301,8L2,2.691L2.691,2L8,7.301L13.309,2L14,2.691L8.699,8z"/>
+            </svg>
+        </div>
+    </div>
 </body>
 </html>
