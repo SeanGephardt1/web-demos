@@ -28,3 +28,13 @@ function ObjectCompare( obj1, obj2 )
     }
     return true;
 };
+
+/* Console.log objects */
+function DebugObject( o )
+{
+    Object.keys( o ).forEach( function ( key )
+    {
+        console.log( key, "=", o[key] );
+    } );
+    return;
+}

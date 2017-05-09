@@ -1,5 +1,4 @@
 "use strict";
-
 ( function ()
 {
 	try
@@ -11,7 +10,7 @@
 
 		window.document.addEventListener( "DOMContentLoaded", function ( str )
 		{
-			console.log( "DOMContentLoaded" );
+			console.log( "DOMContentLoaded", str );
 			return;
 		} )
 	}

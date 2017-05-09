@@ -3,16 +3,6 @@ copyright 2014 Sean Gephardt
 Simple helper utility objects and methods.
 */
 
-/* Console.log objects */
-function DebugObject( o )
-{
-	Object.keys( o ).forEach( function ( key )
-	{
-		console.log( key, "=", o[key] );
-	} );
-	return;
-}
-
 /* 
 Returns a variety of random data types 
 i.e.  usage - 
