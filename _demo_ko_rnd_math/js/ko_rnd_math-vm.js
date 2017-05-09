@@ -79,7 +79,7 @@ function ChildViewModel(title, parentViewModel) {
     //  though it needs deeper investigation
     try {
         if (parentViewModel == undefined) {
-            var _e = new Error("ParentViewModel not assigned to this ChildViewModel");
+            var _e = new Error("BY DESIGN EXCEPTION HANDLING - ParentViewModel not assigned to this ChildViewModel");
             this.Error(true);
             this.ErrorMessage(_e.message);
             throw _e;
