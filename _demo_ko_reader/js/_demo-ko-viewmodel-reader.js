@@ -60,9 +60,24 @@ function ReaderViewModel( demoTitle, debugFlag )
 
     // Change Font
     this.FontFamilyList = ko.observableArray( [
-        "arial", "tahoma", "verdana","segoe ui", "gothic"
+        "Arial", "Tahoma", "Verdana", "Segoe UI", "Calibri", "Onyx", "Britannic", "Blackadder ITC", "Times New Roman"
     ] );
     this.SelectedFontFamily = ko.observable( this.FontFamilyList()[0] );
+
+    // Line Height
+    this.LineHeightList = ko.observableArray( [
+        "80%", "90%", "100%", "125%", "150%", "200%","normal"
+    ] );
+    this.SelectedLineHeight = ko.observable( this.LineHeightList()[this.LineHeightList().length-1] );
+
+    // letter spacing
+    this.LetterSpaceList = ko.observableArray( [
+        "-1px","-0.5px","0px","0.5px","1px","2px", "normal"
+    ] );
+    this.SelectedLetterSpace = ko.observable( this.LetterSpaceList()[this.LetterSpaceList().length-1] );
+
+
+
 
 
     //  HANDLE ALL CLICKS ON THE BODY ELEMENT, RETURN FALSE.

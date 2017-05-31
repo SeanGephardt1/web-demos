@@ -17,15 +17,16 @@
 </head>
 <body data-bind="event: { click: OnClick_CloseAll }, clickBubble: false">
 
-    <div><span class="bolded">DEBUGFLAG: </span><span data-bind="text: DEBUGFLAG"></span></div>
-    <div><span class="bolded">ID: </span><span data-bind="text: ID"></span></div>
-    <div><span class="bolded">Title: </span><span data-bind="text: Title"></span></div>
+    <div data-bind="visible: DEBUGFLAG">
+        <div><span class="bolded">DEBUGFLAG: </span><span data-bind="text: DEBUGFLAG"></span></div>
+        <div><span class="bolded">ID: </span><span data-bind="text: ID"></span></div>
+        <div><span class="bolded">Title: </span><span data-bind="text: Title"></span></div>
+    </div>
 
     <div class="MainToolBar">
         <div class="ToolBarOption">
             <span class="ToolBarOptionTitle">Change text size:</span>
             <span class="ToolBarOptionTitle bolded" data-bind="text: CurrentTextSize"></span>
-
             <button class="ToolBarOptionButton" data-bind="click: OnClick_IncreaseTextSize, clickBubble:false">+</button>
             <button class="ToolBarOptionButton" data-bind="click: OnClick_DecreaseTextSize, clickBubble:false">-</button>
         </div>
@@ -34,9 +35,24 @@
             <span class="ToolBarOptionTitle bolded" data-bind="text: SelectedFontFamily"></span>
             <select  data-bind="options: FontFamilyList, value: SelectedFontFamily, changeBubble: false"></select>
         </div>
+        <div class="ToolBarOption">
+            <span class="ToolBarOptionTitle">Line Height:</span>
+            <span class="ToolBarOptionTitle bolded" data-bind="text: SelectedLineHeight"></span>
+            <select  data-bind="options: LineHeightList, value: SelectedLineHeight, changeBubble: false"></select>
+        </div>
+        <div class="ToolBarOption">
+            <span class="ToolBarOptionTitle">Letter spacing:</span>
+            <span class="ToolBarOptionTitle bolded" data-bind="text: SelectedLetterSpace"></span>
+            <select  data-bind="options: LetterSpaceList, value: SelectedLetterSpace, changeBubble: false"></select>
+        </div>
     </div>
 
-    <div class="MainPageLayout" data-bind="style: {'font-size': CurrentTextSize, 'font-family': SelectedFontFamily }">
+    <div class="MainPageLayout" data-bind="style: {
+        'font-size': CurrentTextSize, 
+        'font-family': SelectedFontFamily,
+        'line-height': SelectedLineHeight,
+        'letter-spacing': SelectedLetterSpace
+        }">
         <div class="DivBorderPlaceHolder">
         <h1>HTML Ipsum Presents a static HTML test page for any purpose</h1>
 
