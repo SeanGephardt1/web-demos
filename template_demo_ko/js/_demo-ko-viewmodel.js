@@ -38,7 +38,8 @@ function MainViewModel(demoName, debugFlag) {
 
     //  Handle All Clicks on the body element, return false.
     //  <body data-bind="event: { click: CloseAllFlyouts}, clickBubble: false">
-    this.CloseAll = function(viewModel, event) {
+    this.OnClick_CloseAll = function ( viewModel, event )
+    {
         if (this.DEBUGFLAG() == true) {
             console.debug("this.CloseAll", viewModel, event);
         }
