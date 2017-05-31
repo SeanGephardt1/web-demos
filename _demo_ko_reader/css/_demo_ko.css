@@ -7,7 +7,7 @@ body
 	background-color: rgba(0,0,0,1);
 	color:rgba(255,255,255,1);
 	font-family:'Segoe UI';
-	font-size:small;
+	font-size:medium;
 }
 a
 {
@@ -26,12 +26,67 @@ a:visited
 }
 div
 {
-    border: solid 1px rgba(128,128,128,1);
+    border: solid 1px rgba(32,32,32,1);
     padding:10px;
-    margin-bottom:10px;
 }
 span.bolded
 {
     font-weight:700;
     color:rgba(128,128,128,1);
+}
+
+/* custom for this demo */
+.MainToolBar
+{
+    border: solid 1px rgba(128,128,128,1);
+    padding:10px;
+    margin-bottom:10px;
+    margin-top:10px;
+}
+.ToolBarOption
+{
+    display:inline-block;
+    border: solid 1px rgba(128,128,128,1);
+    font-size:larger;
+    vertical-align:top;
+    min-height:50px;
+}
+.ToolBarOptionTitle
+{
+    display:inline-block;
+    border: solid 0px rgba(128,128,128,1);
+    vertical-align:middle;
+}
+.ToolBarOptionButton
+{
+    display:inline-block;
+    border: solid 1px rgba(128,128,128,1);
+    border-radius:3px;
+    min-width:32px;
+    min-height:16px;
+    padding:4px;
+    margin:0px;
+    text-align:center;
+    vertical-align:top;
+    cursor:pointer;
+}
+.ToolBarOptionButton:hover
+{
+    border: solid 1px rgba(255,255,255,1);
+    background-color: rgba(64,64,64,1);
+}
+
+.MainPageLayout
+{
+    border: solid 1px rgba(192,192,192,1);
+    padding:10px;
+    margin-bottom:10px;
+    /*line-grid:create;*/
+    line-height:normal;
+    /*line-snap:contain;*/
+}
+.DivBorderPlaceHolder
+{
+    border: 0px;
+    padding:0px;
 }
