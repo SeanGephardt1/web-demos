@@ -1,0 +1,37 @@
+﻿*
+{
+    box-sizing: border-box;
+}
+body
+{
+	background-color: rgba(0,0,0,1);
+	color:rgba(255,255,255,1);
+	font-family:'Segoe UI';
+	font-size:small;
+}
+a
+{
+	color:rgba(192,192,192,1);
+	text-decoration:none;
+}
+a:hover
+{
+	color:rgba(255,255,255,1);
+	text-decoration:none;
+}
+a:visited
+{
+	color:rgba(160,160,160,1);
+	text-decoration:none;
+}
+div
+{
+    border: solid 1px rgba(128,128,128,1);
+    padding:10px;
+    margin-bottom:10px;
+}
+span.bolded
+{
+    font-weight:700;
+    color:rgba(128,128,128,1);
+}
