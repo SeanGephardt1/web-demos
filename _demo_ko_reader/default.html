@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Knockout.js "Reader" demo</title>
+    <!-- order is important! -->
+    <!-- first: stylesheet -->
+    <link href="css/_demo_ko.css" rel="stylesheet" />
+    <!-- second: javascript libraries-->
+    <script src="script/knockout-3.4.2.js" type="text/javascript"></script>
+    <!-- third: json data-->
+    <script src="js/_demo_ko_data.js" type="text/javascript"></script>
+    <!-- forth: knockout.js viewmodels -->
+    <script src="js/_demo-ko-viewmodel-reader.js" type="text/javascript"></script>
+    <!-- fifth: "main" methods -->
+    <script src="js/_demo-main.js" type="text/javascript"></script>
+</head>
+<body data-bind="event: { click: OnClick_CloseAll }, clickBubble: false">
+
+    <div data-bind="visible: DEBUGFLAG">
+        <div><span class="bolded">DEBUGFLAG: </span><span data-bind="text: DEBUGFLAG"></span></div>
+        <div><span class="bolded">ID: </span><span data-bind="text: ID"></span></div>
+        <div><span class="bolded">Title: </span><span data-bind="text: Title"></span></div>
+    </div>
+
+    <div class="MainToolBar">
+        <div class="ToolBarOption">
+            <span class="ToolBarOptionTitle">Change text size:</span>
+            <span class="ToolBarOptionTitle bolded" data-bind="text: CurrentTextSize"></span>
+            <button class="ToolBarOptionButton" data-bind="click: OnClick_IncreaseTextSize, clickBubble:false">+</button>
+            <button class="ToolBarOptionButton" data-bind="click: OnClick_DecreaseTextSize, clickBubble:false">-</button>
+        </div>
+        <div class="ToolBarOption">
+            <span class="ToolBarOptionTitle">Change font:</span>
+            <span class="ToolBarOptionTitle bolded" data-bind="text: SelectedFontFamily"></span>
+            <select  data-bind="options: FontFamilyList, value: SelectedFontFamily, changeBubble: false"></select>
+        </div>
+        <div class="ToolBarOption">
+            <span class="ToolBarOptionTitle">Line Height:</span>
+            <span class="ToolBarOptionTitle bolded" data-bind="text: SelectedLineHeight"></span>
+            <select  data-bind="options: LineHeightList, value: SelectedLineHeight, changeBubble: false"></select>
+        </div>
+        <div class="ToolBarOption">
+            <span class="ToolBarOptionTitle">Letter spacing:</span>
+            <span class="ToolBarOptionTitle bolded" data-bind="text: SelectedLetterSpace"></span>
+            <select  data-bind="options: LetterSpaceList, value: SelectedLetterSpace, changeBubble: false"></select>
+        </div>
+    </div>
+
+    <div class="MainPageLayout" data-bind="style: {
+        'font-size': CurrentTextSize, 
+        'font-family': SelectedFontFamily,
+        'line-height': SelectedLineHeight,
+        'letter-spacing': SelectedLetterSpace
+        }">
+        <div class="DivBorderPlaceHolder">
+        <h1>HTML Ipsum Presents a static HTML test page for any purpose</h1>
+
+        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+
+        <h2>Header Level 2</h2>
+
+        <ol>
+            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+            <li>Aliquam tincidunt mauris eu risus.</li>
+        </ol>
+
+        <blockquote>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
+        </blockquote>
+
+        <h3>Header Level 3</h3>
+
+        <ul>
+            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+            <li>Aliquam tincidunt mauris eu risus.</li>
+        </ul>
+
+        <h4>Header Level 4</h4>
+
+        <pre>
+        <code>
+            #header h1 a 
+            { 
+	            display: block; 
+	            width: 300px; 
+	            height: 80px; 
+            }
+            function ShowTheWorld()
+            {
+	            return alert("THIS IS FUN");	
+            }
+            </code>
+        </pre>
+
+        <h5>Header Level 5</h5>
+        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+
+        <h6>Header Level 6</h6>
+        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+        </div>
+    </div>
+
+    <!--<div data-bind="template: { foreach: ChildCollection, name: 'KO-ChildCollection-Template'}"></div>-->
+    <!-- template example -->
+    <script type="text/html" id="KO-ChildCollection-Template">
+        <!--<div>
+        <div data-bind="visible: Error, text: ErrorMessage" style="color:red"></div>
+        <span class="bolded">ID: </span>
+        <span data-bind="text: ID"></span>,
+        <span class="bolded">Title: </span>
+        <span data-bind="text: Title"></span>
+        <br/>
+        <span class="bolded">$parent.ID: </span>
+        <span data-bind="text: $parent.ID"></span>
+        <span class="bolded">$parent.Title: </span>
+        <span data-bind="text: $parent.Title"></span>,
+        <br/>
+        <span class="bolded">ParentViewModel().ID: </span>
+        <span data-bind="text: ParentViewModel().ID"></span>,
+        <span class="bolded">ParentViewModel().Title: </span>
+        <span data-bind="text: ParentViewModel().Title"></span>
+        </div>-->
+    </script>
+</body>
+</html>

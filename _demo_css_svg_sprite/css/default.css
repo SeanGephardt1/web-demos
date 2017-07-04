@@ -1,0 +1,123 @@
+﻿*
+{
+    box-sizing: border-box;
+}
+body
+{
+    background-color: rgba(32, 32, 32, 1);
+    color: rgba(224, 224, 224, 1);
+    font-family: 'Segoe UI', 'Tahoma', Arial;
+}
+a, a:visited
+{
+	color:rgba(255,255,255,1);
+}
+
+.TableDiv
+{
+	border: solid 10px rgba(64,64,64,1);
+	padding:10px;
+	margin-top:20px;
+}
+.TableDiv > span, .TableDiv > a
+{
+	display:block;
+}
+
+.svg-sprite-1
+{
+	background-image: url('../svg/svg-sprite-ids.svg');
+	background-position-x: 0px;
+	/*background-position-y:-256px;*/
+	background-repeat:no-repeat;
+	background-size: 256px 2048px;
+	height:64px;
+	width:64px;
+	padding:10px;
+	margin:10px;
+    -moz-transition: all 200ms ease-in-out 20ms;
+    -o-transition: all 200ms ease-in-out 20ms;
+    -webkit-transition: all 200ms ease-in-out 20ms;
+    transition: all 200ms ease-in-out 20ms;
+}
+.ColorOne
+{
+	background-position-y: 0px;
+}
+.ColorOne:hover
+{
+	background-position-y: -256px;
+}
+.ColorTwo
+{
+	background-position-y: -256px;
+}
+.ColorTwo:hover
+{
+	background-position-y: 0px;
+}
+.ColorThree
+{
+	background-position-y: -512px;
+}
+.ColorThree:hover
+{
+	background-position-y: 0px;
+}
+.ColorFour
+{
+	background-position-y: -768px;
+}
+.ColorFour:hover
+{
+	background-position-y: 0px;
+}
+.ColorFive
+{
+	background-position-y: -1024px;
+}
+.ColorFive:hover
+{
+	background-position-y: 0px;
+}
+.ColorSix
+{
+	background-position-y: -1280px;
+}
+.ColorSix:hover
+{
+	background-position-y: 0px;
+}
+.ColorSeven
+{
+	background-position-y: -1536px;
+}
+.ColorSeven:hover
+{
+	background-position-y: 0px;
+}
+.ColorEight
+{
+	background-position-y: -1792px;
+}
+.ColorEight:hover
+{
+	background-position-y: -1536px;
+}
+
+.svg-block
+{
+	background-image: url('../svg/svg-sprite-g-names.svg');
+	background-position-x: 0px;
+	background-position-y:0px;
+	background-repeat:no-repeat;
+	background-size: 64px 64px;
+	height:64px;
+	width:64px;
+	padding:10px;
+	margin:10px;
+    /*-moz-transition: all 200ms ease-in-out 20ms;
+    -o-transition: all 200ms ease-in-out 20ms;
+    -webkit-transition: all 200ms ease-in-out 20ms;
+    transition: all 200ms ease-in-out 20ms;*/
+}

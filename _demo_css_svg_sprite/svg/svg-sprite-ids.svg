@@ -1,0 +1,11 @@
+﻿<svg  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	  width="64px" height="512px" >
+	<rect y="0" width="64" height="64" fill="#990000" stroke="none"></rect>
+	<rect y="64" width="64" height="64" fill="#FF0000"></rect>
+	<rect y="128" width="64" height="64" fill="#009900"></rect>		
+	<rect y="192" width="64" height="64" fill="#00FF00"></rect>
+	<rect y="255" width="64" height="64" fill="#000099"></rect>
+	<rect y="320" width="64" height="64" fill="#0000FF"></rect>
+	<rect y="384" width="64" height="64" fill="#131313"></rect>
+	<rect y="448" width="64" height="64" fill="#CFCFCF"></rect>
+</svg>
