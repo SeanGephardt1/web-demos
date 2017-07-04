@@ -1,0 +1,40 @@
+﻿<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 width="64px" height="64px" viewBox="0 0 64 64" >
+	<defs>
+		<style>
+			
+		</style>
+		<g id="BlockOne">
+			<rect y="0" width="64" height="64" fill="#990000" ></rect>
+		</g>
+		<g id="BlockTwo">
+			<rect y="0" width="64" height="64" fill="#FF0000"></rect>
+		</g>
+		<g id="BlockThree">
+			<rect y="0" width="64" height="64" fill="#009900"></rect>
+		</g>
+		<g id="BlockFour">
+			<rect y="0" width="64" height="64" fill="#00FF00"></rect>
+		</g>
+		<g id="BlockFive">
+			<rect y="0" width="64" height="64" fill="#000099"></rect>
+		</g>
+		<g id="BlockSix">
+			<rect y="0" width="64" height="64" fill="#0000FF"></rect>
+		</g>
+		<g id="BlockSeven">
+			<rect y="0" width="64" height="64" fill="#131313"></rect>
+		</g>
+		<g id="BlockEight">
+			<rect y="0" width="64" height="64" fill="#CFCFCF"></rect>
+		</g>
+	</defs>
+	<use x="0" y="0" xlink:href="#BlockOne" name="BlockOne"/>
+	<use x="0" y="0" xlink:href="#BlockTwo"/>
+	<use x="0" y="0" xlink:href="#BlockThree"/>
+	<use x="0" y="0" xlink:href="#BlockFour"/>
+	<use x="0" y="0" xlink:href="#BlockFive"/>
+	<use x="0" y="0" xlink:href="#BlockSix"/>
+	<use x="0" y="0" xlink:href="#BlockSeven"/>
+	<use x="0" y="0" xlink:href="#BlockEight"/>
+</svg>

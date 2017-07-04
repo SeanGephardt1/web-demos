@@ -1,13 +1,42 @@
 <html>
 <head>
 	<title id="PageTitle">CSS 3 SVG Sprite Demo</title>	
-    <link href="css/default-2017.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" />
 	<link href="default.html" rel="prefetch"/>
-	<script type="text/javascript" src="js/default.js"></script>
+	<!--<script type="text/javascript" src="js/default.js"></script>-->
 </head>
 <body>
 	<h1>CSS 3 SVG Sprite Demo</h1>
 	<div>In this demo, we are showcasing using SVG files instead of PNG, GIF or JPG files for images, specifically as a 'sprite' - using one SVG file, for mutliple images across several HTML elements.</div>
-	<div>This is a test DIV element</div>
+	<div class="TableDiv">
+		<span>This sample uses CSS :hover to move the background-position-y value, instead of changing standard CSS attributes like background-color.</span>
+		<img class="svg-sprite-1 ColorOne"/>
+		<img class="svg-sprite-1 ColorTwo"/>
+		<img class="svg-sprite-1 ColorThree"/>
+		<img class="svg-sprite-1 ColorFour"/>
+		<img class="svg-sprite-1 ColorFive"/>
+		<img class="svg-sprite-1 ColorSix"/>
+		<img class="svg-sprite-1 ColorSeven"/>
+		<img class="svg-sprite-1 ColorEight"/>
+	</div>
+	<div class="TableDiv">
+		<span>This sample uses SVG &lt;g&gt; elements</span>
+		<img src="svg/svg-sprite-g-names.svg#BlockOne"/>
+		<!--<img class="svg-block"/>
+		<img class="svg-block"/>
+		<img class="svg-block"/>
+		<img class="svg-block"/>
+		<img class="svg-block"/>
+		<img class="svg-block"/>
+		<img class="svg-block"/>-->
+	</div>
+	<div class="TableDiv">
+		<span>This sample uses SVG &lt;g&gt; elements</span>
+	</div>
+	<div class="TableDiv">
+		<a href="svg/svg-sprite.svg">svg-sprite.svg</a>
+		<a href="svg/svg-sprite-ids.svg">svg-sprite-ids.svg</a>
+		<a href="svg/svg-sprite-g-names.svg">svg-sprite-g-names.svg</a>
+	</div>
 </body>
 </html>
