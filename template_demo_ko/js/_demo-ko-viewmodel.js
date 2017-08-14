@@ -6,6 +6,11 @@ function MainViewModel(demoName, debugFlag) {
     var _self = this;
     this.ID = ko.pureComputed(function() { return "id-" + Math.random().toPrecision(5).replace(".", ""); }, this);
     this.Title = ko.observable(demoName || "Demo Title");
+    this.PageTitle = ko.computed( function ()
+    {
+    	document.title = this.Title();
+    	return;
+    }, this ); 
     this.DEBUGFLAG = ko.observable(debugFlag || false);
     this.DebugOutput = ko.pureComputed(function() {
         if (this.DEBUGFLAG() == true) {
