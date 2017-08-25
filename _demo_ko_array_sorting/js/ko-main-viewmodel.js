@@ -1,5 +1,5 @@
-/// <reference path="knockout-3.4.2.js" />
-/// "Main" ViewModel V.1.0.0
+/// <reference path="../script/knockout-3.4.2.js" />
+/// "MainViewModel" ViewModel V.1.0.0
 "use strict";
 function MainViewModel( demoName, debugFlag )
 {
@@ -9,8 +9,6 @@ function MainViewModel( demoName, debugFlag )
     this.DEBUGFLAG = ko.observable( debugFlag || false );
     this.ERROR = ko.observable( false );
     this.ErrorMessage = ko.observable( "No errors" );
-
-
 
     this.SortType = {
         DEFAULT: { text: "default", arrow: "&varr;" },
@@ -46,8 +44,12 @@ function MainViewModel( demoName, debugFlag )
         new ChildViewModel(),
         new ChildViewModel(),
         new ChildViewModel(),
-        new ChildViewModel()
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
+        new ChildViewModel(),
     ] );
+
 
     //  maybe compute this button array based on the data someday
     //  very specific to the "ChildViewModel" used in "this.DataArray"
@@ -84,38 +86,43 @@ function MainViewModel( demoName, debugFlag )
     this.CurrentSort = ko.observable( this.SortType.DEFAULT );
     //  event handler, see template "KO-SortTabButtonArray-Template"
     this.Click_SortByColumnName = function ( vm, ev )
-    {   //  console.debug( "B: Click_SortByColumnName", vm.ColumnName(), _self.CurrentSort() );
-        if ( _self.CurrentSort() == _self.SortType.DEFAULT )
-        { 
-            _self.CurrentSort( _self.SortType.ASC );
-        }
-        else if ( _self.CurrentSort() == _self.SortType.ASC )
-        {
-            _self.CurrentSort( _self.SortType.DESC );
-        }
-        else if ( _self.CurrentSort() == _self.SortType.DESC )
-        {
-            _self.CurrentSort( _self.SortType.ASC );
-        } 
+    {   //  
+    	console.debug( "B: Click_SortByColumnName", vm.ColumnName(), _self.CurrentSort() );
+
 
         // reset sibling buttons
         _self.SortButtonArray().forEach( function ( v, i, a )
         {
             if ( v.ColumnName() !== vm.ColumnName() )
             {
-                v.SortDirection( _self.SortType.DEFAULT );
+            	v.SortDirection( _self.SortType.DEFAULT );
+            	v.LastClicked( false );
             }
             else
             {   //  console.debug( _self.SortedColumn(), v.ColumnName() );
                 if ( _self.SortedColumn() !== v.ColumnName() )
                 {
-                    _self.CurrentSort( _self.SortType.ASC );
+                	_self.CurrentSort( _self.SortType.ASC );
+                	v.LastClicked( true );
                 }
                 _self.SortedColumn( v.ColumnName() );
                 v.SortDirection( _self.CurrentSort() );
             }
             return;
         } );
+
+        if ( _self.CurrentSort() == _self.SortType.DEFAULT )
+        {
+        	_self.CurrentSort( _self.SortType.ASC );
+        }
+        else if ( _self.CurrentSort() == _self.SortType.ASC )
+        {
+        	_self.CurrentSort( _self.SortType.DESC );
+        }
+        else if ( _self.CurrentSort() == _self.SortType.DESC )
+        {
+        	_self.CurrentSort( _self.SortType.ASC );
+        }
 
         //  console.debug( "SORTING:", _self.SortedColumn(), _self.CurrentSort().text );
         _self.SortThisArray( _self.SortedColumn(), _self.CurrentSort() );
@@ -192,7 +199,7 @@ function MainViewModel( demoName, debugFlag )
     // for pagination
     this.PageSizeOptions = ko.observableArray( [3, 5, 10, 20] );
 
-    this._default_page_size = 5;
+    this._default_page_size = 10;
     this.PageSize = ko.observable( this._default_page_size );
     this.NumberOfPages = ko.observable( 0 );
     this.PageNumbers = ko.observableArray( [] );
@@ -272,6 +279,7 @@ function SortButtonViewModel( text, columnName, direction )
     this.Text = ko.observable( text );
     this.ColumnName = ko.observable( columnName );
     this.SortDirection = ko.observable( direction );
+	this.LastClicked = ko.observable(false);
 };
 
 function ChildViewModel()

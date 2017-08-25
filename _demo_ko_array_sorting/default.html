@@ -35,7 +35,7 @@
         <div>
             <span>CurrentPage:</span>
             <span data-bind="text: CurrentPage"></span>
-            <span class="CurrentPage">Current Page: <span data-bind="text: CurrentPage() + 1"></span></span> 
+            <span >Current Page: <span data-bind="text: CurrentPage() + 1"></span></span> 
         </div>
         <div>
             <span>Select a page size</span>
@@ -45,20 +45,23 @@
 
     <div class="SortDivTable">
         <table cellpadding="0" cellspacing="0">
-            <thead>
-                <tr data-bind="template: { foreach: SortButtonArray, name: 'KO-SortTabButtonArray-Template'}"></tr>
-            </thead>
+            <tr>
+                <td colspan="6" class="PagerNav">
+                    <span class="PageButton" data-bind="click: Click_PreviousPage">&larr;</span>
+                    <span data-bind="template: { foreach: PageNumbers , name: 'KO-PageNumberIndex-Template'}"></span>
+                    <span class="PageButton" data-bind="click: Click_NextPage">&rarr;</span>
+                </td>
+            </tr>
+            <tr class="SortTableHeader" data-bind="template: { foreach: SortButtonArray, name: 'KO-SortTabButtonArray-Template'}"></tr>
             <tbody data-bind="template: { foreach: PageDataArray, name: 'KO-DataArray-Template'}"></tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="6" style="text-align:center; padding-top:8px;">
-                        <span class="PageButton" data-bind="click: Click_PreviousPage">&larr;</span>
-                        <span data-bind="template: { foreach: PageNumbers , name: 'KO-PageNumberIndex-Template'}"></span>
-                        <span class="PageButton" data-bind="click: Click_NextPage">&rarr;</span>
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
+            <tr>
+                <td colspan="6"  class="PagerNav">
+                    <span class="PageButton" data-bind="click: Click_PreviousPage">&larr;</span>
+                    <span data-bind="template: { foreach: PageNumbers , name: 'KO-PageNumberIndex-Template'}"></span>
+                    <span class="PageButton" data-bind="click: Click_NextPage">&rarr;</span>
+                </td>
+            </tr>
+       </table>
     </div>
     <!-- end HTML layout -->
     
@@ -70,9 +73,10 @@
 
     <!-- table tab button array template -->
     <script type="text/html" id="KO-SortTabButtonArray-Template">
-        <td data-bind="click: $parent.Click_SortByColumnName">
+        <td data-bind="click: $parent.Click_SortByColumnName, css: {'SortTableHeaderSelected': LastClicked }">
             <span  class="DataKeyName" data-bind="text: Text"></span>
             [<span data-bind="text: SortDirection().text"></span>]
+            [<span data-bind="text: LastClicked"></span>]
             <span  class="DataKeySort" data-bind="html: SortDirection().arrow"></span>
         </td>
     </script>
