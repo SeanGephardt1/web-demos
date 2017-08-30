@@ -4,12 +4,16 @@
 ( function ()
 {
 	console.log( "BEGIN" );
-    try
-    {
-        console.log( "in 'try'" );
+	try
+	{
+		console.log( "in 'try'" );
 
-        var _application_property_bag = {
-        	"RootLink.InnerText": "Sean Gephardt explores react.js",
+		var _application_property_bag = {
+			RootLinks: [
+        		{ RootLink: { InnerText: "Sean Gephardt explores react.js" } },
+				{ RootLink: { InnerText: "Robert Taft explores react.js" } },
+        		{ RootLink: { InnerText: "Jaqueline explores react.js" } }
+			],
         	"SearchLink.InnerText": "Guitars",
         	"UserSwitchList": ["Sean", "Robert", "Jacqueline", "Jon", "Jonah"],
 			"VerticalNavigation": ["Menu","New","All Resources","Your Resources","Virtual Machines","Databases"]

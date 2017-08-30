@@ -25,8 +25,20 @@ body
 	border: solid 1px red;
 	padding:20px;
 	margin-bottom:20px;
+	cursor:pointer;
 }
-
+.RootLinkCss:hover
+{
+	border: solid 1px orange;
+}
+.RootLinkCssExtra
+{
+	border: solid 1px yellow;
+}
+.RootLinkCssExtra:hover
+{
+	border: solid 1px yellow;
+}
 /* Search */
 .SearchPanel
 {
