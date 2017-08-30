@@ -11,7 +11,8 @@
         var _application_property_bag = {
         	"RootLink.InnerText": "Sean",
         	"SearchLink.InnerText": "Guitars",
-			"UserSwitchList": ["Sean", "Robert", "Jacqueline","Jon", "Jonah"],
+        	"UserSwitchList": ["Sean", "Robert", "Jacqueline", "Jon", "Jonah"],
+			"VerticalNavigation": ["Menu","New","All Resources","Your Resources","Virtual Machines","Databases"]
         };
 
     	//  wait for dom to complete and make any databinding or dom changes

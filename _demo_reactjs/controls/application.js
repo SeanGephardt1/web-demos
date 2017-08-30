@@ -6,11 +6,10 @@
 class RootLink extends React.Component
 {
 	render()
-	{
-		console.debug( "RootLink", this.props );
+	{	console.debug( "RootLink", this.props );
 		//	alternation syntax for data-binding
 		//	return React.createElement( 'div', { className: 'SearchPanel' }, `Search: ${this.props.InnerText}` );
-		return React.createElement( 'div', { className: 'RootLinkCss'}, this.props.InnerText );
+		return React.createElement( 'div', { className: 'RootLinkCss', id: 'Azure-App-Panel'}, this.props.InnerText );
 	};
 };
 
@@ -54,7 +53,7 @@ class Application extends React.Component
 		//	simple default
 		//	return React.createElement( 'div', null, `Hello ${this.props.InnerText}` );
 
-
+		console.debug("top level react.js object - 'Application' ", this.props);
 		//  params
 		//	1. output html element
 		//	2. css style or lement className or ??
@@ -66,7 +65,7 @@ class Application extends React.Component
 			 React.createElement( RootLink, { InnerText: this.props["RootLink.InnerText"] } ),
 			 React.createElement( SearchLink, { InnerText: this.props["SearchLink.InnerText"] } ),
 			 React.createElement( UserSwitch, { InnerText: this.props["UserSwitchList"] } ),
-			 React.createElement( VerticalNavigation, { InnerText: this.props["SearchLink.InnerText"] } )
+			 React.createElement( VerticalNavigation, { InnerText: this.props["VerticalNavigation"] } )
 			 );
 	};
 };
