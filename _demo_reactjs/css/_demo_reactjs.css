@@ -1,0 +1,50 @@
+﻿*
+{
+    box-sizing: border-box;
+	vertical-align:top;
+	line-height:normal;
+	margin:0px;
+	padding:0px;
+}
+body
+{
+    background-color: rgba(32, 32, 32, 1);
+    color: rgba(224, 224, 224, 1);
+    font-family: 'Segoe UI', 'Tahoma', Arial;
+}
+
+/* in DOM order */
+.MainAppContainer
+{
+	border: solid 10px green;
+	padding:20px;
+}
+
+.RootLinkCss
+{
+	border: solid 1px red;
+	padding:20px;
+	margin-bottom:20px;
+}
+
+/* Search */
+.SearchPanel
+{
+	border: solid 1px blue;
+	padding:20px;
+	margin-bottom:20px;
+}
+
+.UserSwitchPanel
+{
+	border: solid 1px purple;
+	padding:20px;
+	margin-bottom:20px;
+}
+
+.VerticalNavigationPanel
+{
+	border: solid 1px orange;
+	padding:20px;
+	margin-bottom:20px;
+}
