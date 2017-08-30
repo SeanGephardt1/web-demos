@@ -9,7 +9,7 @@
         console.log( "in 'try'" );
 
         var _application_property_bag = {
-        	"RootLink.InnerText": "Sean",
+        	"RootLink.InnerText": "Sean Gephardt explores react.js",
         	"SearchLink.InnerText": "Guitars",
         	"UserSwitchList": ["Sean", "Robert", "Jacqueline", "Jon", "Jonah"],
 			"VerticalNavigation": ["Menu","New","All Resources","Your Resources","Virtual Machines","Databases"]

@@ -2,18 +2,19 @@
 /// <reference path="../script/react/react-dom-15.6.1.js" />
 "use strict";
 
-// simple control template - flesh out all functions, mehtods, events
+// control template - flesh out all functions, mehtods, events
 class RootLink extends React.Component
 {
 	render()
-	{	console.debug( "RootLink", this.props );
+	{
+		console.debug( "RootLink", this.props, typeof RootLink );
 		//	alternation syntax for data-binding
 		//	return React.createElement( 'div', { className: 'SearchPanel' }, `Search: ${this.props.InnerText}` );
 		return React.createElement( 'div', { className: 'RootLinkCss', id: 'Azure-App-Panel'}, this.props.InnerText );
 	};
 };
 
-// simple control
+// simple controls
 class SearchLink extends React.Component
 {
 	render()
