@@ -1,0 +1,6 @@
+node.sj tools for VS 2015
+
+https://github.com/Microsoft/nodejstools/releases/tag/v1.3
+
+
+m install --save react react-dom
