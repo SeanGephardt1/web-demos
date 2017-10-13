@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX Web Servcice Login Demo - Sean Gephardt's Web Fun Time</title>
+	<link href="login-demo.css" rel="stylesheet" />
+	<script src="../../script/knockout-3.3.0.js" defer></script>
+	<script src="login-demo-ko.js" type="text/javascript" defer></script>
+	<script src="login-demo.js" type="text/javascript" defer></script>
+</head>
+<body>
+	<header>
+		<h1 data-bind="text: ViewModelName"></h1>
+	</header>
+	<nav>
+		<a href="../../default.html">Start</a>
+		<a href="../../demos/">Demos</a>
+		<a href="mailto:seangephardt@live.com">E-mail</a>
+	</nav>
+	<section>
+		<div id="demo_id" class="demo_class">
+			<div data-bind="visible: IsFormVisible">
+				<h2 data-bind="text: SubTitle"></h2>
+				<div><input id="LoginUserName" type="text" data-bind="textInput: UserName" /></div>
+				<div><input id="LoginUserPassword" type="password" data-bind="textInput: UserPassword" /></div>
+				<div>
+					<input id="LoginUserSaved" type="checkbox" data-bind="checked: UserDataSaved" />
+					<label id="LoginIUserSavedLabel" for="LoginUserSaved" data-bind="text: SaveLoginLabel"></label>
+				</div>
+				<div>
+					<input id="LoginUserSubmitBtn" type="submit" data-bind="value: SubmitButtonLabel, event:{ 'click': SubmitCredentials }, attr: { 'disabled': SubmitButtonDisabled }" />
+				</div>
+			</div>
+			<div data-bind="visible: IsFormSubmitted">
+				<div>You are logged in.</div>
+					<hr />
+					<input id="LogoutUserSubmitBtn" type="submit" data-bind="value: LogOutLabel, event:{ 'click': UserLogOut }" />
+				</div>
+				<div>
+					<div><span>UserID: </span><span data-bind="text: UserID"></span></div>
+					<div><span>UserName: </span><span data-bind="text: UserName"></span></div>
+					<div><span>UserPassword: </span><span data-bind="text: UserPassword"></span></div>
+					<div><span>UserDataSaved: </span><span data-bind="text: UserDataSaved"></span></div>
+					<div><span>UserLoggedIn: </span><span data-bind="text: UserLoggedIn"></span></div>
+					<br/>
+					<input id="ClearDataSubmitBtn" type="submit" data-bind="value: ClearDataLabel, event:{ 'click': ClearUserData }" />
+			</div>
+		</div>
+	</section>
+	<footer>copyright 2015 Sean Gephardt. All rights reserved.</footer>
+</body>
+</html>

@@ -1,0 +1,874 @@
+﻿[
+  {
+    "toc_title": "DATA-03.JSON--Understand and Explore",
+    "toc_type": "Topic",
+    "href": "active-directory-whatis",
+    "relative_path_in_depot": "/active-directory/active-directory-whatis",
+    "homepage": "active-directory-whatis.html",
+    "external_link": null,
+    "level": 1,
+    "children":
+    [
+      {
+        "toc_title": "What is Azure Active Directory",
+        "toc_type": "Topic",
+        "href": "active-directory-whatis",
+        "relative_path_in_depot": "/active-directory/active-directory-whatis",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      },
+      {
+        "toc_title": "Which edition should I choose?",
+        "toc_type": "Topic",
+        "href": "active-directory-editions",
+        "relative_path_in_depot": "/active-directory/active-directory-editions",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      }
+    ]
+  },
+  {
+    "toc_title": "Manage Users",
+    "toc_type": "Topic",
+    "href": "active-directory-create-users",
+    "relative_path_in_depot": "/active-directory/active-directory-create-users",
+    "homepage": "active-directory-create-users.html",
+    "external_link": null,
+    "level": 1,
+    "children":
+    [
+      {
+        "toc_title": "Create or edit users",
+        "toc_type": "Topic",
+        "href": "active-directory-create-users",
+        "relative_path_in_depot": "/active-directory/active-directory-create-users",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      },
+      {
+        "toc_title": "Managing access to resources with Azure Active Directory groups",
+        "toc_type": "Topic",
+        "href": "active-directory-manage-groups",
+        "relative_path_in_depot": "/active-directory/active-directory-manage-groups",
+        "homepage": "active-directory-accessmanagement-manage-groups.html",
+        "external_link": null,
+        "level": 2,
+        "children":
+        [
+          {
+            "toc_title": "Managing security groups",
+            "toc_type": "Topic",
+            "href": "active-directory-accessmanagement-manage-groups",
+            "relative_path_in_depot": "/active-directory/active-directory-accessmanagement-manage-groups",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Using attributes to create advanced rules",
+            "toc_type": "Topic",
+            "href": "active-directory-accessmanagement-groups-with-advanced-rules",
+            "relative_path_in_depot": "/active-directory/active-directory-accessmanagement-groups-with-advanced-rules",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Troubleshooting dynamic membership",
+            "toc_type": "Topic",
+            "href": "active-directory-accessmanagement-troubleshooting",
+            "relative_path_in_depot": "/active-directory/active-directory-accessmanagement-troubleshooting",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Managing owners for a group",
+            "toc_type": "Topic",
+            "href": "active-directory-accessmanagement-managing-group-owners",
+            "relative_path_in_depot": "/active-directory/active-directory-accessmanagement-managing-group-owners",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Dedicated groups",
+            "toc_type": "Topic",
+            "href": "active-directory-accessmanagement-dedicated-groups",
+            "relative_path_in_depot": "/active-directory/active-directory-accessmanagement-dedicated-groups",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Setting up Azure Active Directory for self-service group management",
+            "toc_type": "Topic",
+            "href": "active-directory-accessmanagement-self-service-group-management",
+            "relative_path_in_depot": "/active-directory/active-directory-accessmanagement-self-service-group-management",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          }
+        ]
+      },
+      {
+        "toc_title": "Manage passwords",
+        "toc_type": "Topic",
+        "href": "active-directory-manage-passwords",
+        "relative_path_in_depot": "/active-directory/active-directory-manage-passwords",
+        "homepage": "active-directory-passwords-getting-started.html",
+        "external_link": null,
+        "level": 2,
+        "children":
+        [
+          {
+            "toc_title": "Getting started with Password Management",
+            "toc_type": "Topic",
+            "href": "active-directory-passwords-getting-started",
+            "relative_path_in_depot": "/active-directory/active-directory-passwords-getting-started",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "How Password Management works",
+            "toc_type": "Topic",
+            "href": "active-directory-passwords-how-it-works",
+            "relative_path_in_depot": "/active-directory/active-directory-passwords-how-it-works",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Learn more about Password Management",
+            "toc_type": "Topic",
+            "href": "active-directory-passwords-learn-more",
+            "relative_path_in_depot": "/active-directory/active-directory-passwords-learn-more",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Deploying Password Management and training users to use it",
+            "toc_type": "Topic",
+            "href": "active-directory-passwords-best-practices",
+            "relative_path_in_depot": "/active-directory/active-directory-passwords-best-practices",
+            "homepage": "active-directory-passwords.html",
+            "external_link": null,
+            "level": 3,
+            "children":
+            [
+              {
+                "toc_title": "Azure AD Password Reset for Users and Admins",
+                "toc_type": "Topic",
+                "href": "active-directory-passwords",
+                "relative_path_in_depot": "/active-directory/active-directory-passwords",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Customizing Password Management to fit your organization's needs",
+                "toc_type": "Topic",
+                "href": "active-directory-passwords-customize",
+                "relative_path_in_depot": "/active-directory/active-directory-passwords-customize",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "How to get operational insights with Password Management reports",
+                "toc_type": "Topic",
+                "href": "active-directory-passwords-get-insights",
+                "relative_path_in_depot": "/active-directory/active-directory-passwords-get-insights",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Password policies and restrictions in Azure Active Directory",
+                "toc_type": "Topic",
+                "href": "active-directory-passwords-policy",
+                "relative_path_in_depot": "/active-directory/active-directory-passwords-policy",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Set password expiration policies in Azure Active Directory",
+                "toc_type": "Topic",
+                "href": "active-directory-passwords-set-expiration-policy",
+                "relative_path_in_depot": "/active-directory/active-directory-passwords-set-expiration-policy",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "How to troubleshoot Password Management",
+                "toc_type": "Topic",
+                "href": "active-directory-passwords-troubleshoot",
+                "relative_path_in_depot": "/active-directory/active-directory-passwords-troubleshoot",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              }
+            ]
+          },
+          {
+            "toc_title": "Password Management Frequently Asked Questions",
+            "toc_type": "Topic",
+            "href": "active-directory-passwords-faq",
+            "relative_path_in_depot": "/active-directory/active-directory-passwords-faq",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          }
+        ]
+      },
+      {
+        "toc_title": "View your access and usage reports",
+        "toc_type": "Topic",
+        "href": "active-directory-view-access-usage-reports",
+        "relative_path_in_depot": "/active-directory/active-directory-view-access-usage-reports",
+        "homepage": "active-directory-reporting-getting-started.html",
+        "external_link": null,
+        "level": 2,
+        "children":
+        [
+          {
+            "toc_title": "Getting started with Azure Active Directory Reporting",
+            "toc_type": "Topic",
+            "href": "active-directory-reporting-getting-started",
+            "relative_path_in_depot": "/active-directory/active-directory-reporting-getting-started",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Azure Active Directory Reporting Guide",
+            "toc_type": "Topic",
+            "href": "active-directory-reporting-guide",
+            "relative_path_in_depot": "/active-directory/active-directory-reporting-guide",
+            "homepage": "active-directory-reporting-search.html",
+            "external_link": null,
+            "level": 3,
+            "children":
+            [
+              {
+                "toc_title": "Azure Active Directory Reporting Search",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-search",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-search",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Azure Active Directory All User Sign In Activity report",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-all-user-sign-in-activity-report",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-all-user-sign-in-activity-report",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Azure Active Directory Audit Report Events",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-audit-events",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-audit-events",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Azure Active Directory Report Backfill Times",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-backfill",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-backfill",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Irregular sign in activity",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-irregular-sign-in-activity",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-irregular-sign-in-activity",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Azure Active Directory Report Latencies",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-latencies",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-latencies",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Azure Active Directory Reporting Notifications",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-notifications",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-notifications",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Azure Active Directory Report Previews",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-previews",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-previews",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Azure Active Directory Report Retention Policies",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-retention",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-retention",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Sign ins after multiple failures",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-sign-ins-after-multiple-failures",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-sign-ins-after-multiple-failures",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Sign ins from IP addresses with suspicious activity",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Sign ins from multiple geographies",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-sign-ins-from-multiple-geographies",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-sign-ins-from-multiple-geographies",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Sign ins from possibly infected devices",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-sign-ins-from-possibly-infected-devices",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-sign-ins-from-possibly-infected-devices",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Sign ins from unknown sources",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-sign-ins-from-unknown-sources",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-sign-ins-from-unknown-sources",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Azure Active Directory Reporting 'Unknown Actor' event",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-unknown-actor",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-unknown-actor",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Users with anomalous sign in activity",
+                "toc_type": "Topic",
+                "href": "active-directory-reporting-users-with-anomalous-sign-in-activity",
+                "relative_path_in_depot": "/active-directory/active-directory-reporting-users-with-anomalous-sign-in-activity",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              }
+            ]
+          },
+          {
+            "toc_title": "Getting started with the Azure AD Reporting API",
+            "toc_type": "Topic",
+            "href": "active-directory-reporting-api-getting-started",
+            "relative_path_in_depot": "/active-directory/active-directory-reporting-api-getting-started",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          }
+        ]
+      },
+      {
+        "toc_title": "Azure AD B2B collaboration preview",
+        "toc_type": "Topic",
+        "href": "active-directory-b2b-what-is-azure-ad-b2b",
+        "relative_path_in_depot": "/active-directory/active-directory-b2b-what-is-azure-ad-b2b",
+        "homepage": "active-directory-b2b-how-it-works.html",
+        "external_link": null,
+        "level": 2,
+        "children":
+        [
+          {
+            "toc_title": "Azure AD B2B collaboration preview: How it works",
+            "toc_type": "Topic",
+            "href": "active-directory-b2b-how-it-works",
+            "relative_path_in_depot": "/active-directory/active-directory-b2b-how-it-works",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Azure AD B2B collaboration preview: Detailed walkthrough",
+            "toc_type": "Topic",
+            "href": "active-directory-b2b-detailed-walkthrough",
+            "relative_path_in_depot": "/active-directory/active-directory-b2b-detailed-walkthrough",
+            "homepage": "active-directory-b2b-references-csv-file-format.html",
+            "external_link": null,
+            "level": 3,
+            "children":
+            [
+              {
+                "toc_title": "Azure AD B2B collaboration preview: CSV file format",
+                "toc_type": "Topic",
+                "href": "active-directory-b2b-references-csv-file-format",
+                "relative_path_in_depot": "/active-directory/active-directory-b2b-references-csv-file-format",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Azure AD B2B collaboration preview: External user object attribute changes",
+                "toc_type": "Topic",
+                "href": "active-directory-b2b-references-external-user-object-attribute-changes",
+                "relative_path_in_depot": "/active-directory/active-directory-b2b-references-external-user-object-attribute-changes",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              },
+              {
+                "toc_title": "Azure AD B2B collaboration preview: External user token format",
+                "toc_type": "Topic",
+                "href": "active-directory-b2b-references-external-user-token-format",
+                "relative_path_in_depot": "/active-directory/active-directory-b2b-references-external-user-token-format",
+                "homepage": null,
+                "external_link": null,
+                "level": 4,
+                "children": null
+              }
+            ]
+          },
+          {
+            "toc_title": "Azure AD B2B collaboration preview: Current preview limitations",
+            "toc_type": "Topic",
+            "href": "active-directory-b2b-current-preview-limitations",
+            "relative_path_in_depot": "/active-directory/active-directory-b2b-current-preview-limitations",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          }
+        ]
+      },
+      {
+        "toc_title": "Integrating your on-premises identities with Azure Active Directory",
+        "toc_type": "Topic",
+        "href": "active-directory-aadconnect",
+        "relative_path_in_depot": "/active-directory/active-directory-aadconnect",
+        "homepage": "active-directory-aadconnectsync-understanding-users-and-contacts.html",
+        "external_link": null,
+        "level": 2,
+        "children":
+        [
+          {
+            "toc_title": "Azure AD Connect sync: Understanding Users and Contacts",
+            "toc_type": "Topic",
+            "href": "active-directory-aadconnectsync-understanding-users-and-contacts",
+            "relative_path_in_depot": "/active-directory/active-directory-aadconnectsync-understanding-users-and-contacts",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Azure AD Connect sync: Attributes synchronized to Azure Active Directory",
+            "toc_type": "Topic",
+            "href": "active-directory-aadconnectsync-attributes-synchronized",
+            "relative_path_in_depot": "/active-directory/active-directory-aadconnectsync-attributes-synchronized",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          }
+        ]
+      },
+      {
+        "toc_title": "Azure AD Connect sync: Technical Concepts",
+        "toc_type": "Topic",
+        "href": "active-directory-aadconnectsync-technical-concepts",
+        "relative_path_in_depot": "/active-directory/active-directory-aadconnectsync-technical-concepts",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      }
+    ]
+  },
+  {
+    "toc_title": "Manage Devices",
+    "toc_type": "Topic",
+    "href": "active-directory-conditional-access-device-registration-overview",
+    "relative_path_in_depot": "/active-directory/active-directory-conditional-access-device-registration-overview",
+    "homepage": "active-directory-conditional-access-device-registration-overview.html",
+    "external_link": null,
+    "level": 1,
+    "children":
+    [
+      {
+        "toc_title": "Registering devices",
+        "toc_type": "Topic",
+        "href": "active-directory-conditional-access-device-registration-overview",
+        "relative_path_in_depot": "/active-directory/active-directory-conditional-access-device-registration-overview",
+        "homepage": "active-directory-conditional-access-automatic-device-registration.html",
+        "external_link": null,
+        "level": 2,
+        "children":
+        [
+          {
+            "toc_title": "Automatic device registration with Azure Active Directory",
+            "toc_type": "Topic",
+            "href": "active-directory-conditional-access-automatic-device-registration",
+            "relative_path_in_depot": "/active-directory/active-directory-conditional-access-automatic-device-registration",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Configure automatic device registration for Windows 7 domain joined devices",
+            "toc_type": "Topic",
+            "href": "active-directory-conditional-access-automatic-device-registration-windows7",
+            "relative_path_in_depot": "/active-directory/active-directory-conditional-access-automatic-device-registration-windows7",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Configure automatic device registration for Windows 8.1 domain joined devices",
+            "toc_type": "Topic",
+            "href": "active-directory-conditional-access-automatic-device-registration-windows8_1",
+            "relative_path_in_depot": "/active-directory/active-directory-conditional-access-automatic-device-registration-windows8_1",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Connect domain-joined devices to Azure AD for Windows 10 experiences",
+            "toc_type": "Topic",
+            "href": "active-directory-azureadjoin-devices-group-policy",
+            "relative_path_in_depot": "/active-directory/active-directory-azureadjoin-devices-group-policy",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          }
+        ]
+      },
+      {
+        "toc_title": "Windows 10 for the enterprise: Ways to use devices for work",
+        "toc_type": "Topic",
+        "href": "active-directory-azureadjoin-windows10-devices-overview",
+        "relative_path_in_depot": "/active-directory/active-directory-azureadjoin-windows10-devices-overview",
+        "homepage": "active-directory-azureadjoin-windows10-devices.html",
+        "external_link": null,
+        "level": 2,
+        "children":
+        [
+          {
+            "toc_title": "Using Windows 10 devices in your workplace",
+            "toc_type": "Topic",
+            "href": "active-directory-azureadjoin-windows10-devices",
+            "relative_path_in_depot": "/active-directory/active-directory-azureadjoin-windows10-devices",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Extending cloud capabilities to Windows 10 devices through Azure Active Directory Join",
+            "toc_type": "Topic",
+            "href": "active-directory-azureadjoin-overview",
+            "relative_path_in_depot": "/active-directory/active-directory-azureadjoin-overview",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Usage scenarios and deployment considerations for Azure AD Join",
+            "toc_type": "Topic",
+            "href": "active-directory-azureadjoin-deployment-aadjoindirect",
+            "relative_path_in_depot": "/active-directory/active-directory-azureadjoin-deployment-aadjoindirect",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Join a personal device to your organization",
+            "toc_type": "Topic",
+            "href": "active-directory-azureadjoin-personal-device",
+            "relative_path_in_depot": "/active-directory/active-directory-azureadjoin-personal-device",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Setting up Azure AD Join for your users",
+            "toc_type": "Topic",
+            "href": "active-directory-azureadjoin-setup",
+            "relative_path_in_depot": "/active-directory/active-directory-azureadjoin-setup",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Set up a new device with Azure AD during Setup",
+            "toc_type": "Topic",
+            "href": "active-directory-azureadjoin-user-frx",
+            "relative_path_in_depot": "/active-directory/active-directory-azureadjoin-user-frx",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          },
+          {
+            "toc_title": "Set up a Windows 10 device with Azure AD from Settings",
+            "toc_type": "Topic",
+            "href": "active-directory-azureadjoin-user-upgrade",
+            "relative_path_in_depot": "/active-directory/active-directory-azureadjoin-user-upgrade",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          }
+        ]
+      },
+      {
+        "toc_title": "Authenticating identities without passwords through Microsoft Passport",
+        "toc_type": "Topic",
+        "href": "active-directory-azureadjoin-passport",
+        "relative_path_in_depot": "/active-directory/active-directory-azureadjoin-passport",
+        "homepage": "active-directory-azureadjoin-passport-deployment.html",
+        "external_link": null,
+        "level": 2,
+        "children":
+        [
+          {
+            "toc_title": "Enable Microsoft Passport for Work in your organization",
+            "toc_type": "Topic",
+            "href": "active-directory-azureadjoin-passport-deployment",
+            "relative_path_in_depot": "/active-directory/active-directory-azureadjoin-passport-deployment",
+            "homepage": null,
+            "external_link": null,
+            "level": 3,
+            "children": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "toc_title": "Manage Apps",
+    "toc_type": "Topic",
+    "href": "active-directory-enable-sso-scenario",
+    "relative_path_in_depot": "/active-directory/active-directory-enable-sso-scenario",
+    "homepage": "active-directory-cloudappdiscovery-whatis.html",
+    "external_link": null,
+    "level": 1,
+    "children":
+    [
+      {
+        "toc_title": "Discovering applications",
+        "toc_type": "Topic",
+        "href": "active-directory-cloudappdiscovery-whatis",
+        "relative_path_in_depot": "/active-directory/active-directory-cloudappdiscovery-whatis",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      },
+      {
+        "toc_title": "Integrate Azure AD with SaaS apps",
+        "toc_type": "Topic",
+        "href": "active-directory-sso-integrate-saas-apps",
+        "relative_path_in_depot": "/active-directory/active-directory-sso-integrate-saas-apps",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      },
+      {
+        "toc_title": "Sharing accounts",
+        "toc_type": "Topic",
+        "href": "active-directory-sharing-accounts",
+        "relative_path_in_depot": "/active-directory/active-directory-sharing-accounts",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      },
+      {
+        "toc_title": "Guiding developers",
+        "toc_type": "Topic",
+        "href": "active-directory-applications-guiding-developers-for-lob-applications",
+        "relative_path_in_depot": "/active-directory/active-directory-applications-guiding-developers-for-lob-applications",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      },
+      {
+        "toc_title": "Enabling hybrid access",
+        "toc_type": "Topic",
+        "href": "active-directory-appssoaccess-enable-hybrid-access",
+        "relative_path_in_depot": "/active-directory/active-directory-appssoaccess-enable-hybrid-access",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      },
+      {
+        "toc_title": "Assigning access to apps",
+        "toc_type": "Topic",
+        "href": "active-directory-managing-access-to-apps",
+        "relative_path_in_depot": "/active-directory/active-directory-managing-access-to-apps",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      },
+      {
+        "toc_title": "Document library for managing applications",
+        "toc_type": "Topic",
+        "href": "active-directory-apps-index",
+        "relative_path_in_depot": "/active-directory/active-directory-apps-index",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      }
+    ]
+  },
+  {
+    "toc_title": "Manage your Azure Active Directory",
+    "toc_type": "Topic",
+    "href": "active-directory-how-subscriptions-associated-directory",
+    "relative_path_in_depot": "/active-directory/active-directory-how-subscriptions-associated-directory",
+    "homepage": "active-directory-how-subscriptions-associated-directory.html",
+    "external_link": null,
+    "level": 1,
+    "children":
+    [
+      {
+        "toc_title": "How Azure subscriptions are associated with Azure Active Directory",
+        "toc_type": "Topic",
+        "href": "active-directory-how-subscriptions-associated-directory",
+        "relative_path_in_depot": "/active-directory/active-directory-how-subscriptions-associated-directory",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      },
+      {
+        "toc_title": "What is Microsoft Azure Active Directory licensing?",
+        "toc_type": "Topic",
+        "href": "active-directory-licensing-what-is",
+        "relative_path_in_depot": "/active-directory/active-directory-licensing-what-is",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      },
+      {
+        "toc_title": "Improving user sign in experiences with custom domain names",
+        "toc_type": "Topic",
+        "href": "active-directory-add-domain",
+        "relative_path_in_depot": "/active-directory/active-directory-add-domain",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      },
+      {
+        "toc_title": "Azure B2B",
+        "toc_type": "Topic",
+        "href": "active-directory-b2b-collaboration-overview",
+        "relative_path_in_depot": "/active-directory/active-directory-b2b-collaboration-overview",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      }
+    ]
+  }
+]

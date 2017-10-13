@@ -1,0 +1,43 @@
+﻿[
+  {
+    "toc_title": "SECURE DATA",
+    "toc_type": "Topic",
+    "href": "active-directory-whatis",
+    "relative_path_in_depot": "/active-directory/active-directory-whatis",
+    "homepage": "active-directory-whatis.html",
+    "external_link": null,
+    "level": 1,
+    "children":
+    [
+      {
+        "toc_title": "What is Azure Active Directory",
+        "toc_type": "Topic",
+        "href": "active-directory-whatis",
+        "relative_path_in_depot": "/active-directory/active-directory-whatis",
+        "homepage": null,
+        "external_link": null,
+        "level": 2,
+        "children": null
+      }
+    ]
+  },
+  {
+    "toc_title": "Manage Users",
+    "toc_type": "Topic",
+    "href": "active-directory-create-users",
+    "relative_path_in_depot": "/active-directory/active-directory-create-users",
+    "homepage": "active-directory-create-users.html",
+    "external_link": null,
+    "level": 1
+  },
+  {
+    "toc_title": "Manage Devices",
+    "toc_type": "Topic",
+    "href": "active-directory-conditional-access-device-registration-overview",
+    "relative_path_in_depot": "/active-directory/active-directory-conditional-access-device-registration-overview",
+    "homepage": "active-directory-conditional-access-device-registration-overview.html",
+    "external_link": null,
+    "level": 1,
+    "children":[]
+  }
+]

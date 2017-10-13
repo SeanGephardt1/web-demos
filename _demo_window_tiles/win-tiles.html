@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Windows Tiles style user interface example</title>
+	<link href="win-tiles.css" rel="stylesheet" />
+	<script src="../javascript/jquery/jquery-2.1.4.js" type="text/javascript"></script>
+	<script src="../javascript/knockout-js/knockout-3.3.0.js" type="text/javascript"></script>
+	<script src="win-tiles-main.js" defer></script>
+</head>
+<body>
+	<div class="app_header" data-bind="text: Name"></div>
+	<div class="content_nav_panel" data-bind="foreach: GlobalNav">
+		<span class="content_tile" data-bind="text: Title, click: $root.ShowContent, attr: { id: ID }"></span>
+	</div>
+	<div class="content_window">
+		<div class="content_title_bar">
+			<div class="content_title" data-bind="text: CurrentTitle"></div>
+			<div class="content_title_close_btn" data-bind="click: $root.CloseContentWindow" title="close this window"></div>
+		</div>
+		<div class="content_layout">
+			<div class="content_group" data-bind="html: CurrentContent"></div>
+		</div>
+	</div>
+</body>
+</html>

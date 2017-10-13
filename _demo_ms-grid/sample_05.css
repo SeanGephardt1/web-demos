@@ -1,0 +1,41 @@
+body
+{
+	position:absolute;
+	top: 20px;
+	left: 20px;
+	right: 20px;
+	bottom:20px;
+	margin:auto;
+	padding:20px;
+
+	/*box-sizing:border-box;*/
+	border: solid 1px #999999;
+	background-color:#111111;
+	color:#eeeeee;
+}
+
+.GridBoard
+{
+	border: solid 1px #999999;
+	width:800px;
+	height:800px;
+	display: -ms-inline-grid;
+	-ms-grid-columns: 100px 100px 100px 100px 100px 100px 100px 100px;
+	-ms-grid-rows: 100px 100px 100px 100px 100px 100px 100px 100px;
+}
+
+.div_grid_item
+{
+	border:dashed 1px #FFFFFF;
+	margin:2px;
+}
+
+.grid_item
+{
+	background-color:orange;
+	outline: solid 2px lime;
+	cursor: pointer;
+	padding:10px;
+	margin:4px;
+	width:auto;
+}
