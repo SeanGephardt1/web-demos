@@ -124,7 +124,7 @@ class Application extends React.Component
 			//	console.debug( "this.props.RootLinks", this.props.RootLinks[i] );
 			_root_links_array.push(
 				React.createElement( RootLink, { key: Utilities.NewId(), InnerText: this.props.RootLinks[i].RootLink.InnerText } )
-				);
+			);
 		}
 
 		//	return React.createElement( 'div', null, `Hello ${this.props.InnerText}` );
