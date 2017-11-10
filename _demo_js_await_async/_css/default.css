@@ -1,0 +1,45 @@
+* { box-sizing: border-box; }
+
+body
+{
+	background-color: rgba(32,32,32,1);
+	color:rgba(255,255,255,1);
+	font-family:'Segoe UI','Tahoma','Arial';
+	font-size:medium;
+    min-width:calc(900px);
+    padding:0px;
+    margin:0 auto;
+}
+
+/* footer */
+header
+{
+    padding:20px;
+}
+footer
+{
+    text-align:right;
+    padding:20px;
+    font-size:small;
+}
+a
+{
+	color:rgba(128,128,128,1);
+	text-decoration:none;
+}
+a:hover
+{
+	color:rgba(255,255,255,1);
+	text-decoration:none;
+}
+a:visited
+{
+	color:rgba(255,255,255,1);
+	text-decoration:none;
+}
+
+div
+{
+    /*border: solid 0px rgba(128,128,128,1);
+    padding:10px;*/
+}
