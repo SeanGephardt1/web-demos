@@ -9,10 +9,9 @@
         console.info( "BEGIN", _demo_name );
 
         window.document.addEventListener( "DOMContentLoaded", function ( ev )
-		{
-			console.log( "DOMContentLoaded." );
-            //var _main_vm = new MainViewModel( _demo_name, _debug_flag );
-            //ko.applyBindings( _main_vm );
+		{	//	console.log( "DOMContentLoaded." );
+            var _main_vm = new AsyncAwaitViewModel( _demo_name, _debug_flag );
+            ko.applyBindings( _main_vm );
             return;
         } );
     }
