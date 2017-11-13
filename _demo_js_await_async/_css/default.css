@@ -2,8 +2,8 @@
 
 body
 {
-	background-color: rgba(32,32,32,1);
-	color:rgba(255,255,255,1);
+	background-color: rgba(16,16,16,1);
+	color:rgba(239,239,239,1);
 	font-family:'Segoe UI','Tahoma','Arial';
 	font-size:medium;
     min-width:calc(900px);
