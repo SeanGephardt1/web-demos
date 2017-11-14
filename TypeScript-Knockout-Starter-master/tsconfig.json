@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
-        "outDir": "./built/",
+        "outDir": "./build/",
         "sourceMap": true,
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "module": "amd",
-        "target": "es5"
+        "target": "es2017"
     },
     "files": [
         "./src/require-config.ts",

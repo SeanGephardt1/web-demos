@@ -1,24 +1,45 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Hello Knockout!</title>
+        <title>Hello Knockout.JS & TypeScript</title>
+        <link rel="stylesheet" href="./css/default.css" />
+        <script src="./externals/require.js"></script>
+        <script src="./build/require-config.js"></script>
+        <script>require(["build/hello"]);</script>
     </head>
     <body>
         <p>
-            Hello from
-            <strong data-bind="text: language">todo</strong>
-            and
-            <strong data-bind="text: framework">todo</strong>!
+            Hello from <b data-bind="text: language"></b>
+            and <b data-bind="text: framework"></b>!
         </p>
-
-        <p>Language: <input data-bind="value: language" /></p>
-        <p>Framework: <input data-bind="value: framework" /></p>
-
-        <script src="./externals/require.js"></script>
-        <script src="./built/require-config.js"></script>
-        <script>
-            require(["built/hello"]);
-        </script>
+        <div>
+            <span>APPDEBUG:</span>
+            <span data-bind="text: APPDEBUG"></span>
+        </div>
+        <div>
+            <span>Language:</span>
+            <span data-bind="text: language"></span>
+        </div>
+        <div>
+            <span>Framework:</span>
+            <span data-bind="text: framework"></span>
+        </div>
+        <div>
+            <span>[from config] AppTitle:</span>
+            <span data-bind="text: userConfig()[0].AppTitle"></span>
+        </div>
+        <div>
+            <span>[from config] Copyright:</span>
+            <span data-bind="text: userConfig()[0].Copyright"></span>
+        </div>
+        <div>
+            <span>[from config] Version:</span>
+            <span data-bind="text: userConfig()[0].Version"></span>
+        </div>
+        <div>
+            <span>[from config] Theme:</span>
+            <span data-bind="text: userConfig()[0].Theme"></span>
+        </div>
     </body>
 </html>

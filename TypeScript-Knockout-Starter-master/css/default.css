@@ -1,0 +1,28 @@
+*
+{
+    box-sizing: border-box;
+}
+body
+{
+    background-color: rgba(32, 32, 32, 1);
+    color: rgba(224, 224, 224, 1);
+    font-family: 'Segoe UI', 'Tahoma', 'Arial';
+    font-size: medium;
+}
+div
+{
+    border-bottom: solid 1px rgba(128, 128, 128,1);
+    padding:4px;
+}
+span:first-child
+{
+    display:inline-block;
+    font-weight:700;
+    width:250px;
+    text-align:right;
+}
+span:last-child
+{
+    display:inline-block;
+    font-weight:100;
+}
