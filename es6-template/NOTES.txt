@@ -1,0 +1,23 @@
+﻿Code Pointers:
+
+https://facebook.github.io/react/docs/installation.html+ACM-using-a-cdn
+https://facebook.github.io/react/docs/react-without-jsx.html
+
+JSX for VS
+https://marketplace.visualstudio.com/items?itemName=KonstantinTarkus.ReactjsStarterKit
+
+Microsoft Office Fabric
+https://dev.office.com/fabric
+https://dev.office.com/fabric-js
+https://dev.office.com/fabric+ACM-/components
+https://github.com/OfficeDev/office-ui-fabric-core/releases
+
+
+CDN links:
+https://cdnjs.com/libraries/react/
+https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js
+https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js
+https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js
+https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js
+https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-with-addons.js
+https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-with-addons.min.js

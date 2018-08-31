@@ -1,0 +1,70 @@
+﻿*
+{
+    box-sizing: border-box;
+	vertical-align:top;
+	line-height:normal;
+	margin:0px;
+	padding:0px;
+}
+
+body
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	display:block;
+	padding:0px;
+	margin:0px;
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Segoe UI', 'Tahoma', Arial;
+	overflow:hidden;
+}
+.cds-react-app
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	display:block;
+	padding:0px;
+	margin:0px;
+	border: solid 0px rgba(255,255,255,1);
+}
+/* root level themes, usually limited to attributes that use colors */
+.default-theme
+{
+    background-color: #215b7d;
+    color: rgba(32,32,32,1);
+    font-size: medium;
+    border-color: blue;
+    font-family: 'Segoe UI', 'Tahoma', Arial;
+}
+.dark-theme
+{
+	background-color: rgba(32,32,32,1);
+	color: rgba(224,224,224,1);
+	font-size: medium;
+	border-color: red;
+    font-family: 'Segoe UI', 'Tahoma', Arial;
+}
+
+
+.myBtn {
+    padding: 10px;
+    bottom: 40px;
+    right: 40px;
+    position: absolute;
+    border: 1px solid black;
+    border-radius: 2px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.def_btn
+{
+	padding:10px;
+}
