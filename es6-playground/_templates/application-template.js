@@ -1,15 +1,22 @@
-﻿"use strict";
+﻿//testing javascript es5/6 class modules with imports, exports, generator functions
 
+"use strict";
+//	importing specifics from the module
+//	import { ID as NewGenID, PerfectNumber as PN } from "../components/es5-module-one.js"; can be used if needed for more aliasing to avoid collisions
+//	import { ID, PerfectNumber, VeryLongString } from "../components/es5-module-one.js";
+//	importing the whole module
 import * as TestModule from "../components/es5-module-one.js";
-import { TestClass as tc2 } from "../components/es5-module-one.js";
-import { PromisesTestClass as PTC } from "../components/cls-promises-test.js";
 
+//	importing specifically the class from the module, needed for access to static functions
+import { TestClass as tc2 }  from "../components/es5-module-one.js";
+
+//	catch all test class
 export class Application 
 {	
 	constructor( props )
 	{	//	super( props );
-		//	console.debug( new Date().toISOString(), "Application::ctor", props.AppName );
-		this.Title = props.AppName;
+		console.debug( new Date().toISOString(), "Application::ctor", props.AppName );
+
 		this.Id = "new-id-1";
 		this.TestClassID1 = "test_class_id_div_1";
 		this.TestClassID2 = "test_incremental_yield_1";
@@ -76,7 +83,8 @@ export class Application
 		return;
 	};
 	Debug()
-	{	console.debug( "class Application.Debug()", this );
+	{
+		console.debug( "class Application.Debug()", this );
 		return;
 	};
 	ParseState()
@@ -138,67 +146,9 @@ export class Application
 		console.debug( "END TestModuleImports" );
 		return;
 	};
-	GetComputedStyles( ev )
-	{	//	console.debug( "GetComputedStyles",  ev.srcElement );
-		//	console.debug( "this", ev.srcElement.id );
-		//	let _bg = window.getComputedStyle(document.body).background;
-
-		let _children = window.document.body.children;
-
-		for ( let i = 0; i < _children.length; i++)
-		{	//	let _temp = window.getComputedStyle( _children[i] );
-			//	console.debug( "_children[i]", _children[i] );
-			if ( _children[i].tagName == "BUTTON" )
-			{
-				_children[i].style.zoom = 2;
-			}
-		}
-
-		let _old_string = ev.srcElement.innerHTML.split(" ");
-
-		ev.srcElement.innerHTML = _old_string[0] + " Reset Zoom Level";
-		//this.GetComputedStyles.bind(this);
-		ev.srcElement.onclick = this.ResetZoomLevels.bind(this);
-
-		return;
-	};
-	ResetZoomLevels( ev )
-	{	//	console.debug( "ResetZoomLevels", ev );
-
-		let _children = window.document.body.children;
-
-		for ( let i = 0; i < _children.length; i++)
-		{
-			if ( _children[i].tagName == "BUTTON" )
-			{
-				_children[i].style.zoom = 1;
-			}
-		}
-
-		let _old_string = ev.srcElement.innerHTML.split(" ");
-
-		ev.srcElement.innerHTML = _old_string[0] + " Computed CSS";
-		ev.srcElement.onclick = this.GetComputedStyles.bind(this);
-		
-		return;
-	};
-	TestAsyncAwait( ev )
-	{
-		console.debug( "TestAsyncAwait", ev );
-		return;
-	};
-	async AsyncTestOne( ev )
-	{
-		console.debug( "async AsyncTestOne", ev );
-
-		const _p = new Promise().then().catch();
-
-		return await _p;
-	};
-
 	ChangeBackgroundCssColor( mouseEvent )
 	{	//	testing changing the border color
-		//	console.debug( "ChangeBackgroundCssColor::this.State.IsCssLoaded =", this.State.IsCssLoaded );
+		console.debug( "ChangeBackgroundCssColor::this.State.IsCssLoaded =", this.State.IsCssLoaded );
 
 		if ( this.State.IsCssLoaded === false )
 		{
@@ -261,33 +211,15 @@ export class Application
 		}, 1000 );
 		return;
 	};
-	CloseThisPage()
+	Render()
 	{
-		console.debug( "CloseThisPage" );
-		window.close();
-		return;
-	};
-	RenderHeader()
-	{
-		let _header = document.createElement( "header" );
-		_header.classList.add( "def_header" );
-		_header.innerText = this.Title;
-		document.body.appendChild( _header );
-		return;
-	};
-	RenderButtons()
-	{
-		for ( let i = 0; i < 11; i++ )
+		//	console.debug( "class Application.Render()", this );
+		//	console.debug( "class Application.Render()", this.State.AppName );
+
+		for ( let i = 0; i < 4; i++ )
 		{
 			let _new_btn = document.createElement( "button" );
 			_new_btn.classList.add( "def_btn" );
-			_new_btn.id = "id-" + Math.round( Math.random() * 1000 ).toPrecision(5);
-
-			let _promise_test = undefined;
-			if ( i > 3 && i < 8 )
-			{
-				_promise_test = new PTC();
-			}
 
 			switch (i)
 			{
@@ -297,13 +229,13 @@ export class Application
 					break;
 				}
 				case 1: {
-					_new_btn.innerHTML = ( i + 1 ) + ". Cycle CSS";
-					_new_btn.addEventListener( "click", this.AutoIncrementCssChange.bind( this ) );
+					_new_btn.innerHTML = ( i + 1 ) + ". Console Yield check";
+					_new_btn.addEventListener( "click", this.AutoIncrementConsoleDebug.bind( this ) );
 					break;
 				}
 				case 2: {
-					_new_btn.innerHTML = ( i + 1 ) + ". Console Yield check";
-					_new_btn.addEventListener( "click", this.AutoIncrementConsoleDebug.bind( this ) );
+					_new_btn.innerHTML = ( i + 1 ) + ". Cycle CSS";
+					_new_btn.addEventListener( "click", this.AutoIncrementCssChange.bind( this ) );
 					break;
 				}
 				case 3: {
@@ -311,53 +243,14 @@ export class Application
 					_new_btn.addEventListener( "click", this.TestModuleImports.bind( this ) );
 					break;
 				}
-				case 4: {
-					_new_btn.innerHTML = ( i + 1 ) + ". Promises - inline functions" ;
-					_new_btn.addEventListener( "click", _promise_test.FirePromise_Inline.bind(_promise_test) );
-					break;
-				}
-				case 5: {
-					_new_btn.innerHTML = ( i + 1 ) + ". Promises - class functions";
-					_new_btn.addEventListener( "click", _promise_test.FirePromise_ClassScope.bind(_promise_test) );
-					break;
-				}
-				case 6: {
-					_new_btn.innerHTML = ( i + 1 ) + ". Promises - All";
-					_new_btn.addEventListener( "click", _promise_test.FirePromise_All.bind(_promise_test) );
-					break;
-				}
-				case 7: {
-					_new_btn.innerHTML = ( i + 1 ) + ". Promises - Race";
-					_new_btn.addEventListener( "click", _promise_test.FirePromise_Race.bind(_promise_test) );
-					break;
-				}
-				case 8: {
-					_new_btn.innerHTML = ( i + 1 ) + ". Computed CSS";
-					_new_btn.onclick = this.GetComputedStyles.bind(this);
-					break;
-				}
-				case 9: {
-					_new_btn.innerHTML = ( i + 1 ) + ". Async/Await";
-					_new_btn.addEventListener( "click", this.TestAsyncAwait.bind(this) );
-					break;
-				}
 				default: {
-					_new_btn.innerHTML = ( i + 1 ) + ". Close this page";
-					_new_btn.addEventListener( "click", this.CloseThisPage.bind(this) );
 					break;
 				}
 			}
 			document.body.appendChild( _new_btn );
 		}
-	};
-	Render()
-	{	//	
-		console.debug( "Application::Render()" );
-		this.RenderHeader();
-		this.RenderButtons();
 		return;
 	};
-
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*
 	// generator functions, it's like window.setInterval but easier.
 	*TestGenerator( counter, base, step )

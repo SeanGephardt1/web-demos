@@ -1,0 +1,285 @@
+﻿.div-debug
+{
+	border: solid 1px rgba(128,128,128,1);
+	margin:5px;
+}
+.span-debug
+{
+	display:inline-block;
+	width:200px;
+	border-right: solid 1px rgba(128,128,128,1);
+}
+
+
+.control-panel
+{
+	border: solid 1px rgba(128,128,128,1);
+	background-color: rgba(255,255,255,1);
+	color: rgba(0,0,0,1);
+	padding:0px;
+	width:600px;
+	font-family: 'Segoe UI';
+	font-weight:normal;
+}
+
+/* active date picker control */
+.selection-panel
+{
+	/*border: solid 1px rgba(0,0,0,1);*/
+	border-bottom: solid 1px rgba(190,190,190,1);
+	margin:10px;
+	padding-bottom:5px;
+	display:flex;
+	vertical-align:top;
+}
+.selected-dates-panel
+{
+	/*border-right: solid 1px red;*/
+	flex-grow: 1;
+	flex-shrink: 0;
+	flex-basis: auto;
+	padding-top:10px;
+	padding-bottom:10px;
+	vertical-align:top;
+}
+.selected-date-span
+{
+	/*border: solid 1px red;*/
+	vertical-align:top;
+	display:inline-block;
+	margin-top:6px;
+	margin-right:4px;
+}
+.selected-date-input
+{
+	/*border: solid 1px red;*/
+	vertical-align:top;
+	height:32px;
+	margin-right:20px;
+}
+
+.clear-dates-panel
+{
+	/*border: solid 1px red;*/
+	padding:5px;
+	padding-top:15px;
+}
+.button-link
+{
+	/*border: solid 1px red;*/
+	color: #4894fe;
+	cursor:pointer;
+}
+
+/* date selection tables styles */
+.date-tables-panel
+{
+	/*border: solid 1px rgba(128,128,128,1);*/
+	/*padding:10px;*/
+	display:flex;
+	margin:10px;
+	/*width: calc(250px);*/
+}
+.date-table
+{
+	/*border: solid 1px red;*/	
+	flex-grow: 0;
+	flex-shrink:0;
+	flex-basis: calc(50%);
+}
+.date-table:first-child
+{
+	border-right: solid 1px rgba(190,190,190,1);
+	padding-right:5px;
+	margin-right:5px;
+	flex-basis: calc(50% - 5px);
+}
+
+.date-table-month
+{
+	/*border: solid 1px rgba(0,0,0,1);*/
+	width: calc(100%);
+	color: rgba(0,0,0,1);
+}
+
+
+.date-table-month > thead > tr > td
+{
+	/*border: solid 1px rgba(0,0,0,0.1);*/
+	text-align:center;
+	padding:10px;
+}
+.dir-arrows
+{
+	background-color: rgba(1, 92, 218, 0.1);
+	font-weight: 700;
+	display:block;
+	cursor:pointer;
+}
+.dir-arrows:hover
+{
+	background-color: rgba(0,96,190,1);
+	color: rgba(255,255,255,1);
+}
+.month-title
+{
+	font-weight:700;
+}
+
+.days-initials
+{
+	/*border: solid 1px red;*/
+	width:20px;
+	font-weight:700;
+	font-size:13px;
+}
+
+/* days  of the week styles */
+.date-table-month > tbody > tr > td
+{
+	/*border: solid 1px rgba(0,0,0,0.1);*/
+	text-align:center;
+	width: 14%;
+	/*padding:5px;*/
+	color:rgba(190,190,190,1);
+}
+.dp-week-day
+{
+	/*border: solid 1px red;*/
+	padding:0px;
+	/*cursor:pointer;*/
+}
+
+.is-in-month
+{
+	border: solid 1px transparent;
+	display:block;
+	margin: 0px;
+	padding:5px;
+	/*background-color:rgba(242,242,242,1);*/
+	color:rgba(0,0,0,1);
+	font-weight:500;
+}
+.is-in-month:hover
+{
+	background-color: rgba(0,160,255,1);
+	color: rgba(255,255,255,1);
+	cursor:pointer;
+}
+.is-in-month-selected
+{
+	background-color: rgba(0,96,190,1);
+	color: rgba(255,255,255,1);
+	cursor:pointer;
+}
+.is-in-month-selected-range
+{
+	border: solid 1px rgba(0,160,255,1);
+	background-color: rgba(1, 92, 218, 0.19);
+	color: rgba(0,0,0,1);
+	cursor:pointer;
+}
+.is-not-in-month
+{
+	color:rgba(128,128,128,1);
+	font-weight:100;
+	margin: 0px;
+	padding:5px;
+	display:block;
+}
+.is-Today
+{
+	border: solid 1px rgba(0,160,255,1);
+}
+
+/* filter panel & button styles */
+.filter-button-panel
+{
+	border-top: solid 1px rgba(190,190,190,1);
+	margin:10px;
+	padding-top:10px;
+	padding-bottom:5px;
+}
+.filter-range-panel:first-child
+{
+	/*border: solid 1px rgba(128,128,128,1);*/
+	margin-bottom:10px;
+}
+.filter-range-title
+{
+	color: rgba(160,160,160,1);
+	margin-bottom:5px;
+}
+.filter-range-buttons-panel
+{
+	/*border: solid 1px rgba(128,128,128,1);*/
+	display:flex;
+}
+.filter-range-button
+{
+	border: solid 1px #015cda;
+	background-color: rgba(255,255,255,1);
+	color: #015cda;
+	cursor:pointer;
+	font-family: 'Segoe UI';
+	font-size:13px;
+	font-weight:bold;
+	padding:3px;
+	padding-left:10px;
+	padding-right:10px;
+}
+.filter-range-button:hover
+{
+	border: solid 1px transparent;
+	background-color: #016afe;
+	color: rgba(255,255,255,1);
+}
+.filter-range-button-selected
+{
+	border: solid 1px rgba(0,96,190,1);
+	background-color: rgba(0,96,190,1);
+    color: rgba(255,255,255,1);
+    cursor: pointer;
+}
+
+
+/* generic buttons*/
+.buttons-panel
+{
+	border-top: solid 1px rgba(190,190,190,1);
+	margin:10px;
+	padding-top:15px;
+	padding-bottom:5px;
+}
+.buttons
+{
+	border: solid 1px transparent;
+	background-color: rgba(0,64,190,1);
+	color: rgba(255,255,255,1);
+	width: 100px;
+	padding-top:6px;
+	padding-bottom:6px;
+	padding-left:10px;
+	padding-right:10px;
+	cursor:pointer;
+	font-family: 'Segoe UI';
+	font-weight:normal;
+	margin-right:10px;
+}
+.buttons:hover
+{
+	border: solid 1px transparent;
+	background-color: rgba(0,128,255,1);
+	color: rgba(255,255,255,1);
+}
+.buttons:disabled
+{
+	background-color:rgba(127, 127, 127, 0.1);
+	color: rgba(127,127,127, 1);
+}
+.cancel
+{
+	border: solid 1px rgba(0,64,190,1);;
+	background-color: rgba(255,255,255,1);
+	color:rgba(0,64,190,1);
+}

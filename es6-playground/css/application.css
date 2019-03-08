@@ -3,13 +3,22 @@
     background-color: rgba(239, 239, 239, 1);
     color: rgba(32, 32, 32, 1);
 }
+.def_header
+{
+    background-color: rgba(239, 239, 239, 1);
+    color: rgba(32, 32, 32, 1);
+}
 .def_btn
 {
-	border-color:rgba(0, 0, 0,1);
-    background-color: rgba(48, 48, 48, 1);
-    color: rgba(218,218,218, 1);
+	border-color:rgba(239, 239, 239, 1);
+    background-color: rgba(239, 239, 239, 1);
+    color: rgba(32, 32, 32, 1);
 }
-
+.def_btn:hover
+{
+	background-color:rgba(0,0,0,1);
+    color: rgba(255, 255, 255, 1);
+}
 .test-class-div-list
 {
 	border-color:rgba(0, 0, 0,1);
@@ -19,4 +28,6 @@
 .test-class-div-list > div
 {
 	border-bottom: solid 1px rgba(255,255,255,1);
+    background-color: rgba(239, 239, 239, 1);
+    color: rgba(32, 32, 32, 1);
 }

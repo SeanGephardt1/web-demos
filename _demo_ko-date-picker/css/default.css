@@ -1,0 +1,12 @@
+﻿*
+{
+    box-sizing: border-box;
+}
+body
+{
+    background-color: rgba(32, 32, 32, 1);
+    color: rgba(224, 224, 224, 1);
+    font-family: 'Segoe UI', 'Tahoma', Arial;
+	font-weight:normal;
+	font-size: 13px;
+}

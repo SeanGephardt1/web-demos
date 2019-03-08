@@ -3,34 +3,34 @@
 //	Example methods include the following:
 //	- "import" & "export" styles
 //	- "Generator" functions
+//	-	testing javascript es5/6 class modules with imports, exports, generator functions
 
 "use strict";
 import { Application as App } from "../components/application.js";
 
 ( function ()
 {
-	console.log( "BEGIN \t\t\t\t\t", new Date().toISOString() );
+	console.log( "BEGIN", new Date().toISOString() );
 	try
 	{
-        console.log( "in 'TRY' \t\t\t\t", new Date().toISOString()  );
 		window.document.addEventListener( "DOMContentLoaded", function ( e ) 
 		{
-	        console.log( "in 'DOMContentLoaded' \t", new Date().toISOString()  );
-			const app = new App( { AppName: "Sean's JavaScript/ES 5/6 Demo", IsCssLoaded: false } );
+			const app_DOMLOADED = new App( { AppName: "Sean's EMCAScript 6 Demo - DOMContentLoaded", IsCssLoaded: false } );
+			// app_DOMLOADED.Render();
 			return;
         } );
 	}
     catch ( ex )
     {
-        console.log( "in 'CATCH' \t\t\t\t\t", new Date().toISOString()  );
+        console.log( "CATCH", new Date().toISOString()  );
 		console.error(ex.number, ":", ex.name, ":", ex.message);
 		console.error("exception stack::", ex.stack);
 		return;
 	}
 	finally
 	{
-		console.log( "in 'FINALLY' \t\t\t", new Date().toISOString()  );
+		console.log( "FINALLY", new Date().toISOString()  );
 	}
-    console.log( "END \t\t\t\t\t", new Date().toISOString() );
+    console.log( "END IIFE", new Date().toISOString() );
 	return; 
 } )();

@@ -1,0 +1,142 @@
+<html>
+<head>
+    <title>HTML JavaScript Knockout.js Date Picker Control Demo</title>
+	<link href="css/ko-date-picker.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" />
+    <link href="default.html" rel="prefetch" />
+    <script src="script/knockout-3.4.2.js" type="text/javascript"></script>
+	<script src="js/demo-data.js" type="text/javascript"></script>
+	<script src="js/ko-vm-date-picker.js" type="text/javascript"></script>
+	<script src="js/ko-vm-main.js" type="text/javascript"></script>
+    <script src="js/default.js" type="text/javascript"></script>
+</head>
+<body>
+    <h1 data-bind="text: Title"></h1>
+	<div>Selected Date Ranges</div>
+	<div data-bind="text: FormattedSelectedDateRange"></div>
+	<div data-bind="template: { foreach: DatePickerControl, name: 'ko-date-picker-control-template'}"></div>
+    <!-- end HTML layout -->
+    
+    <!-- begin knockout templates -->
+	<!-- KO Date PIcker Template -->
+	<script type="text/html" id="ko-date-picker-control-template">
+		<div class="div-debug" data-bind="visible: Debug">
+			<h3>DEBUG: DatePickerViewModel</h3>
+			<div >
+				<span class="span-debug">Title:</span>
+				<span data-bind="text: Title"></span>
+			</div>
+			<div>
+				<span class="span-debug">Current Date:</span>
+				<span data-bind="text: CurrentDate"></span>
+			</div>
+			<div>
+				<span class="span-debug">SelectedStartDate:</span>
+				<span data-bind="text: SelectedStartDate"></span>
+			</div>
+			<div>
+				<span class="span-debug">SelectedEndDate:</span>
+				<span data-bind="text: SelectedEndDate"></span>
+			</div>
+			<div>
+				<span class="span-debug">SelectedDateRange:</span>
+				<span data-bind="text: SelectedDateRange"></span>
+			</div>
+		</div>
+
+		<div class="control-panel">
+			<div class="selection-panel">
+				<div class="selected-dates-panel">
+					<span class="selected-date-span">From</span>
+					<input class="selected-date-input" type="text" data-bind="value: DisplayedStartDate" title="The selected beginning date for this filter"/>
+					<span class="selected-date-span">To</span>
+					<input class="selected-date-input" type="text" data-bind="value: DisplayedEndDate" title="The selected ending date for this filter"/>
+				</div>
+				<div class="clear-dates-panel">
+					<span class="button-link" title="Clear any previous selections" data-bind="text: ClearSelectionText, click: OnClick_ClearSelectionValues, clickBubble: false"></span>
+				</div>
+			</div>
+			<div class="date-tables-panel" data-bind="template: { foreach: DisplayedCalenders, name: 'ko-date-picker-table-template'}"></div>
+			<div class="filter-button-panel">
+				<div class="filter-range-panel">
+					<div class="filter-range-title">Historical ranges</div>
+					<div class="filter-range-buttons-panel" data-bind="template: { foreach: HistoricButtons, name: 'ko-date-picker-historic-btns-template'}"></div>
+				</div>
+				<div class="filter-range-panel">
+					<div class="filter-range-title">Forecasting ranges</div>
+					<div class="filter-range-buttons-panel">
+						<button class="filter-range-button">None</button>
+						<button class="filter-range-button">EOM</button>
+						<button class="filter-range-button">1 M</button>
+						<button class="filter-range-button">EOQ</button>
+						<button class="filter-range-button">3 M</button>
+						<button class="filter-range-button">EOY</button>
+						<button class="filter-range-button">Custom</button>
+					</div>
+				</div>
+			</div>
+			<div class="buttons-panel">
+				<button class="buttons" data-bind="text: ApplyButtonText, enable: ApplyButtonIsEnabled, click: OnClick_Apply, clickBubble: false"></button>
+				<button class="buttons cancel" data-bind="text: CancelButtonText, enable: CancelButtonIsEnabled, click: OnClick_Cancel, clickBubble: false"></button>
+			</div>
+		</div>  
+    </script>
+	<script type="text/html" id="ko-date-picker-table-template">
+		<div class="date-table">
+			<table class="date-table-month" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<td colspan="1" data-bind="click: $parent.OnClick_GoToPreviousMonth, clickBubble:false">
+							<span class="dir-arrows" data-bind="visible: $index() == 0" title="Navigate to the previous month">&lArr;</span>
+						</td>
+						<td colspan="5">
+							<span class="month-title" data-bind="text: Computed_Month"></span>
+						</td>
+						<td colspan="1" data-bind="click: $parent.OnClick_GoToNextMonth, clickBubble:false">
+							<span class="dir-arrows" data-bind="visible: $index() == 1" title="Navigate to the next month">&rArr;</span>
+						</td>
+					</tr>
+				</thead>
+				<thead>
+					<tr>
+						<td colspan="1" class="days-initials">S</td>
+						<td colspan="1" class="days-initials">M</td>
+						<td colspan="1" class="days-initials">T</td>
+						<td colspan="1" class="days-initials">W</td>
+						<td colspan="1" class="days-initials">T</td>
+						<td colspan="1" class="days-initials">F</td>
+						<td colspan="1" class="days-initials">S</td>
+					</tr>
+				</thead>
+				<tbody data-bind="attr: { id: ID }, template: { foreach: Weeks, name: 'ko-date-picker-week-template'}"></tbody>
+			</table>
+		</div>
+	</script>
+	<script type="text/html" id="ko-date-picker-week-template">
+		<tr data-bind="template: { foreach: $data, name: 'ko-date-picker-week-day-template'}"></tr>
+    </script>
+	<script type="text/html" id="ko-date-picker-week-day-template">
+        <td class="dp-week-day" colspan="1">
+			<!--<span style="font-size:10px;" data-bind="text: IsInMonth"></span>-->
+			<!-- ko if: IsInMonth -->
+			<span class="is-in-month" data-bind="text: Day, attr: { 'title' : Date }, 
+				  css: {'is-in-month-selected': IsSelected, 'is-Today': IsToday, 'is-in-month-selected-range' : IsRangeBoundary },
+				  click: DatePicker().OnClick_SelectThisDay, clickBubble:true"></span>
+			<!-- /ko -->
+			<!-- ko if: IsInMonth() == false -->
+			<span class="is-not-in-month" data-bind="text: Day, attr: { 'title' : Date }"></span>
+			<!-- /ko -->
+		</td>
+    </script>
+
+	<script type="text/html" id="ko-date-picker-historic-btns-template">
+		<!--<span data-bind="text: ButtonText"></span>-->
+		<button class="filter-range-button" data-bind="text: ButtonText, click: ActionFilter, clickBubble: false, css : {'filter-range-button-selected' : IsSelected }"></button>
+    </script>
+
+	<script type="text/html" id="ko-selected-dates-template">
+        <div data-bind="text: $data"></div>
+    </script>
+
+</body>
+</html>
