@@ -1,0 +1,105 @@
+﻿@font-face
+{ 
+	font-family: 'SegoeUIWeb'; 
+	src: 
+		url('SegoeUI-Roman-VF.woff2') format('woff'), 
+		url('SegoeUI-Roman-VF.woff') format('woff'), 
+		url('SeogeUI-Roman-VF.ttf') format('truetype'),
+		local('Segoe UI') format('truetype');
+}
+
+body
+{
+	font-family: 'SegoeUIWeb';
+	font-weight:normal;
+
+}
+div
+{
+	font-size:medium;
+}
+
+
+.top-border
+{
+	border-top: solid 1px rgba(128,128,128,0.5);
+	margin-top:20px;
+	padding-top:20px;
+	display:block;
+}
+
+
+.sw-light
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 300;
+}
+.sw-semi-light
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 400;
+}
+.sw-regular
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 500;
+}
+.sw-semi-bold
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 700;
+}
+.sw-bold
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 900;
+}
+
+
+
+
+.div-test-1
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 100;
+}
+.div-test-2
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 200;
+}
+.div-test-3
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 300;
+}
+.div-test-4
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 400;
+}
+.div-test-5
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 500;
+}
+.div-test-6
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 600;
+}
+.div-test-7
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 700;
+}
+.div-test-8
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 800;
+}
+.div-test-9
+{
+	font-family: 'SegoeUIWeb';
+	font-weight: 900;
+}

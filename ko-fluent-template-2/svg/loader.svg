@@ -1,0 +1,27 @@
+<svg version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" >   <!--<g id="debug">
+    <rect x="0" y="0" height="16" width="16" stroke="none" fill="rgba(190,190,190,0)"/>
+    <rect x="0" y="0" height="8" width="8" stroke="none" fill="rgba(255,0,0,0.2)"/>
+    <rect x="8" y="0" height="8" width="8" stroke="none" fill="rgba(255,255,0,0.2)"/>
+    <rect x="0" y="8" height="8" width="8" stroke="none" fill="rgba(0,255,0,0.2)"/> 
+    <rect x="8" y="8" height="8" width="8" stroke="none" fill="rgba(0,0,255,0.2)"/>    
+    <circle cx="8" cy="8" r="2" fill="rgba(190,190,190,1)" stroke="none"></circle>  
+   </g>-->  
+  <g id="CircleSpinner" stroke="none" fill="rgba(0,128,192,1)">
+    <!--<animateTransform attributeType="XML" fill="freeze" attributeName="transform" 
+      type="rotate" from="0 8 8" to="360 8 8"
+      begin="0s" dur="750ms" repeatCount="indefinite"/>-->     
+
+    <!-- circle of circles, starting top center, clockwise -->
+    <circle cx="8" cy="2" r="2" fill-opacity="1" style="transform: rotate(360,8,8)"></circle>
+    <circle cx="12" cy="4" r="2" fill-opacity="0.1"></circle>
+    <circle cx="14" cy="8" r="2" fill-opacity="0.2"></circle>
+    <circle cx="12" cy="12" r="2" fill-opacity="0.3"></circle>
+    <circle cx="8" cy="14" r="2" fill-opacity="0.4"></circle>
+    <circle cx="4" cy="12" r="2" fill-opacity="0.5"></circle>
+    <circle cx="2" cy="8" r="2" fill-opacity="0.6"></circle>
+    <circle cx="4" cy="4" r="2" fill-opacity="0.7"></circle>           
+  </g>
+
+</svg>
+

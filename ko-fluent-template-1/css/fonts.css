@@ -1,0 +1,30 @@
+﻿/* Segoe UI */
+@font-face
+{
+	font-family: az_Light;
+	src: local('Segoe UI Light'), url('fonts/SegoeUI-Light.ttf') format('truetype');
+}
+
+@font-face
+{
+	font-family: az_SemiLight;
+	src: local('Segoe UI SemiLight'), url('fonts/SegoeUI-Semilight.ttf');
+}
+
+@font-face
+{
+	font-family: az_Regular;
+	src: local('Segoe UI'), url('fonts/SegoeUI-Regular.ttf');
+}
+
+@font-face
+{
+	font-family: az_SemiBold;
+	src: local('Segoe UI SemiBold'), url('fonts/SegoeUI-Semibold.ttf');
+}
+
+@font-face
+{
+	font-family: az_Bold;
+	src: local('Segoe UI Bold'), url('fonts/SegoeUI-Bold.ttf');
+}
