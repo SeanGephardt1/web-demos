@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script src="https://fb.me/react-0.14.3.min.js"></script>
+<script src="https://fb.me/react-dom-0.14.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
+</head>
+
+<body>
+	<div id="react-container"></div>
+</body>
+
+<script type="text/babel">
+var Checkbox = React.createClass({
+  getInitialState: function() {
+	return {checked: true}
+  },
+  handleCheck: function() {
+	this.setState({checked: !this.state.checked});
+  },
+  render: function() {
+	var msg;
+	if (this.state.checked) {
+	  msg = "Checked";
+	} else {
+	  msg = "Un-checked";
+	}
+	return (
+	  <div>
+		<input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
+		<p>Checkbox: {msg}</p>
+	  </div>
+	);
+  }
+});
+
+React.render(<Checkbox />,
+  document.getElementById('react-container')
+);
+</script>
+
+</html>
