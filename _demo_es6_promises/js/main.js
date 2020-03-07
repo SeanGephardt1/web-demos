@@ -10,7 +10,13 @@ import { PromiseDemo } from '/components/promises-demo.js';
 		window.document.addEventListener( "DOMContentLoaded", function ( ev )
 		{   
 			console.log( "DOMContentLoaded" );
-			const _promise_demo = new PromiseDemo({elementID:"results"});
+			const _properties = 	{
+					elementID:"results",
+					second: 67
+				};
+
+			const _promise_demo = new PromiseDemo(_properties);
+
 			_promise_demo.Display();
 			return;
 		} );
