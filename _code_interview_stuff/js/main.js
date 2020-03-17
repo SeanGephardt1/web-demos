@@ -11,17 +11,15 @@ import ProblemThree from './problem-3.js';
 	{
 		console.info( "BEGIN", _demo_name );
 		window.document.addEventListener( "DOMContentLoaded", function ( ev )
-		{	//	console.log( "DOMContentLoaded" );
-
+		{	
 			const _p1 = new ProblemOne();
 			_p1.DoProblems();
 
 			const _p2 = new ProblemTwo();
 			_p2.DoProblems();
 
-			//const _p3 = new ProblemThree();
-			//_p3.DoProblems();
-
+			const _p3 = new ProblemThree();
+			_p3.DoProblems();
 
 			return;
 		} );
