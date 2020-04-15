@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Coding Question - Parse Form Demo</title>
+	<link href="css/default.css" rel="stylesheet" />
+	<script src="js/main.js" type="text/javascript"></script>
+</head>
+<body>
+	<h1>Coding Question - Parse Form Demo</h1>
+	<h2>Write a function to parse the following form, turning the named input elements and related values into a JSON object</h2>
+	<h3>See browser console window for output</h3>
+	<pre>
+		&lt;form name="GuitarOrder1"&gt;
+			&lt;input type="text" name="guitar" value="Telecaster"/&gt;
+		&lt;/form&gt;
+		&lt;form name="GuitarOrder2"&gt;
+			&lt;input type="text" name="guitar" value="Stratocaster"/&gt;
+			&lt;input type="text" name="guitar.color" value="sunburst"/&gt;
+			&lt;input type="text" name="guitar.neck.fretboard" value="rosewood"/&gt;
+			&lt;input type="text" name="guitar.neck.base" value="maple"/&gt;
+			&lt;input type="text" name="case" value="true"/&gt;
+		&lt;/form&gt;
+
+		const Output = {
+			GuitarOrder1 : {
+				guitar: 'Telecaster' 
+			},
+			GuitarOrder2: {
+				guitar: 'Stratocaster',	
+				color: 'sunburst',
+				neck:
+				{
+					fretboard: 'rosewood',
+					base: 'maple'
+				},
+				case: true
+			}
+		}
+	</pre>
+	<div id="form.panel">
+		<form name="GuitarOrder1">
+			<input type="text" name="guitar" value="Telecaster"/ >
+		</form>
+		<br/>
+		<form name="GuitarOrder2">
+			<input type="text" name="guitar" value="Stratocaster"/>
+			<input type="text" name="guitar.color" value="sunburst"/>
+			<input type="text" name="guitar.neck.fretboard" value="rosewood"/>
+			<input type="text" name="guitar.neck.base" value="maple"/>
+			<input type="text" name="case" value="true"/>
+		</form>
+	</div>
+</body>	
+</html>
