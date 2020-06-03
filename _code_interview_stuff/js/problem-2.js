@@ -59,7 +59,7 @@
 		this.IsZero( this.Answer );
 
 		this.Answer = this.Solution( 4 ); 
-		this.IsZero( this.Answer );
+		this.IsZero( this.Answer;
 
 		return;
 	}
