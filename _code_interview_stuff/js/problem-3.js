@@ -47,7 +47,7 @@ Output:
 export default class ProblemThree
 {
 	constructor()
-	{	console.debug( "Change the values in a matrix, based on values in the first array in a jagged array" );
+	{	console.debug( "CHANGE THE VALUES IN A MATRIX, BASED ON VALUES IN THE FIRST ARRAY IN A NESTED ARRAY" );
 		this.ArrayOne = [
 			[1, 1, 0],
 			[1, 1, 1],

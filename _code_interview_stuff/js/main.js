@@ -12,15 +12,18 @@ import ProblemThree from './problem-3.js';
 		console.info( "BEGIN", _demo_name );
 		window.document.addEventListener( "DOMContentLoaded", function ( ev )
 		{	
-			//const _p1 = new ProblemOne();
-			//_p1.DoProblems();
-
-			//const _p2 = new ProblemTwo();
-			//_p2.DoProblems();
-
-			const _p3 = new ProblemThree();
-			_p3.DoProblems();
-
+			document.getElementById( "btn1" ).addEventListener( "click", function ()
+			{
+				FireSample( ProblemOne );
+			}, false );
+			document.getElementById( "btn2" ).addEventListener( "click", function ()
+			{
+				FireSample( ProblemTwo );
+			}, false );
+			document.getElementById( "btn3" ).addEventListener( "click", function ()
+			{
+				FireSample( ProblemThree );
+			}, false );
 			return;
 		} );
 	}
@@ -38,3 +41,10 @@ import ProblemThree from './problem-3.js';
 	return;
 } )();
 
+function FireSample( classObj )
+{
+	console.clear();
+	const _p1 = new classObj();
+	_p1.DoProblems();
+	return;
+}
