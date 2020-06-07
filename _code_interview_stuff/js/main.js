@@ -2,6 +2,8 @@
 import ProblemOne from './problem-1.js';
 import ProblemTwo from './problem-2.js';
 import ProblemThree from './problem-3.js';
+import ProblemFour from './problem-4.js';
+
 
 ( function ()
 {
@@ -23,6 +25,10 @@ import ProblemThree from './problem-3.js';
 			document.getElementById( "btn3" ).addEventListener( "click", function ()
 			{
 				FireSample( ProblemThree );
+			}, false );
+			document.getElementById( "btn4" ).addEventListener( "click", function ()
+			{
+				FireSample( ProblemFour );
 			}, false );
 			return;
 		} );
