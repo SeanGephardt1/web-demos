@@ -3,33 +3,44 @@ import ProblemOne from './problem-1.js';
 import ProblemTwo from './problem-2.js';
 import ProblemThree from './problem-3.js';
 import ProblemFour from './problem-4.js';
+import JSQA from './problem-5.js';
 
 
 ( function ()
 {
-	const _demo_name = "Code Interview Demo";
+	const _demo_name = "JavaScript Code Interview Demos";
 
 	try
 	{
 		console.info( "BEGIN", _demo_name );
+
 		window.document.addEventListener( "DOMContentLoaded", function ( ev )
 		{	
 			document.getElementById( "btn1" ).addEventListener( "click", function ()
 			{
-				FireSample( ProblemOne );
+				ProblemOne.DoProblems();
 			}, false );
+
 			document.getElementById( "btn2" ).addEventListener( "click", function ()
 			{
-				FireSample( ProblemTwo );
+				ProblemTwo.DoProblems();
 			}, false );
+
 			document.getElementById( "btn3" ).addEventListener( "click", function ()
 			{
-				FireSample( ProblemThree );
+				ProblemThree.DoProblems();
 			}, false );
+
 			document.getElementById( "btn4" ).addEventListener( "click", function ()
 			{
-				FireSample( ProblemFour );
+				ProblemFour.DoProblems();
 			}, false );
+			
+			document.getElementById( "btn5" ).addEventListener( "click", function ()
+			{
+				JSQA.RunAllQuestions();
+			}, false );
+
 			return;
 		} );
 	}
@@ -46,11 +57,3 @@ import ProblemFour from './problem-4.js';
 	}
 	return;
 } )();
-
-function FireSample( classObj )
-{
-	console.clear();
-	const _p1 = new classObj();
-	_p1.DoProblems();
-	return;
-}
