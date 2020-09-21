@@ -2,6 +2,7 @@
 {
 	constructor()
 	{
+		console.clear();
 		console.debug( "FIND THE NEXT LOWEST INTEGER ABOVE 0 IN AN ARRAY" );
 		this._array_1 = [1, 3, 6, 4, 1, 2, 6, 4, 3]; // 5
 		this._array_2 = [1, 2, 3]; // 4

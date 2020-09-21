@@ -13,15 +13,16 @@ export default class Flights
 {
 	constructor()
 	{
+		console.clear();
 		console.debug( "Figure out your Travel Itinerary" );
 
 		this.tickets = [
-			{from: 'atl', to: 'fla'},
-			{from: 'sfo', to: 'lax'},
-			{from:'jfk', to:'atl'},
-			{from: 'fla', to: 'tex'},
-			{from:'den', to:'sfo'},
-			{from:'tex', to: 'den'}
+			{ from: 'atl', to: 'fla' },
+			{ from: 'sfo', to: 'lax' },
+			{ from: 'jfk', to: 'atl' },
+			{ from: 'fla', to: 'tex' },
+			{ from: 'den', to: 'sfo' },
+			{ from: 'tex', to: 'den' }
 		];
 		return;
 	};
@@ -73,7 +74,7 @@ export default class Flights
 			if ( _fin.length !== 0 )
 			{
 				_start = _fin[0];
-				_new.push( _start );
+				_new.push( _fin[0] );
 			}
 		}
 

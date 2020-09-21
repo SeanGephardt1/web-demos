@@ -83,6 +83,7 @@ export default class JSQA
 {
 	constructor()
 	{
+		console.clear();
 		console.debug( "Javacript examples from https://github.com/lydiahallie/javascript-questions#readme" );
 		return;
 	};

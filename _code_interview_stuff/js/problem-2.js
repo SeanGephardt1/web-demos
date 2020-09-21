@@ -2,6 +2,7 @@
 {
 	constructor()
 	{
+		console.clear();
 		console.debug( "CREATE AN ARRAY WITH THE SUM OF THE VALUES EQUAL ZERO." );
 		this.Answer;
 		return;

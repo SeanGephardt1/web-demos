@@ -20,22 +20,26 @@ import Flights from './problem-6.js';
 		{	
 			document.getElementById( "btn1" ).addEventListener( "click", function ()
 			{
-				ProblemOne.DoProblems();
+				const _p = new ProblemOne();
+				_p.DoProblems();
 			}, false );
 
 			document.getElementById( "btn2" ).addEventListener( "click", function ()
 			{
-				ProblemTwo.DoProblems();
+				const _p = new ProblemTwo();
+				_p.DoProblems();
 			}, false );
 
 			document.getElementById( "btn3" ).addEventListener( "click", function ()
 			{
-				ProblemThree.DoProblems();
+				const _p = new ProblemThree();
+				_p.DoProblems();
 			}, false );
 
 			document.getElementById( "btn4" ).addEventListener( "click", function ()
 			{
-				ProblemFour.DoProblems();
+				const _p = new ProblemFour();
+				_p.DoProblems();
 			}, false );
 			
 			document.getElementById( "btn5" ).addEventListener( "click", function ()

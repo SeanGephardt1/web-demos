@@ -47,7 +47,9 @@ Output:
 export default class ProblemThree
 {
 	constructor()
-	{	console.debug( "CHANGE THE VALUES IN A MATRIX, BASED ON VALUES IN THE FIRST ARRAY IN A NESTED ARRAY" );
+	{
+		console.clear();
+		console.debug( "CHANGE THE VALUES IN A MATRIX, BASED ON VALUES IN THE FIRST ARRAY IN A NESTED ARRAY" );
 		this.ArrayOne = [
 			[1, 1, 0],
 			[1, 1, 1],
@@ -120,13 +122,20 @@ export default class ProblemThree
 	DoProblems()
 	{
 		const returnedValue1 = this.Solution( this.ArrayOne ); 
-		console.debug( "One: input:", this.ArrayOne, "return value:", returnedValue1 );
+		console.debug( "One" );
+		console.table( this.ArrayOne );
+		console.table( returnedValue1 );
 
 		const returnedValue2 = this.Solution( this.ArrayTwo ); 
-		console.debug( "Two: input:", this.ArrayTwo, "return value:", returnedValue2 );
+		console.debug( "Two" );
+		console.table( this.ArrayTwo );
+		console.table( returnedValue2 );
 
 		const returnedValue3 = this.Solution( this.ArrayThree ); 
-		console.debug( "Three: input:", this.ArrayThree, "return value:", returnedValue3 );
+		console.debug( "Three", );
+		console.table( this.ArrayThree );
+		console.table( returnedValue3 );
+
 		return;
 	}
 }
