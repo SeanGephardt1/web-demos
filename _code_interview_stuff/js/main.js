@@ -4,6 +4,8 @@ import ProblemTwo from './problem-2.js';
 import ProblemThree from './problem-3.js';
 import ProblemFour from './problem-4.js';
 import JSQA from './problem-5.js';
+import Flights from './problem-6.js';
+
 
 
 ( function ()
@@ -39,6 +41,12 @@ import JSQA from './problem-5.js';
 			document.getElementById( "btn5" ).addEventListener( "click", function ()
 			{
 				JSQA.RunAllQuestions();
+			}, false );
+
+			document.getElementById( "btn6" ).addEventListener( "click", function ()
+			{
+				const f = new Flights();
+				f.ComputeSchedule();
 			}, false );
 
 			return;
